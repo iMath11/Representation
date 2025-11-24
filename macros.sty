@@ -1,0 +1,178 @@
+\ProvidesPackage{macros}
+% ================== Engine & Language ==================
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T5]{fontenc}      % Vietnamese (pdfLaTeX)
+\fi
+% Ngôn ngữ: dùng babel (phổ biến, ổn định cho cả pdfLaTeX/Xe/Lua)
+\RequirePackage[english]{babel}
+\RequirePackage{csquotes}
+
+% ================== Page Setup ==================
+\RequirePackage[a4paper, left=3cm, right=3cm, top=3cm, bottom=3cm]{geometry}
+
+% ================== Core Packages ==================
+\RequirePackage{graphicx,xcolor}
+\RequirePackage{amsmath,amsthm,amsfonts,amssymb,amscd,mathtools}
+\RequirePackage{bm}          % \bm (bold math)
+\RequirePackage{mathrsfs}    % \mathscr
+\RequirePackage{thmtools}    % Advanced theorem envs
+\RequirePackage{enumitem}    % List customization
+\RequirePackage{microtype}   % Typography improv.
+\RequirePackage{booktabs}    % Nice tables
+\RequirePackage{array}
+\RequirePackage{caption}
+
+% ================== Hyperref & Cleveref ==================
+% Màu thương hiệu
+\definecolor{amcsblue}{RGB}{0,87,166}
+\definecolor{amcsdark}{RGB}{51,51,51}
+
+% Hyperref (đặt trước cleveref)
+\RequirePackage[
+  bookmarksnumbered,
+  colorlinks,
+  linkcolor=amcsblue,
+  citecolor=amcsblue,
+  urlcolor=amcsblue,
+  pdfpagelabels=true,
+  plainpages=false
+]{hyperref}
+
+% Cleveref (phải sau hyperref)
+\RequirePackage[nameinlink,noabbrev]{cleveref}
+
+% ================== Typography & Lists ==================
+\microtypesetup{protrusion=true,expansion=true}
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=4pt}
+\setlist[enumerate]{leftmargin=*, itemsep=2pt, topsep=4pt}
+\setlength{\abovedisplayskip}{8pt}
+\setlength{\belowdisplayskip}{8pt}
+\captionsetup{labelfont=bf,skip=4pt,position=top}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% ================== Theorem System ==================
+% Một bộ đếm chung theo section
+\declaretheorem[name=Theorem, numberwithin=section]{theorem}
+\declaretheorem[name=Lemma, sibling=theorem]{lemma}
+\declaretheorem[name=Proposition, sibling=theorem]{proposition}
+\declaretheorem[name=Corollary, sibling=theorem]{corollary}
+
+\declaretheorem[name=Definition, style=definition, sibling=theorem]{definition}
+\declaretheorem[name=Example,    style=definition, sibling=theorem]{example}
+\declaretheorem[name=Exercise,   style=definition, sibling=theorem]{exercise}
+\declaretheorem[name=Problem,    style=definition, sibling=theorem]{problem}
+\declaretheorem[name=Conjecture, style=definition, sibling=theorem]{conjecture}
+\declaretheorem[name=Criterion,  style=definition, sibling=theorem]{criterion}
+
+\declaretheorem[name=Remark,     style=remark, sibling=theorem]{remark}
+\declaretheorem[name=Conclusion, style=remark, sibling=theorem]{conclusion}
+\declaretheorem[name=Summary,    style=remark, sibling=theorem]{summary}
+
+% Proof variants
+\newenvironment{proofsketch}{\begin{proof}[Proof sketch]}{\end{proof}}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+% ================== Cleveref Names ==================
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\crefname{exercise}{Exercise}{Exercises}
+\crefname{remark}{Remark}{Remarks}
+\crefname{problem}{Problem}{Problems}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{equation}{Equation}{Equations} % Mặc định của cleveref cho eqn cũng tốt; giữ rõ ràng
+
+% ================== Operators & Sets ==================
+\DeclareMathOperator{\Hom}{Hom}   \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}   \DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ker}{Ker}   \DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\im}{Im}     \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rank}{rank} \DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Int}{Int}   \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}   \DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\aff}{\operatorname{aff}}
+\newcommand{\ri}{\operatorname{ri}}
+\newcommand{\vect}{\operatorname{Vec}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\lin}{\operatorname{lin}}
+\newcommand{\Dg}{D_g}
+\newcommand{\Sg}{S_g}
+\newcommand{\Bd}{\partial}
+
+\newcommand{\N}{\mathbb{N}} \newcommand{\Z}{\mathbb{Z}} \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}} \newcommand{\C}{\mathbb{C}} \newcommand{\F}{\mathbb{F}}
+\newcommand{\B}{\mathbb{B}} \newcommand{\PP}{\mathbb{P}}
+\newcommand{\K}{\mathbb{K}} 
+
+\newcommand{\calA}{\mathcal{A}} \newcommand{\calO}{\mathcal{O}}
+\newcommand{\scrF}{\mathscr{F}}
+
+% ================== Delimiters ==================
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
+\DeclarePairedDelimiter{\braces}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
+\DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\, #1 \,}
+
+% ================== Text helpers ==================
+\newcommand{\myterm}[1]{\textbf{#1}}
+\newcommand{\ie}{i.e.,\ }
+\newcommand{\eg}{e.g.,\ }
+\newcommand{\wrt}{w.r.t.\ }
+
+% ================== Auto-Label (safe defaults) ==================
+% Nguyên tắc: tự tạo \label "prefix:number" khi bắt đầu môi trường.
+% Mặc định kích hoạt cho: theorem-like & equation (đơn).
+% Tránh áp dụng cho align/gather/multline vì có thể nhiều số trong một môi trường.
+\makeatletter
+\newif\ifamcs@autolabel
+\amcs@autolabeltrue % chuyển sang \amcs@autolabelfalse nếu muốn tắt toàn cục
+
+\newcommand{\AutoLabelEnv}[3]{% #1 env, #2 prefix, #3 counter
+  \ifamcs@autolabel
+    \AtBeginEnvironment{#1}{%
+      \protected@edef\__amcs@autokey{#2:\csname the#3\endcsname}%
+      \label{\__amcs@autokey}%
+    }%
+  \fi
+}
+\makeatother
+
+% Theorem-like (dùng chung counter 'theorem')
+\AutoLabelEnv{theorem}{thm}{theorem}
+\AutoLabelEnv{lemma}{lem}{theorem}
+\AutoLabelEnv{proposition}{prop}{theorem}
+\AutoLabelEnv{corollary}{cor}{theorem}
+\AutoLabelEnv{definition}{def}{theorem}
+\AutoLabelEnv{example}{exa}{theorem}
+\AutoLabelEnv{exercise}{ex}{theorem}
+\AutoLabelEnv{remark}{rmk}{theorem}
+\AutoLabelEnv{problem}{prob}{theorem}
+\AutoLabelEnv{conjecture}{conj}{theorem}
+\AutoLabelEnv{criterion}{crit}{theorem}
+
+% Phương trình: chỉ auto-label cho 'equation' (một số duy nhất)
+\AutoLabelEnv{equation}{eq}{equation}
+% Nếu bạn chấp nhận rủi ro, có thể bật thêm — nhưng KHÔNG khuyến nghị:
+% \AutoLabelEnv{align}{eq}{equation}
+% \AutoLabelEnv{gather}{eq}{equation}
+% \AutoLabelEnv{multline}{eq}{equation}
+
+\endinput

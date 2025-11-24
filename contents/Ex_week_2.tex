@@ -1,0 +1,1194 @@
+\section{Modules}
+\begin{exercise}[Đồng dư modulo một module con; tính tương thích phép toán]
+Cho $M$ là một $R$-module và $S\le_R M$ là một module con. Định nghĩa
+\[
+u \equiv v \pmod S \quad \Longleftrightarrow \quad u-v\in S.
+\]
+\begin{enumerate}
+  \item[(a)] Chứng minh rằng quan hệ $\equiv \pmod S$ là một quan hệ tương đương trên $M$ (phản xạ, đối xứng, bắc cầu).
+  \item[(b)] Chứng minh tính tương thích với các phép toán của $M$:
+  \[
+  \big(u_1\equiv v_1 \pmod S,\; u_2\equiv v_2 \pmod S\big)\ \Longrightarrow\ 
+  u_1+u_2 \equiv v_1+v_2 \pmod S,
+  \]
+  và nếu $u\equiv v \pmod S$ và $r\in R$ thì $ru\equiv rv \pmod S$.
+  \item[(c)] Các phép toán
+  \[
+  (u+S)+(v+S):=(u+v)+S,\qquad r\cdot(u+S):=(ru)+S
+  \]
+  được xác định tốt (không phụ thuộc vào đại diện) trên tập các lớp tương đương $M/S$, nhờ đó $M/S$ trở thành một $R$-module (gọi là \emph{module thương}).
+\end{enumerate}
+
+\begin{proof}
+\textbf{(a) Quan hệ tương đương.}
+\begin{itemize}
+  \item \emph{Phản xạ:} Với mọi $u\in M$, ta có $u-u=0\in S$. Do đó $u\equiv u\pmod S$.
+  \item \emph{Đối xứng:} Nếu $u\equiv v\pmod S$ thì $u-v\in S$. Do đó $v - u = -(u-v)\in S$, tức $v\equiv u\pmod S$.
+  \item \emph{Bắc cầu:} Nếu $u\equiv v\pmod S$ và $v\equiv w\pmod S$ thì $u - w = (u-v)+(v-w)\in S$, nên $u\equiv w\pmod S$.
+\end{itemize}
+
+\noindent\textbf{(b) Tương thích với phép cộng và nhân vô hướng.}
+\begin{itemize}
+  \item Nếu $u_1\equiv v_1\pmod S$ và $u_2\equiv v_2\pmod S$ thì $u_1-v_1\in S$ và $u_2-v_2\in S$. Khi đó
+  \[
+  (u_1+u_2)-(v_1+v_2)=(u_1-v_1)+(u_2-v_2)\in S \iff u_1+u_2\equiv v_1+v_2\pmod S,
+  \]
+  
+  \item Nếu $u\equiv v\pmod S$ và $r\in R$ thì $u-v\in S$. Vì $S$ đóng dưới phép nhân vô hướng, $r(u-v)=ru-rv\in S$, nên $ru\equiv rv\pmod S$.
+\end{itemize}
+
+\textbf{Các phép toán trên $M/S$.}
+
+Giả sử $[u] = [u'],~[v]=[v'], r\in R$. Khi đó $u\equiv u'\pmod S,~v\equiv v'\pmod S$. Dẫn đến
+\[
+(u+v) - (u'+v') = (u-u') + (v-v') \in S \iff (u+v)+S=(u'+v')+S \iff [u+v] = [u'+v'],
+\]
+\[
+ru-rv = r(u-v) \in S \iff ru+S=rv+S \iff [ru] =  [rv],
+\]
+
+Vậy các phép toán được định nghĩa tốt, và $M/S$ có cấu trúc của một $R$-module.
+\end{proof}
+\end{exercise}
+\begin{exercise}[Mệnh đề 5]
+    
+\end{exercise}
+\begin{proof}
+    Với mọi $u,v \in M,~r\in R$ ta có
+    \[\pi(u+v) = [u+v]=[u]+[v]=\pi(u) + \pi(v),\quad \pi(ru)=[ru]=r[u]\]
+    Dẫn đến $\pi$ là một đồng cấu $R-$module. Hơn nữa, $\pi$ là một toàn cấu vì với mỗi $[v] \in M/S$, tồn tại $v \in M$ sao cho $\pi(v) = [v]$. Và $\ker(\pi)=\{v \in M:[0]= \pi(v)=[v]\} = \{v\in M: v\in S\} = S$    
+\end{proof}
+\begin{exercise}[Mệnh đề 6: Bù tuyến tính và thương module]
+Cho $M$ là một $R$-module và $S\le M$ là module con. Giả sử tồn tại $T\le M$ sao cho 
+\[
+M = S \oplus T.
+\]
+Khi đó, hạn chế của phép chiếu chính tắc $\pi : M \to M/S$ cho ta đẳng cấu
+\[
+\pi|_T : T \to M/S.
+\]
+
+\begin{proof}
+Với $t\in T$, ta có.  
+\[\pi|_T(t)=[0] \iff t+S = 0 + S \iff t \in S \cap T = \{0\} \iff t = 0\]
+do đó $\pi|_T$ là đơn cấu.  
+
+Với $m+S\in M/S$, tồn tại duy nhất $s\in S, t\in T$ để $m=s+t$, khi đó $\pi|_T(t)=t+S=m+S$, nên $\pi|_T$ là toàn cấu.  
+Vậy $\pi|_T$ là đẳng cấu.
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Mệnh đề 7: Tính chất phổ dụng của module thương]
+Cho $f : M \to N$ là một đồng cấu các $R$-module, và $S \subseteq \ker(f)$ là một module con của $M$.
+Khi đó, tồn tại duy nhất một đồng cấu tuyến tính
+\[
+\bar{f} : M/S \to N
+\]
+sao cho biểu đồ
+\[
+\begin{tikzcd}
+M \arrow{r}{f} \arrow{d}[swap]{\pi} & N \\
+M/S \arrow{ur}[swap]{\bar{f}} &
+\end{tikzcd}
+\]
+giao hoán, tức là $f = \bar{f} \circ \pi$.
+
+Hơn nữa,
+\[
+\operatorname{Im}(\bar{f}) = \operatorname{Im}(f), \qquad 
+\ker(\bar{f}) = \ker(f)/S.
+\]
+
+\begin{proof}
+\begin{itemize}
+    \item Định nghĩa 
+\[\bar{f}([m]) = f(m)~ \forall m \in M\]
+$\bar{f}$ được định nghĩa tốt vì nếu $[m]=[m']$ thì $m - m' \in S \subseteq \ker(f)$ nên $f(m) = f(m')$.
+
+
+    \item $\bar{f}$ là một đồng cấu.
+    
+    Với $r \in R$, $m_1, m_2 \in M$ ta có:
+\[
+\bar{f}([m_1] + [m_2]) = \bar{f}([m_1 + m_2]) = f(m_1 + m_2) = f(m_1) + f(m_2)
+= \bar{f}([m_1]) + \bar{f}([m_2]).
+\]
+và
+\[
+\bar{f}(r[m]) = \bar{f}([rm]) = f(rm) = r f(m) = r \bar{f}([m]).
+\]
+Rõ ràng $f = \bar{f} \circ \pi$.
+
+    \item \textbf{Tính duy nhất.} 
+    
+    Nếu $g : M/S \to N$ là đồng cấu sao cho $f = g \circ \pi$, thì với mọi $m \in M$, 
+\[
+g([m]) = g(\pi(m)) = f(m),
+\]
+nên $g = \bar{f}$.
+
+    \item \textbf{Ảnh và hạt nhân.}
+\[
+\operatorname{Im}(\bar{f}) = \{\, \bar{f}([m])\mid m \in M \,\} = \{\, f(m) \mid m \in M \,\}=\operatorname{Im}(f)
+\]
+và
+\[
+\ker(\bar{f}) = \{\, [m] \in M/S \mid \bar{f}([m]) = 0 \,\}
+= \{\, [m] \mid f(m) = 0 \,\} = \{[m]\mid m \in \ker(f)\}=\ker(f)/S.
+\]
+\end{itemize}
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Mệnh đề 8: Định lý đẳng cấu thứ nhất cho $R$-module]
+Cho $f:M\to N$ là đồng cấu $R$-module. Gọi $\pi:M\to M/\ker(f)$ là phép chiếu chính tắc.
+Khi đó ánh xạ
+\[
+\bar f: M/\ker(f)\longrightarrow \im(f),\qquad \bar f([m])=f(m)
+\]
+là một đẳng cấu và biểu đồ sau giao hoán:
+\[
+\begin{tikzcd}
+M \arrow{r}{f} \arrow{d}[swap]{\pi} & N \\
+M/\ker(f) \arrow{r}[swap]{\bar f}[above]{\cong} & \im(f) \arrow[hook]{u}
+\end{tikzcd}
+\]
+
+\begin{proof}
+\begin{itemize}
+    \item $\bar{f}$ xác định tốt, vì nếu $[m]=[m']$ thì $m-m'\in\ker(f)$ nên $f(m)=f(m')$. Hơn nữa $f$ rõ ràng là một đồng cấu.
+
+    \item $\bar{f}$ là toàn cấu vì $\forall y = f(x)\in \im(f)$, tồn tại $x$ sao cho $y=f(m)=\bar f([m])$.
+
+    \item $\bar{f}$ đơn cấu vì 
+    \[\forall [m] \in \ker(\bar{f}) \iff \bar f([m])=0 \iff f(m)=0 \iff m\in\ker(f) \iff [m]=[0]\]
+    Vậy $\ker(\bar f)=0$.
+
+Vậy $\bar f$ là đẳng cấu $M/\ker(f)\xrightarrow{\;\cong\;}\im(f)$. Hơn nữa $f=(\iota\circ\bar f)\circ \pi$
+với $\iota:\im(f)\hookrightarrow N$ là đơn cấu nhúng. Do đó biểu đồ đã cho là giao hoán.
+\end{itemize}
+\end{proof}
+\end{exercise}
+
+\begin{exercise}
+    Cho $M$ là một $R$-module và $S,T$ là các module con của $M$. Khi đó
+    \[\dfrac{S+T}{S} \cong \dfrac{T}{S \cap T}.\]
+\end{exercise}
+\begin{proof}
+    Định nghĩa
+    \[f: T \to \dfrac{S+T}{S},\quad t\mapsto [t]=t+S.\]
+    \begin{itemize}
+        \item $f$ là một đồng cấu vì 
+        \[f(t_1+t_2) = [t_1+t_2]=[t_1]+[t_2]=f(t_1)+f(t_2)\quad \forall t_1,t_2 \in T\]
+        \[f(rt) = [rt]=r[t]=rf(t)\quad \forall t\in T, r\in R\]
+
+        \item $f$ toàn ánh vì $\forall [s+t]  \in \dfrac{S+T}{S}$, tồn tại $t \in T$ sao cho $f(t) = [t]=[s+t]$, vì $s \in S$.
+        \item $\ker(f) = \{t \in T \mid [0]=f(t)=[t]\}=\{ t \in T \mid t\in S\} = S\cap T$.
+
+        \item Theo định lý đẳng cấu thứ nhất ta được
+        \[\dfrac{S+T}{S} = \im(f) \cong T/\ker(f) = \dfrac{T}{S\cap T}.\]
+    \end{itemize}
+\end{proof}
+
+\begin{exercise}[Mệnh đề 10: Định lý đẳng cấu thứ hai cho $R$-module]
+Cho $M$ là $R$-module và $S\subseteq T\subseteq M$ là các module con. Khi đó
+\[
+\frac{M/S}{\,T/S\,}\ \cong\ M/T .
+\]
+
+\begin{proof}
+Định nghĩa
+\[
+\varphi:\ M/S \longrightarrow M/T,\qquad \varphi(m+S)=m+T.
+\]
+
+\begin{itemize}
+    \item $\varphi$ được định nghĩa tốt vì nếu $m+S=m'+S$ thì $m-m'\in S\subseteq T$, do đó $m+T=m'+T$.
+
+    \item Rõ ràng $\varphi$ là đồng cấu và với mọi $m+T\in M/T$, $\varphi(m+S)=m+T$, nên $\varphi$ là toàn cấu.
+
+    \item $\ker(\varphi)=\{\,m+S:\ m\in T\,\}=T/S$.
+
+Áp dụng Định lý đẳng cấu thứ nhất cho $\varphi$ ta được
+\[
+(M/S)/(T/S)=(M/S)/\ker(\varphi)\ \cong\ \im(\varphi)=M/T,
+\]
+\end{itemize}
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Bài tập 6 (chi tiết): Đẳng cấu phạm trù $\mathbf{Mod}_{\mathbb{Z}} \cong \mathbf{Ab}$]
+Chứng minh rằng phạm trù $\mathbf{Mod}_{\mathbb{Z}}$ của các $\mathbb{Z}$-module
+đẳng cấu với phạm trù $\mathbf{Ab}$ của các nhóm abel: có các hàm tử nghịch đảo
+trên-điểm và trên-cấu xạ.
+\end{exercise}
+
+\begin{proof}
+% \textbf{1. Hai hàm tử ứng viên.}
+\begin{itemize}
+  \item Xét $U:\mathbf{Mod}_{\mathbb{Z}}\to\mathbf{Ab}$,
+  \[
+    U(M,+,\cdot)=(M,+),\qquad U(\varphi)=\varphi.
+  \]
+  Rõ ràng $U$ là một hàm tử:
+  \[U(\Id_M)=\Id_{U(M)}\quad U(\psi\circ\varphi)=U(\psi)\circ U(\varphi).\]
+
+  \item Xét $T:\mathbf{Ab}\to\mathbf{Mod}_{\mathbb{Z}},\quad T(A,+)=(A,+,\cdot),\quad T(f) = f$ với mọi nhóm abel $A$ và đồng cấu nhóm $f$ trong $\mathbf{Ab}$.
+  \[
+    n\cdot a=
+    \begin{cases}
+      \underbrace{a+\cdots+a}_{n\ \text{lần}}, & n>0,\\[2pt]
+      0, & n=0,\\[2pt]
+      -\underbrace{(a+\cdots+a)}_{(-n)\ \text{lần}}, & n<0.
+    \end{cases}
+  \]
+\end{itemize}
+
+$T(A)$là một $\mathbb{Z}$-module vì với mọi $m,n\in\mathbb{Z}$ và $a,b\in A$ ta có
+\[
+\begin{aligned}
+(m+n)\cdot a 
+&= \underbrace{a+\cdots+a}_{m+n} 
+ = \underbrace{a+\cdots+a}_{m}\ +\ \underbrace{a+\cdots+a}_{n}
+ = m\cdot a + n\cdot a,\\
+m\cdot(a+b)
+&= \underbrace{(a+b)+\cdots+(a+b)}_{m}
+ = \underbrace{a+\cdots+a}_{m}+\underbrace{b+\cdots+b}_{m}
+ = m\cdot a + m\cdot b,\\
+(mn)\cdot a 
+&= \underbrace{a+\cdots+a}_{mn}
+ = \underbrace{(\underbrace{a+\cdots+a}_{n})+\cdots+(\underbrace{a+\cdots+a}_{n})}_{m}
+ = m\cdot(n\cdot a),\\
+1\cdot a &= a.
+\end{aligned}
+\]
+Các trường hợp $m<0$ hoặc $n<0$ tương tự.
+
+Nếu $f:A\to B$ là đồng cấu nhóm abel thì
+\[
+f(n\cdot a)=\underbrace{f(a)+\cdots+f(a)}_{n}=n\cdot f(a),
+\]
+nên $f$ là đồng cấu $\mathbb{Z}$-module $T(A)\to T(B)$. Do đó $T$ là một hàm tử.
+
+$U$ và $T$ là nghịch đảo của nhau vì
+\[
+U\circ T(A,+)=U(A,+,\cdot)=(A,+)=\Id_{\mathbf{Ab}}(A),
+\]
+\[
+T\circ U(M,+,\cdot)=T(M,+)=(M,+,\cdot)=\Id_{\mathbf{Mod}_{\mathbb{Z}}}(M),
+\]
+% vì phép nhân vô hướng khôi phục bởi $T$ chính là phép đã có trên $M$.
+% Trên cấu xạ, cả hai hàm tử đều để nguyên đồng cấu, nên
+% $U\circ T=\Id_{\mathbf{Ab}}$ và $T\circ U=\Id_{\mathbf{Mod}_{\mathbb{Z}}}$ như hàm tử.
+Vậy
+% \textbf{5. Kết luận (đẳng cấu phạm trù).}
+% Vì tồn tại các hàm tử $U,T$ với $U\circ T=\Id_{\mathbf{Ab}}$ và
+% $T\circ U=\Id_{\mathbf{Mod}_{\mathbb{Z}}}$, hai phạm trù là \emph{đẳng cấu} (thậm chí \emph{đồng nhất hoá} theo đúng nghĩa trên-đối-tượng và trên-mũi-tên):
+\[
+\mathbf{Mod}_{\mathbb{Z}} \cong \mathbf{Ab}.
+\]
+
+\medskip
+\noindent\textbf{Nhận xét.}
+\begin{enumerate}
+  \item Từ đẳng cấu trên suy ra mọi mệnh đề/hệ quả về nhóm abel dịch nguyên vẹn sang ngôn ngữ $\mathbb{Z}$-module và ngược lại (ví dụ, thương, nhân trực tiếp, dãy exact, định lý đẳng cấu, phân tích nhóm abel hữu hạn, v.v.).
+  \item Trường hợp tổng quát: với vành giao hoán $R$, $\mathbf{Mod}_R$ khái quát $\mathbf{Ab}$;
+  trường hợp $R=\mathbb{Z}$ chính là $\mathbf{Ab}$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise}[Bài tập 7 (rất chi tiết): Phạm trù con đầy của $\mathbf{Ab}$ đẳng cấu với $\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}$]
+Với $n\in\mathbb{Z}_{>0}$, hãy xác định một \emph{phạm trù con đầy}
+$\mathbf{Ab}_n\subset \mathbf{Ab}$ sao cho
+\[
+\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}} \;\simeq\; \mathbf{Ab}_n .
+\]
+\end{exercise}
+
+\begin{proof}[Lời giải chi tiết với kí hiệu]
+{(1) Định nghĩa ứng viên cho phạm trù con đầy.}
+Kí hiệu
+\[
+\mathbf{Ab}_n\;:=\;\bigl\{\,A\in \mathbf{Ab}\ \bigm|\ nA=0\,\bigr\}
+\]
+là \emph{phạm trù con đầy} của $\mathbf{Ab}$ gồm các nhóm abel $A$ bị tiêu bởi $n$,
+tức $\forall a\in A$ thì $n\cdot a=\underbrace{a+\cdots+a}_{n\ \text{lần}}=0$.
+Đây còn được gọi là lớp các nhóm abel \emph{có số mũ (exponent) chia hết cho $n$}.
+Tính “đầy” nghĩa là, với mọi $A,B\in\mathbf{Ab}_n$,
+\[
+\Hom_{\mathbf{Ab}_n}(A,B)
+\;=\;
+\Hom_{\mathbf{Ab}}(A,B).
+\]
+
+{(2) Hai hàm tử ứng viên tạo đẳng cấu phạm trù.}
+Gọi $\pi:\mathbb{Z}\twoheadrightarrow \mathbb{Z}/n\mathbb{Z}$ là chuẩn chiếu.
+Ta xét hai hàm tử
+\[
+U:\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}\longrightarrow \mathbf{Ab}_n,
+\qquad
+T:\mathbf{Ab}_n\longrightarrow \mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}
+\]
+được định nghĩa như sau.
+
+\smallskip
+\emph{(i) hàm tử quên cấu trúc $U$.}
+Trên Vật, $U(M)= (M,+)$ (quên tác động của $\mathbb{Z}/n\mathbb{Z}$);
+trên cấu xạ $f:M\to N$, đặt $U(f)=f$.
+Vì $M$ là $\mathbb{Z}/n\mathbb{Z}$-module nên $[n]=0$ trong vành tác động,
+do đó $n\cdot m=0$ với mọi $m\in M$ (nhìn như $\mathbb{Z}$-module qua hợp thành
+$\mathbb{Z}\xrightarrow{\pi}\mathbb{Z}/n\mathbb{Z}$), suy ra $U(M)\in\mathbf{Ab}_n$.
+
+\smallskip
+\emph{(ii) hàm tử “trang bị tác động” $T$.}
+Với $A\in\mathbf{Ab}_n$, định nghĩa cấu trúc $\mathbb{Z}/n\mathbb{Z}$-module trên nền $A$
+bởi quy tắc
+\[
+[k]\cdot a \;:=\; \underbrace{a+\cdots+a}_{k\ \text{lần}}\quad(k\in\mathbb{Z}\ \text{đại diện của }[k]).
+\]
+Tính \emph{xác định tốt}: nếu $k'\equiv k\pmod n$ thì $k'=k+qn$, suy ra
+\[
+k'\cdot a = k\cdot a + q\,(n\cdot a) = k\cdot a + q\cdot 0 = k\cdot a,
+\]
+vì $A\in\mathbf{Ab}_n$.
+Tính chất module (tuyến tính theo cả hai biến) suy ra từ quy tắc cộng lặp trong nhóm abel.
+Trên cấu xạ, nếu $g:A\to B$ là đồng cấu nhóm abel (nên $\in\Hom_{\mathbf{Ab}_n}$), đặt $T(g)=g$.
+Ta có $g([k]\cdot a) = g(k\cdot a)=k\cdot g(a)=[k]\cdot g(a)$,
+nên $T(g)$ là đồng cấu $\mathbb{Z}/n\mathbb{Z}$-module.
+
+{(3) $U$ là hàm tử \emph{đầy} và \emph{trung thực} (fully faithful).}
+Với $M,N\in\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}$, ta có đẳng cấu chuẩn
+\[
+\Hom_{\mathbb{Z}/n\mathbb{Z}}(M,N)
+\;\cong\;
+\Hom_{\mathbf{Ab}}(U(M),U(N)),
+\]
+vì với mọi đồng cấu nhóm abel $f:U(M)\to U(N)$, ta có
+\[
+f([k]\cdot m)=f(\underbrace{m+\cdots+m}_{k})
+=\underbrace{f(m)+\cdots+f(m)}_{k}
+=[k]\cdot f(m),
+\]
+tức \emph{mọi} đồng cấu nhóm abel giữa $U(M),U(N)$ tự động là tuyến tính
+$\mathbb{Z}/n\mathbb{Z}$-module. Do đó
+\[
+\Hom_{\mathbb{Z}/n\mathbb{Z}}(M,N) = \Hom_{\mathbf{Ab}}(U(M),U(N)),
+\]
+và $U$ là fully faithful.
+
+{(4) $U$ \emph{thiết yếu bao trùm} (essentially surjective) lên $\mathbf{Ab}_n$.}
+Với $A\in\mathbf{Ab}_n$, áp dụng $T$ như (ii) ta có một $\mathbb{Z}/n\mathbb{Z}$-module $T(A)$
+và $U(T(A))=A$ (đồng nhất trên Vật và cấu xạ).
+Vì thế, mọi Vật của $\mathbf{Ab}_n$ đều nằm trong ảnh thiết yếu của $U$.
+
+{(5) Tự nhiên hoá: $T$ và $U$ là nghịch đảo tự nhiên.}
+Ta có
+\[
+(U\circ T)(A)=A\quad\text{(đồng nhất trên $A$)},\qquad
+(T\circ U)(M)=M\quad\text{(khôi phục đúng tác động ban đầu)}.
+\]
+Trên cấu xạ, cả $U$ và $T$ đều giữ nguyên ánh xạ, nên
+\[
+U\circ T \;=\; \Id_{\mathbf{Ab}_n},
+\qquad
+T\circ U \;=\; \Id_{\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}}.
+\]
+Do đó $U$ là một \emph{đẳng cấu phạm trù} (strict categorical isomorphism), và đồng thời
+$\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}} \simeq \mathbf{Ab}_n$.
+
+{(6) Mô tả bằng \emph{ảnh thiết yếu} (essential image).}
+Ảnh thiết yếu của $U$ đúng bằng
+\[
+\mathrm{EssIm}(U)
+=\bigl\{\,A\in\mathbf{Ab}\mid \exists\,M\in\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}},\ A\simeq U(M)\,\bigr\}
+=\mathbf{Ab}_n.
+\]
+Tính “đầy” của $\mathbf{Ab}_n$ là hiển nhiên, vì tập cấu xạ giữ nguyên.
+
+{(7) Các đặc trưng tương đương của $\mathbf{Ab}_n$.}
+Với $A\in\mathbf{Ab}$, các điều kiện sau tương đương:
+\begin{enumerate}
+  \item $A\in\mathbf{Ab}_n$ (tức $nA=0$);
+  \item $A$ là $\mathbb{Z}$-module qua $\pi:\mathbb{Z}\to\mathbb{Z}/n\mathbb{Z}$ sao cho $n$ tác động bằng $0$;
+  \item $A$ là \emph{$n$-torsion group} với số mũ $\exp(A)\mid n$;
+  \item $A$ là tổng (hoặc tích) trực tiếp của các cyclic $\mathbb{Z}$-module $\mathbb{Z}/d\mathbb{Z}$ với $d\mid n$.
+\end{enumerate}
+
+{(8) Ví dụ—phản ví dụ.}
+\[
+\begin{array}{ll}
+\text{Ví dụ:} & (\mathbb{Z}/n\mathbb{Z})^{(I)},\quad \mathbb{Z}/d\mathbb{Z}\ (d\mid n),\quad 
+\prod_{i=1}^r \mathbb{Z}/d_i\mathbb{Z}\ (d_i\mid n) \in \mathbf{Ab}_n.\\[2pt]
+\text{Phản ví dụ:} & \mathbb{Z},\ \mathbb{Q}/\mathbb{Z},\ \mathbb{Z}/p^2\mathbb{Z}\ \text{khi }n=p
+\ \ (\text{vì }p^2\nmid p).
+\end{array}
+\]
+
+{(9) Kết luận.}
+Phạm trù con đầy cần tìm là
+\[
+\boxed{\ \mathbf{Ab}_n \;=\; \{\,A\in\mathbf{Ab}\mid nA=0\,\}\ } ,
+\]
+và hai hàm tử $U$ (quên cấu trúc) và $T$ (trang bị tác động) cho một đẳng cấu phạm trù
+\[
+\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}} \;\cong\; \mathbf{Ab}_n,
+\]
+với $\Hom_{\mathbb{Z}/n\mathbb{Z}}(M,N)=\Hom_{\mathbf{Ab}}(U(M),U(N))$ một cách tự nhiên.
+\end{proof}
+\begin{exercise}[Bài tập 7 (tổng hợp, gọn mà đủ): Phạm trù con đầy của $\mathbf{Ab}$ đẳng cấu với $\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}$]
+
+
+% Chứng minh rằng (i) $\mathbf{Ab}_n$ là \emph{phạm trù con đầy} của $\mathbf{Ab}$ và (ii) 
+% \[
+% \mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}\ \cong\ \mathbf{Ab}_n.
+% \]
+\end{exercise}
+
+\begin{proof}
+Với $n\in\mathbb{Z}_{>0}$, đặt
+\[
+\mathbf{Ab}_n:=\{\,A\in\mathbf{Ab}\mid nA=0\,\}
+=\{\,A\in\mathbf{Ab}\mid \forall a\in A,\; \underbrace{a+\cdots+a}_{n}=0\,\}.
+\]
+$\mathbf{Ab}_n$ là phạm trù con đầy của $\mathbf{Ab}$. Thật vậy, với $A,B\in\mathbf{Ab}_n$ đặt
+\[
+\Hom_{\mathbf{Ab}_n}(A,B):=\Hom_{\mathbf{Ab}}(A,B)
+\]
+Khi đó $\Id_A\in\Hom_{\mathbf{Ab}_n}(A,A)$ và nếu
+$f\in\Hom_{\mathbf{Ab}_n}(A,B),\,g\in\Hom_{\mathbf{Ab}_n}(B,C)$ thì 
+$g\circ f\in\Hom_{\mathbf{Ab}_n}(A,C)$ vì hợp thành trong $\mathbf{Ab}$. 
+
+% Gọi $I:\mathbf{Ab}_n\hookrightarrow\mathbf{Ab}$ là hàm tử bao hàm ($I$ giữ nguyên Vật
+% và cấu xạ). Với mọi $A,B\in\Ob(\mathbf{Ab}_n)$ ta có
+% \[
+% \Hom_{\mathbf{Ab}_n}(A,B)=\Hom_{\mathbf{Ab}}(A,B),
+% \]
+% nên ứng với mỗi cặp $(A,B)$, ánh xạ tự nhiên
+% \[
+% \begin{tikzcd}[column sep=large]
+% \Hom_{\mathbf{Ab}_n}(A,B) \arrow[r,"I_{A,B}"] \arrow[d, equal] 
+% & \Hom_{\mathbf{Ab}}(I(A),I(B)) \arrow[d, equal] \\
+% \Hom_{\mathbf{Ab}}(A,B) \arrow[r, equal] & \Hom_{\mathbf{Ab}}(A,B)
+% \end{tikzcd}
+% \]
+% là đồng nhất, do đó \emph{toàn ánh}. Vậy $I$ là hàm tử \emph{đầy} (và hiển nhiên trung thực), nên
+% $\mathbf{Ab}_n$ là \emph{phạm trù con đầy} của $\mathbf{Ab}$.
+
+% \medskip
+
+% $\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}\cong\mathbf{Ab}_n$.}
+Tiếp theo ta xây dựng hàm tử giữa hai phạm trù $\mathbf{Ab}_n$ và $\mathbf{Mod}_{\Z/n\Z}$. Ta định nghĩa
+
+\[U:\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}\longrightarrow \mathbf{Ab}_n,\quad U(M,+,\cdot)=(M,+),~U(f)=f;\]
+
+\[T:\mathbf{Ab}_n\longrightarrow \mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}},~T(A,+) = (A,+,\cdot)
+\text{ với } ([k])\cdot a:=k\cdot a,\quad T(g)=g.\]
+
+$T$ được định nghĩa tốt vì nếu $[k']=[k] \in \Z/n\Z$ thì tồn tại $q\in \Z$ sao cho $k'=k+qn$.
+
+Khi đó
+\[k'\cdot a=k\cdot a+q(\underbrace{n\cdot a}_{=0})=k\cdot a.\]
+
+Nếu $g:A\to B$ là đồng cấu nhóm, thì
+$g([k]\cdot a)=g(k\cdot a)=k\cdot g(a)=[k]\cdot g(a)$,
+nên $T(g)$ là đồng cấu $\mathbb{Z}/n\mathbb{Z}$-module.
+
+Với $M \in \mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}$, ta có $nM = \{n\cdot m=0\mid m \in M\}=0$. Do đó $U(M)\in\mathbf{Ab}_n$.
+
+Hai hàm tử thỏa mãn
+\[
+U\circ T=\Id_{\mathbf{Ab}_n},\qquad T\circ U=\Id_{\mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}},
+\]
+Tức $\mathbf{Mod}_{\Z/n\Z} \cong \mathbf{Ab}_n$.
+% vì một bên “quên” còn bên kia “khôi phục” đúng tác động $\mathbb{Z}/n\mathbb{Z}$. Biểu đồ đẳng cấu:
+% \[
+% \begin{tikzcd}[row sep=large, column sep=large]
+% \mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}} \arrow[r, shift left=1.0ex, "U"]
+% & \mathbf{Ab}_n \arrow[l, shift left=1.0ex, "T"] \\
+% \end{tikzcd}
+% \qquad
+% \begin{tikzcd}[column sep=huge,row sep=large]
+% M \arrow[d, mapsto, "\text{forget }(+,\cdot)\mapsto (+)"] \arrow[r, "f"] 
+% & N \arrow[d, mapsto] \\
+% U(M) \arrow[r, "U(f)"] & U(N)
+% \end{tikzcd}
+% \]
+% giao hoán trên mọi cấu xạ.
+
+% Kết luận: $U$ và $T$ là nghịch đảo, nên có đẳng cấu phạm trù
+% \[
+% \boxed{\ \mathbf{Mod}_{\mathbb{Z}/n\mathbb{Z}}\ \cong\ \mathbf{Ab}_n
+% =\{A\in\mathbf{Ab}\mid nA=0\}\ }.
+% \]
+\end{proof}
+
+% \begin{exercise}[Bài tập 8: Phạm trù $\mathbf{End}_{\mathbb{K}}$ và $\mathbf{Mod}_{\mathbb{K}[x]}$]
+% Định nghĩa $\mathbf{End}_{\mathbb{K}}$ là phạm trù có:
+% \begin{itemize}
+%   \item \textbf{Vật:} các cặp $(V,f)$, trong đó $V$ là $K$-không gian vectơ và $f:V\to V$ là tự đồng cấu tuyến tính.
+%   \item \textbf{cấu xạ:} các ánh xạ tuyến tính $g:(V,f)\to(W,h)$ thoả $g\circ f = h\circ g$.
+% \end{itemize}
+% Chứng minh rằng
+% \[
+% \mathbf{End}_{\mathbb{K}} \;\cong\; \mathbf{Mod}_{\mathbb{K}[x]},
+% \]
+% trong đó $\mathbb{K}[x]$ là vành đa thức một biến trên $K$.
+% \end{exercise}
+
+% \begin{proof}
+% \textbf{1. Xây dựng hàm tử.}
+% Với mỗi $(V,f)\in\Ob(\mathbf{End}_{\mathbb{K}})$, ta định nghĩa một cấu trúc $\mathbb{K}[x]$-module trên $V$ bằng
+% \[
+% p(x)\cdot v := p(f)(v),\qquad p(x)\in \mathbb{K}[x],\ v\in V.
+% \]
+% Khi đó $V$ trở thành một $\mathbb{K}[x]$-module (vì $(pq)(f)=p(f)q(f)$ và $1(f)=\Id_V$).
+
+% Ngược lại, nếu $M$ là $\mathbb{K}[x]$-module, định nghĩa $f_M:M\to M$ bởi
+% \[
+% f_M(m):=x\cdot m.
+% \]
+% Vì $x$ là phần tử sinh của $\mathbb{K}[x]$, ta thu được cặp $(M,f_M)\in\Ob(\mathbf{End}_{\mathbb{K}})$.
+
+% \textbf{2. Trên cấu xạ.}
+% Nếu $g:(V,f)\to(W,h)$ là ánh xạ tuyến tính thỏa $g\circ f=h\circ g$, thì
+% \[
+% g(p(f)(v)) = p(h)(g(v)) \quad \forall p(x)\in \mathbb{K}[x],
+% \]
+% nên $g$ là đồng cấu $\mathbb{K}[x]$-module.  
+% Ngược lại, nếu $g:V\to W$ là đồng cấu $\mathbb{K}[x]$-module, thì $g(x\cdot v)=x\cdot g(v)$, tức $g(f(v))=h(g(v))$.
+
+% \textbf{3. Đẳng cấu phạm trù.}
+% Hai quá trình trên là nghịch đảo:  
+% \[
+% \begin{tikzcd}[column sep=large, row sep=large]
+% \mathbf{End}_{\mathbb{K}} \arrow[r, shift left=1ex, "F"] 
+% & \mathbf{Mod}_{\mathbb{K}[x]} \arrow[l, shift left=1ex, "G"]
+% \end{tikzcd}
+% \]
+% với $F(V,f)=(V,+,p(x)\cdot v:=p(f)(v))$ và $G(M)=(M,f_M)$, thỏa
+% $G(F(V,f))=(V,f)$ và $F(G(M))=(M,+,x\cdot m)$.
+
+% \textbf{4. Kết luận.}
+% Do đó có đẳng cấu phạm trù tự nhiên:
+% \[
+% \boxed{\ \mathbf{End}_{\mathbb{K}} \;\simeq\; \mathbf{Mod}_{\mathbb{K}[x]}\ }.
+% \]
+% Từ đó, nghiên cứu cấu trúc tự đồng cấu tuyến tính $(V,f)$ tương đương với nghiên cứu các module hữu hạn sinh trên vành $\mathbb{K}[x]$.
+% \end{proof}
+% \begin{exercise}[Bài tập 8: $\mathbf{End}_{\mathbb{K}}$ đẳng cấu với $\mathbf{Mod}_{\mathbb{K}[x]}$]
+% Mục tiêu: mô tả \emph{tường minh} phạm trù $\mathbf{End}_{\mathbb{K}}$ và xây dựng đẳng cấu phạm trù
+% \[
+% \mathbf{End}_{\mathbb{K}} \;\cong\; \mathbf{Mod}_{\mathbb{K}[x]}.
+% \]
+% \end{exercise}
+
+% \begin{proof}
+% \textbf{Định nghĩa chi tiết phạm trù $\mathbf{End}_{\mathbb{K}}$.}
+% \begin{enumerate}
+%   \item \textbf{Vật:} cặp $(V,f)$ với $V$ là $K$-không gian vectơ hữu hạn chiều (tùy yêu cầu) và $f\in\End_{\mathbb{K}}(V)$.
+%   \item \textbf{cấu xạ:} với $(V,f)$ và $(W,h)$, một cấu xạ $g:(V,f)\to(W,h)$ là ánh xạ tuyến tính $g:V\to W$ thỏa
+%   \[
+%   g\circ f = h\circ g.
+%   \]
+%   \item \textbf{Đơn vị:} $\Id_{(V,f)}:=\Id_V$, vì $\Id_V\circ f=f=f\circ\Id_V$.
+%   \item \textbf{Hợp thành:} nếu $g:(V,f)\to(W,h)$ và $u:(W,h)\to(U,k)$, đặt $u\circ g:(V,f)\to(U,k)$;
+%   ta có
+%   \[
+%   (u\circ g)\circ f = u\circ(g\circ f) = u\circ(h\circ g)=(u\circ h)\circ g=(k\circ u)\circ g=k\circ(u\circ g).
+%   \]
+%   \item \textbf{Tính chất phạm trù:} hợp thành kết hợp và đơn vị là $\Id$ như thường lệ, nên $\mathbf{End}_{\mathbb{K}}$ là một phạm trù.
+% \end{enumerate}
+
+% \textbf{Xây dựng đẳng cấu $\mathbf{End}_{\mathbb{K}} \cong \mathbf{Mod}_{\mathbb{K}[x]}$.}
+% \begin{enumerate}
+%   \item[\textbf{(A)}] \textbf{hàm tử $F:\mathbf{End}_{\mathbb{K}}\to\mathbf{Mod}_{\mathbb{K}[x]}$.}
+%   \begin{enumerate}
+%     \item Trên \emph{Vật}: $F(V,f)$ là $\mathbb{K}[x]$-module có nền là $V$ và tác động
+%     \[
+%     p(x)\cdot v := p(f)(v)\qquad(p\in \mathbb{K}[x],\,v\in V).
+%     \]
+%     Kiểm tra: $(pq)(f)=p(f)q(f)$ và $1(f)=\Id_V$ nên đúng tiên đề module.
+%     \item Trên \emph{cấu xạ}: nếu $g:(V,f)\to(W,h)$ thì với mọi $p\in \mathbb{K}[x]$,
+%     \[
+%     g\big(p(f)v\big)=p(h)\,g(v),
+%     \]
+%     do $g f = h g$ và tuyến tính, suy ra $g$ là đồng cấu $\mathbb{K}[x]$-module $F(V,f)\to F(W,h)$.
+%     \item $F$ bảo toàn đơn vị và hợp thành vì nền là cùng $g$.
+%   \end{enumerate}
+
+%   \item[\textbf{(B)}] \textbf{hàm tử $G:\mathbf{Mod}_{\mathbb{K}[x]}\to\mathbf{End}_{\mathbb{K}}$.}
+%   \begin{enumerate}
+%     \item Trên \emph{Vật}: với $M$ là $\mathbb{K}[x]$-module, đặt $f_M:M\to M$ bởi
+%     \[
+%     f_M(m):=x\cdot m.
+%     \]
+%     Khi đó $(M,f_M)\in\Ob(\mathbf{End}_{\mathbb{K}})$.
+%     \item Trên \emph{cấu xạ}: nếu $\varphi:M\to N$ là đồng cấu $\mathbb{K}[x]$-module thì
+%     \[
+%     \varphi\circ f_M(m)=\varphi(x\cdot m)=x\cdot \varphi(m)=f_N\circ\varphi(m),
+%     \]
+%     nên $\varphi:(M,f_M)\to(N,f_N)$ là cấu xạ trong $\mathbf{End}_{\mathbb{K}}$.
+%     \item $G$ cũng bảo toàn đơn vị và hợp thành (vì lấy chính $\varphi$).
+%   \end{enumerate}
+
+%   \item[\textbf{(C)}] \textbf{Hai hàm tử là nghịch đảo.}
+%   \begin{enumerate}
+%     \item Với $(V,f)$,
+%     \[
+%     G(F(V,f))=(V,\; m\mapsto x\cdot m)=\big(V,\; m\mapsto f(m)\big)=(V,f).
+%     \]
+%     \item Với $M$,
+%     \[
+%     F(G(M)):\ p(x)\cdot m := p(f_M)(m)=p(x)\cdot m,
+%     \]
+%     % tức khôi phục đúng tác động $\mathbb{K}[x]$ ban đầu; 
+%     vì thế $F(G(M))=M$.
+%   \end{enumerate}
+% \end{enumerate}
+
+% % \textbf{Biểu đồ tóm tắt.}
+% % \[
+% % \begin{tikzcd}[column sep=large,row sep=large]
+% % \mathbf{End}_{\mathbb{K}} \arrow[r, shift left=1.1ex, "F"]
+% % & \mathbf{Mod}_{\mathbb{K}[x]} \arrow[l, shift left=1.1ex, "G"] \\
+% % (V,f) \arrow[d, mapsto] \arrow[r, "g"] & (W,h) \arrow[d, mapsto] \\
+% % F(V,f) \arrow[r, "F(g)"] & F(W,h)
+% % \end{tikzcd}
+% % \qquad
+% % \begin{tikzcd}[column sep=huge]
+% % G(F(V,f)) \arrow[r, equals] & (V,f) \\
+% % F(G(M)) \arrow[r, equals] & M
+% % \end{tikzcd}
+% % \]
+
+% % \textbf{Kết luận.} 
+% Vậy $F$ và $G$ là hai hàm tử nghịch đảo, do đó
+% \[
+% \boxed{\ \mathbf{End}_{\mathbb{K}} \;\cong\; \mathbf{Mod}_{\mathbb{K}[x]}\ }.
+% \]
+% % Vì vậy, việc phân loại các tự đồng cấu tuyến tính $(V,f)$ tương đương với bài toán module trên $\mathbb{K}[x]$ (ví dụ: qua phân tích tối giản/Jordan khi $K$ đại số đóng).
+% \end{proof}
+
+\begin{exercise}[Bài tập 8 (phiên bản chi tiết): $\mathbf{End}_{\mathbb{K}} \simeq \mathbf{Mod}_{\mathbb{K}[x]}$]
+Mục tiêu: mô tả \emph{tường minh} phạm trù $\mathbf{End}_{\mathbb{K}}$ và xây dựng một \emph{đẳng cấu phạm trù tự nhiên}
+\[
+\mathbf{End}_{\mathbb{K}} \;\simeq\; \mathbf{Mod}_{\mathbb{K}[x]},
+\]
+trong đó $\mathbb{K}[x]$ là vành đa thức một biến trên $K$.
+\end{exercise}
+
+\begin{proof}
+\textbf{Phạm trù $\mathbf{End}_{\mathbb{K}}$.}
+\begin{enumerate}
+  \item \textbf{Vật:} cặp $(V,f)$, $V$ là $\mathbb{K}$-không gian vectơ (không nhất thiết hữu hạn chiều), $f\in\End_{\mathbb{K}}(V)$.
+  \item \textbf{Cấu xạ:} một cấu xạ $g:(V,f)\to(W,h)$ là ánh xạ tuyến tính $g:V\to W$ thỏa mãn
+  \[
+  g\circ f = h\circ g. \tag{$\ast$}
+  \]
+  \item \textbf{Đơn vị:} $\Id_{(V,f)}:=\Id_V$ (rõ ràng $\Id_V\circ f=f=f\circ\Id_V$).
+  \item \textbf{Hợp thành:} nếu $g:(V,f)\to(W,h)$, $u:(W,h)\to(U,k)$, đặt $u\circ g:(V,f)\to(U,k)$; ta có
+  \[
+  (u\circ g)\circ f=u\circ(g\circ f)=u\circ(h\circ g)=(u\circ h)\circ g=(k\circ u)\circ g=k\circ(u\circ g),
+  \]
+  nên $(\ast)$ bảo toàn dưới hợp thành. Kết hợp và đơn vị đúng như trong $\mathbf{Vect}_{\mathbb{K}}$, vì thế $\mathbf{End}_{\mathbb{K}}$ là một phạm trù.
+\end{enumerate}
+
+\textbf{Định nghĩa hàm tử $F:\mathbf{End}_{\mathbb{K}}\to\mathbf{Mod}_{\mathbb{K}[x]}$.}
+\begin{enumerate}
+    \item Với $(V,f)$, giữ nguyên nhóm cộng $V$ và đặt tác động
+    \[
+      p(x)\,\cdot\, v \ :=\ p(f)(v),\qquad p(x)=\sum_{i=0}^m a_i x^i\in \mathbb{K}[x],\; v\in V,
+    \]
+    trong đó $p(f):=\sum_{i=0}^m a_i f^i\in\End_{\mathbb{K}}(V)$.
+    \item Với $g:(V,f)\to(W,h)$ thỏa $(\ast)$, khi đó $F(g):=g$ là một ánh xạ $\mathbb{K}[x]$-tuyến tính:
+    \[
+      F(g)\big(p(x)\cdot v\big)=g\big(p(f)v\big)=p(h)\,g(v)=p(x)\cdot F(g)(v).
+    \]
+
+  \item $F(V,f)$ là một $\mathbb{K}[x]-$module.
+  
+  Với $p,q\in \mathbb{K}[x]$, $v,w\in V$, $\lambda\in K$:
+  \begin{align*}
+    (p+q)\cdot v &= (p(f)+q(f))v = p(f)v + q(f)v = p\cdot v + q\cdot v,\\
+    p\cdot (v+w) &= p(f)(v+w) = p(f)v + p(f)w = p\cdot v + p\cdot w,\\
+    (pq)\cdot v &= (pq)(f)v = p(f)\big(q(f)v\big)=p\cdot(q\cdot v),\\
+    1\cdot v &= 1(f)v=\Id_V(v)=v,\\
+    (\lambda\in K\subset \mathbb{K}[x])\quad \lambda\cdot v &= \lambda\,\Id_V(v)=\lambda v,
+  \end{align*}
+  nhờ đồng cấu vành $\mathbb{K}[x]\to\End_{\mathbb{K}}(V)$, $p(x)\mapsto p(f)$. 
+\end{enumerate}
+
+\textbf{Định nghĩa hàm tử $G:\mathbf{Mod}_{\mathbb{K}[x]}\to\mathbf{End}_{\mathbb{K}}$.}
+  \begin{enumerate}
+    \item Với $M\in\Ob(\mathbf{Mod}_{\mathbb{K}[x]})$, đặt $f_M:M\to M$ bởi
+    \[
+      f_M(m):=x\cdot m.
+    \]
+    Khi đó $(M,f_M)\in\Ob(\mathbf{End}_{\mathbb{K}})$.
+    \item Nếu $\varphi:M\to N$ là đồng cấu $\mathbb{K}[x]$-module thì
+    \[
+      \varphi\circ f_M(m)=\varphi(x\cdot m)=x\cdot \varphi(m)=f_N\circ\varphi(m),
+    \]
+    nên $G(\varphi):=(\varphi: (M,f_M)\to(N,f_N))$ là cấu xạ trong $\mathbf{End}_{\mathbb{K}}$.
+  \end{enumerate}
+
+% \begin{enumerate}
+%   \item \textbf{Đẳng cấu tự nhiên $\eta:\Id_{\mathbf{End}_{\mathbb{K}}}\Rightarrow G\circ F$.}
+%   Với $(V,f)$, định nghĩa thành phần
+%   \[
+%   \eta_{(V,f)}:=\Id_V:\ (V,f)\longrightarrow G(F(V,f))=(V,f_{F(V,f)}),
+%   \]
+%   trong đó $f_{F(V,f)}$ là phép nhân bởi $x$ trong $F(V,f)$, tức
+%   $f_{F(V,f)}(v)=x\cdot v=f(v)$. Vậy $G(F(V,f))=(V,f)$ và $\eta_{(V,f)}$ là đồng nhất.
+%   Tính \emph{tự nhiên} (naturality) của $\eta$ theo $g:(V,f)\to(W,h)$ hiển nhiên vì mọi thành phần đều là $\Id$:
+%   \[
+%   \begin{tikzcd}[column sep=large,row sep=large]
+%   (V,f) \arrow[r,"g"] \arrow[d,"\eta_{(V,f)}"',"\cong" sloped] & (W,h) \arrow[d,"\eta_{(W,h)}","\cong" sloped]\\
+%   G F(V,f) \arrow[r,"G F(g)"] & G F(W,h)
+%   \end{tikzcd}
+%   \]
+%   giao hoán.
+
+%   \item \textbf{Đẳng cấu tự nhiên $\varepsilon:F\circ G\Rightarrow \Id_{\mathbf{Mod}_{\mathbb{K}[x]}}$.}
+%   Với $M\in\Ob(\mathbf{Mod}_{\mathbb{K}[x]})$, $F(G(M))$ là $M$ với tác động $p(x)\cdot m:=p(f_M)(m)$.
+%   Nhưng $f_M$ chính là tác động của $x$ trên $M$, nên
+%   \[
+%   p(f_M)(m)=\Big(\sum a_i f_M^i\Big)(m)=\sum a_i\,x^i\cdot m=p(x)\cdot m,
+%   \]
+%   tức $F(G(M))$ có đúng tác động gốc; đặt $\varepsilon_M:=\Id_M$.
+%   Tính tự nhiên theo $\varphi:M\to N$ cũng hiển nhiên:
+%   \[
+%   \begin{tikzcd}[column sep=large,row sep=large]
+%   F G(M) \arrow[r,"F G(\varphi)"] \arrow[d,"\varepsilon_M"',"\cong" sloped] & F G(N) \arrow[d,"\varepsilon_N","\cong" sloped]\\
+%   M \arrow[r,"\varphi"] & N
+%   \end{tikzcd}
+%   \]
+%   giao hoán.
+% \end{enumerate}
+% Hai đẳng cấu tự nhiên $\eta,\varepsilon$ chứng minh $F$ và $G$ là \emph{equivalence}; hơn thế,
+% vì các thành phần đều là đồng nhất, $F$ và $G$ thực ra là \emph{đẳng cấu phạm trù} (isomorphism of categories).
+
+% \medskip
+% \textbf{E. Đẳng cấu trên hom-set (mô tả tường minh).}
+% Với $(V,f),(W,h)\in\Ob(\mathbf{End}_{\mathbb{K}})$,
+% \[
+% \Hom_{\mathbb{K}[x]}(F(V,f),F(W,h))
+% \;=\;\{\,g\in\Hom_K(V,W)\mid g\,p(f)=p(h)\,g\ \forall p\in \mathbb{K}[x]\}
+% \;=\;\{\,g\in\Hom_K(V,W)\mid g f = h g\,\},
+% \]
+% vì điều kiện với mọi $p$ tương đương với điều kiện chỉ cho $p(x)=x$.
+% Biểu đồ tự nhiên
+% \[
+% \begin{tikzcd}[column sep=huge,row sep=large]
+% \Hom_{\mathbf{End}_{\mathbb{K}}}\big((V,f),(W,h)\big) \arrow[r,"\cong", "{g\mapsto g}"] 
+% & \Hom_{\mathbb{K}[x]}\big(F(V,f),F(W,h)\big)
+% \end{tikzcd}
+% \]
+% thể hiện \emph{đầy và trung thực} của $F$.
+
+% \medskip
+% \textbf{F. Kết luận \& hệ quả.}
+Từ đó, ta có đẳng cấu phạm trù
+\[
+\boxed{\ \mathbf{End}_{\mathbb{K}} \;\cong\; \mathbf{Mod}_{\mathbb{K}[x]}\ }.
+\]
+% Do đó, mọi bài toán về cặp $(V,f)$ (ví dụ: phân rã Jordan, đa thức tối thiểu/đặc trưng, phân tích sơ cấp)
+% được chuyển hoá thành bài toán về module hữu hạn sinh trên $\mathbb{K}[x]$ (định lý cấu trúc của PID khi $K$ là trường).
+\end{proof}
+\begin{proof}[Chứng minh ngắn gọn $F,G$ là đẳng cấu]
+Nhắc lại:
+\[
+F:\mathbf{End}_K\to\mathbf{Mod}_{K[x]},\quad
+F(V,f)=\big(V,\ p(x)\cdot v:=p(f)(v)\big),\qquad
+G:\mathbf{Mod}_{K[x]}\to\mathbf{End}_K,\quad
+G(M)=(M,f_M),\ f_M(m)=x\cdot m .
+\]
+
+\begin{enumerate}
+  \item \textbf{Đẳng cấu tự nhiên $\eta:\Id_{\mathbf{End}_K}\Rightarrow G\!\circ\!F$.}
+  Với $(V,f)$ đặt $\eta_{(V,f)}:=\Id_V:(V,f)\to G(F(V,f))$.
+  Quả thật, trong $F(V,f)$ ta có $x\cdot v=f(v)$ nên $G(F(V,f))=(V,f)$; do đó $\eta_{(V,f)}$ là đẳng cấu.
+  Tính tự nhiên: với $g:(V,f)\to(W,h)$,
+  \[
+  \begin{tikzcd}[column sep=large,row sep=large]
+  (V,f) \arrow[r,"g"] \arrow[d,"\eta_{(V,f)}"',"\cong" sloped] & (W,h) \arrow[d,"\eta_{(W,h)}","\cong" sloped]\\
+  G F(V,f) \arrow[r,"G F(g)"] & G F(W,h)
+  \end{tikzcd}
+  \]
+  giao hoán vì các mũi tên dọc đều là $\Id$.
+
+  \item \textbf{Đẳng cấu tự nhiên $\varepsilon:F\!\circ\!G\Rightarrow \Id_{\mathbf{Mod}_{K[x]}}$.}
+  Với $M$, trong $G(M)$ ta có $f_M(m)=x\cdot m$, nên
+  \[
+    F(G(M)):\ p(x)\cdot m:=p(f_M)(m)=\sum a_i f_M^i(m)=\sum a_i x^i\cdot m=p(x)\cdot m,
+  \]
+  tức trùng đúng tác động gốc. Đặt $\varepsilon_M:=\Id_M$; khi đó
+  \[
+  \begin{tikzcd}[column sep=large,row sep=large]
+  F G(M) \arrow[r,"F G(\varphi)"] \arrow[d,"\varepsilon_M"',"\cong" sloped] & F G(N) \arrow[d,"\varepsilon_N","\cong" sloped]\\
+  M \arrow[r,"\varphi"] & N
+  \end{tikzcd}
+  \]
+  giao hoán với mọi đồng cấu $\varphi$.
+\end{enumerate}
+
+Vì tồn tại hai đẳng cấu tự nhiên $\eta$ và $\varepsilon$, nên $F$ và $G$ là nghịch đảo (trên đối tượng và mũi tên), do đó
+\[
+\boxed{\ F\ \text{và}\ G\ \text{là đẳng cấu phạm trù: }\ \mathbf{End}_K \cong \mathbf{Mod}_{K[x]}. \ }
+\]
+\end{proof}
+
+\begin{exercise}[Bài tập 9 (biểu diễn nhóm và module trên vành nhóm)]
+Gọi $K$ là một trường, $G$ là một nhóm. Kí hiệu $\Rep_K(G)$ là phạm trù các biểu diễn $K$-tuyến tính của $G$
+(vật là các cặp $(V,\rho)$ với $\rho:G\to\GL_K(V)$, mũi tên $T:(V,\rho)\to(W,\sigma)$ thỏa $T\circ\rho(g)=\sigma(g)\circ T$),
+và $\mathbf{Mod}_{K[G]}$ là phạm trù các $K[G]$-module trái.
+
+\emph{Bài toán.} Chứng minh có đẳng cấu phạm trù tự nhiên
+\[
+\mathbf{Mod}_{K[G]}\;\cong\;\Rep_K(G).
+\]
+\end{exercise}
+
+\begin{proof}
+\textbf{1. Vành nhóm $K[G]$.}
+
+$K[G]$ là một $K-$không gian vectơ trên $K$ có cơ sở $\{e_g\mid g\in G\,\}$ và phép nhân
+\[\big(\sum a_g e_g\big)\big(\sum b_h e_h\big)=\sum_{g,h} a_g b_h\,e_{gh}.\]
+Phần tử đơn vị là $1_{K[G]}=1_K\cdot e_G$.
+
+\textbf{2. Hai hàm tử ứng viên.}
+\begin{enumerate}
+  \item[\textbf{(F)}] \textbf{Từ $\mathbf{Mod}_{K[G]}$ sang $\Rep_K(G)$.}
+  \begin{enumerate}
+    \item \emph{Trên đối tượng:} Với $M\in\Ob(\mathbf{Mod}_{K[G]})$, định nghĩa
+    $\rho_M:G\to\GL_K(M)$ bởi $\rho_M(g)(m):=g\cdot m$.
+    Vì $g\cdot(h\cdot m)=(gh)\cdot m$ và $e\cdot m=m$, nên $\rho_M$ là đồng cấu nhóm.
+    Khi đó $(M,\rho_M)\in\Ob(\Rep_K(G))$.
+    \item \emph{Trên mũi tên:} Nếu $\varphi:M\to N$ là đồng cấu $K[G]$-module, thì
+    $\varphi(\rho_M(g)m)=\varphi(g\cdot m)=g\cdot\varphi(m)=\rho_N(g)\varphi(m)$.
+    Suy ra $\varphi$ là mũi tên xen kẽ $G$-linear: $\varphi\circ\rho_M(g)=\rho_N(g)\circ\varphi$.
+  \end{enumerate}
+  Kí hiệu hàm tử này là $F:\mathbf{Mod}_{K[G]}\to\Rep_K(G)$, $F(M)=(M,\rho_M)$, $F(\varphi)=\varphi$.
+
+  \item[\textbf{(G)}] \textbf{Từ $\Rep_K(G)$ sang $\mathbf{Mod}_{K[G]}$.}
+  \begin{enumerate}
+    \item \emph{Trên đối tượng:} Với $(V,\rho)\in\Ob(\Rep_K(G))$, cho $V$ cấu trúc $K[G]$-module bởi
+    \[
+      \Big(\sum\nolimits_{g\in G} a_g\,g\Big)\cdot v \ :=\ \sum\nolimits_{g} a_g\,\rho(g)(v).
+    \]
+    Tuyến tính theo $\sum a_g g$ là hiển nhiên; tính tương hợp tích:
+    \[
+      \Big(\sum a_g g\Big)\cdot\Big(\sum b_h h\Big)\cdot v
+      = \sum_{g,h} a_gb_h\,\rho(g)\rho(h)(v)
+      = \sum_{g,h} a_gb_h\,\rho(gh)(v)
+      = \Big(\sum a_g g\Big)\Big(\sum b_h h\Big)\cdot v.
+    \]
+    \item \emph{Trên mũi tên:} Nếu $T:(V,\rho)\to(W,\sigma)$ là biến hình biểu diễn
+    ($T\rho(g)=\sigma(g)T$), khi đó với mọi $\sum a_g g\in K[G]$,
+    \[
+      T\!\left(\Big(\sum a_g g\Big)\cdot v\right)
+      = \sum a_g\,T(\rho(g)v)
+      = \sum a_g\,\sigma(g)T(v)
+      = \Big(\sum a_g g\Big)\cdot T(v),
+    \]
+    nên $T$ là đồng cấu $K[G]$-module.
+  \end{enumerate}
+  Kí hiệu hàm tử này là $G:\Rep_K(G)\to\mathbf{Mod}_{K[G]}$, $G(V,\rho)=V$ (với tác động trên),
+  $G(T)=T$.
+\end{enumerate}
+
+\textbf{3. $F$ và $G$ là nghịch đảo tự nhiên.}
+\begin{enumerate}
+  \item \emph{Từ trái sang phải:} Với $M\in\Ob(\mathbf{Mod}_{K[G]})$,
+  trong $F(M)=(M,\rho_M)$ ta có tác động lại của $K[G]$ qua $G$:
+  \[
+    \Big(\sum a_g g\Big)\star m := \sum a_g\,\rho_M(g)(m)=\sum a_g\,g\cdot m,
+  \]
+  chính là tác động gốc trên $M$. Do đó $G(F(M))=M$ \emph{đúng như đối tượng và mũi tên}.
+  Định nghĩa đẳng cấu tự nhiên $\varepsilon:\,G\circ F\Rightarrow\Id_{\mathbf{Mod}_{K[G]}}$ với
+  $\varepsilon_M=\Id_M$. Biểu đồ tự nhiên:
+  \[
+  \begin{tikzcd}[column sep=large,row sep=large]
+  G F(M) \arrow[r,"G F(\varphi)"] \arrow[d,"\varepsilon_M"',"\cong" sloped] &
+  G F(N) \arrow[d,"\varepsilon_N","\cong" sloped] \\
+  M \arrow[r,"\varphi"] & N
+  \end{tikzcd}
+  \]
+  giao hoán vì các mũi tên dọc đều là đồng nhất.
+
+  \item \emph{Từ phải sang trái:} Với $(V,\rho)\in\Ob(\Rep_K(G))$, $G(V,\rho)$ là $V$
+  với tác động $K[G]$ ở (G). Áp dụng $F$ lại, thu được biểu diễn
+  $\rho'(g)(v):=g\cdot v=\rho(g)v$, nên $(V,\rho')=(V,\rho)$. Đặt đẳng cấu tự nhiên
+  $\eta:\Id_{\Rep_K(G)}\Rightarrow F\circ G$ với $\eta_{(V,\rho)}=\Id_V$ và biểu đồ:
+  \[
+  \begin{tikzcd}[column sep=large,row sep=large]
+  (V,\rho) \arrow[r,"T"] \arrow[d,"\eta_{(V,\rho)}"',"\cong" sloped] &
+  (W,\sigma) \arrow[d,"\eta_{(W,\sigma)}","\cong" sloped] \\
+  F G(V,\rho) \arrow[r,"F G(T)"] & F G(W,\sigma)
+  \end{tikzcd}
+  \]
+  giao hoán.
+\end{enumerate}
+
+\textbf{4. Kết luận.}
+Hai đẳng cấu tự nhiên $\varepsilon$ và $\eta$ chứng tỏ $F$ và $G$ là nghịch đảo,
+do đó có đẳng cấu phạm trù tự nhiên
+\[
+\boxed{\ \mathbf{Mod}_{K[G]}\ \cong\ \Rep_K(G)\ }.
+\]
+Diễn giải: cho mỗi biểu diễn $(V,\rho)$, \emph{tác động tuyến tính} của $G$ trên $V$
+mở rộng duy nhất thành \emph{tác động $K[G]$} qua tuyến tính; và ngược lại,
+một $K[G]$-module quyết định một biểu diễn bằng $g\mapsto(v\mapsto g\cdot v)$.
+\end{proof}
+
+\begin{exercise}[Bài tập 9: Biểu diễn nhóm và module trên vành nhóm]
+Cho $K$ là một trường và $G$ là một nhóm.  
+Kí hiệu $\Rep_K(G)$ là phạm trù các biểu diễn $K$-tuyến tính của $G$, và $\mathbf{Mod}_{K[G]}$ là phạm trù các $K[G]$-module.  
+Chứng minh rằng:
+\[
+\mathbf{Mod}_{K[G]} \;\cong\; \Rep_K(G).
+\]
+\end{exercise}
+
+\begin{proof}
+% \textbf{1. Từ module sang biểu diễn.}  
+Với $M\in\mathbf{Mod}_{K[G]}$, định nghĩa ánh xạ
+\[
+\rho_M:G\to\GL_K(M),\quad \rho_M(g)(m)=g\cdot m.
+\]
+Vì $g\cdot(h\cdot m)=(gh)\cdot m$ và $e\cdot m=m$, nên $\rho_M$ là đồng cấu nhóm.  
+Với đồng cấu module $\varphi:M\to N$, ta có $\varphi(g\cdot m)=g\cdot\varphi(m)$, suy ra $\varphi$ là ánh xạ $G$-tuyến tính.  
+Ta được hàm tử
+\[
+F:\mathbf{Mod}_{K[G]}\to\Rep_K(G),\quad F(M)=(M,\rho_M),\ F(\varphi)=\varphi.
+\]
+
+% \textbf{2. Từ biểu diễn sang module.}  
+Với $(V,\rho)\in\Rep_K(G)$, định nghĩa tác động của $K[G]$ lên $V$:
+\[
+\Big(\sum_{g\in G} a_g g\Big)\cdot v := \sum_{g\in G} a_g\,\rho(g)(v).
+\]
+Tác động này biến $V$ thành $K[G]$-module.
+
+Nếu $T:(V,\rho)\to(W,\sigma)$ thoả mãn $T\rho(g)=\sigma(g)T$ thì
+\[
+T\!\left(\Big(\sum a_g g\Big)\cdot v\right)=\sum a_g\,\sigma(g)T(v)=\Big(\sum a_g g\Big)\cdot T(v),
+\]
+nên $T$ là đồng cấu $K[G]$-module. Từ đó ta thu được hàm tử
+\[
+G:\Rep_K(G)\to\mathbf{Mod}_{K[G]},\quad G(V,\rho)=V,\ G(T)=T.
+\]
+
+
+Với $M\in\mathbf{Mod}_{K[G]}$, $G(F(M))$ có tác động $g\cdot m$ đúng như ban đầu, nên $G(F(M))=M$.  
+Với $(V,\rho)\in\Rep_K(G)$, $F(G(V,\rho))=(V,\rho)$ vì $g\cdot v=\rho(g)v$.  
+Do đó
+\[
+F\circ G=\Id_{\Rep_K(G)},\qquad G\circ F=\Id_{\mathbf{Mod}_{K[G]}},
+\]
+suy ra $F,G$ là đẳng cấu phạm trù.
+
+\[
+\boxed{\ \mathbf{Mod}_{K[G]}\ \cong\ \Rep_K(G)\ }.
+\]
+Nói cách khác, mỗi biểu diễn tuyến tính của $G$ chính là một $K[G]$-module, và ngược lại.
+\end{proof}
+
+\begin{exercise}
+$K[\mathbb{Z}/n\mathbb{Z}] \cong K[x]/(x^n-1)$
+
+Cho $K$ là một trường (hoặc vành giao hoán có đơn). Chứng minh rằng vành nhóm của nhóm cyclic
+$C_n=\mathbb{Z}/n\mathbb{Z}$ đẳng cấu với một vành thương của $K[x]$.
+\end{exercise}
+
+\begin{proof}
+Gọi $C_n=\langle g\mid g^n=e\rangle$ và $K[C_n]$ là $K$-không gian có cơ sở $\{e,g,\dots,g^{n-1}\}$
+với phép nhân $g^i\cdot g^j=g^{i+j \mod n}$.
+
+Xét đồng cấu vành
+\[
+\varphi:K[x]\longrightarrow K[C_n],\qquad \varphi\!\left(\sum a_i x^i\right)=\sum a_i g^i .
+\]
+
+Rõ ràng $\varphi$ là một toàn cấu.
+
+Hơn nữa $\varphi(x^n-1)=g^n-e=0$, nên $(x^n-1)\subseteq\ker\varphi$.
+
+Ngược lại, nếu $f(x)\in\ker\varphi$, viết phép chia Euclid $f=q(x)(x^n-1)+r(x)$ với $\deg r<n$.
+Khi đó $0=\varphi(f)=\varphi(r)$, nhưng $\{e,g,\dots,g^{n-1}\}$ độc lập tuyến tính trên $K$,
+suy ra $r=0$. Vậy $\ker\varphi=(x^n-1)$.
+
+Áp dụng Định lý đẳng cấu thứ nhất cho vành:
+\[
+K[x]/(x^n-1)\ \cong\ \mathrm{Im}(\varphi)=K[C_n].
+\]
+\end{proof}
+
+\begin{remark}
+Tổng quát: $K[\mathbb{Z}] \cong K[x,x^{-1}]$ (vành đa thức Laurent) qua $x\leftrightarrow$ phần tử sinh của $\mathbb{Z}$.
+\end{remark}
+
+\begin{exercise}[Bài tập 11: Biểu diễn con, phép toán trên chúng và tổng trực tiếp]
+Cho $K$ là một trường, $G$ là một nhóm. Với một biểu diễn
+\[
+(V,\rho),\qquad \rho:G\to\GL_K(V),
+\]
+đồng nhất $\Rep_K(G)\simeq \mathbf{Mod}_{K[G]}$ qua vành nhóm $K[G]$ (xem Bài tập 9).
+Dưới đây là các khái niệm/thuộc tính được \emph{định nghĩa hoàn toàn tương đương} ở hai ngôn ngữ:
+\end{exercise}
+
+\begin{enumerate}
+\item[\textbf{(1)}] \textbf{Biểu diễn con.}
+\begin{enumerate}
+  \item \emph{Định nghĩa (ngôn ngữ biểu diễn).} $W\le V$ là \emph{biểu diễn con} của $(V,\rho)$ nếu
+  \[
+  \rho(g)W\subseteq W\qquad\forall g\in G.
+  \]
+  Khi đó ta nhận được biểu diễn con $(W,\rho|_W)$.
+  \item \emph{Định nghĩa (ngôn ngữ module).} Qua $K[G]$-tác động $g\cdot v:=\rho(g)v$, $W$ là biểu diễn con 
+  \(\Longleftrightarrow\) $W$ là \emph{$K[G]$-module con}:
+  \[
+  K[G]\cdot W\subseteq W\quad\text{(tương đương với $\rho(g)W\subseteq W$ với mọi $g$)}.
+  \]
+  % \item \emph{Phần sinh bởi một tập con.} Với $S\subseteq V$,
+  % \[
+  % \langle S\rangle_G:=\mathrm{span}_K\{\rho(g)s: g\in G,\ s\in S\}
+  % \;=\;K[G]\cdot S
+  % \]
+  % là \emph{biểu diễn con nhỏ nhất} chứa $S$.
+\end{enumerate}
+
+\item[\textbf{(2)}] \textbf{Các phép toán trên biểu diễn con.}
+
+Cho $(V,\rho)$ và hai biểu diễn con $W_1,W_2\le V$.
+\begin{enumerate}
+  \item \emph{Giao và tổng:}
+  \[
+  W_1\cap W_2\ \text{và}\ W_1+W_2:=\{w_1+w_2: w_i\in W_i\}
+  \]
+  đều là biểu diễn con (vì $\rho(g)$ là tuyến tính và bảo toàn từng $W_i$).
+  \item \emph{Ảnh, hạt nhân, thương (ngôn ngữ module).} Với một biến hình biểu diễn
+  $T:(V,\rho)\to(W,\sigma)$ (tức $T\rho(g)=\sigma(g)T$), ta luôn có
+  \[
+  \ker T\ \text{và}\ \im T\ \text{là biểu diễn con},\qquad
+  (V/\ker T,\ \bar\rho)\ \simeq\ (\im T,\ \sigma|_{\im T}),
+  \]
+  trong đó $\bar\rho(g)(v+\ker T):=\rho(g)v+\ker T$. 
+  % Biểu đồ ngắn exact:
+  % \[
+  % \begin{tikzcd}
+  % 0 \arrow[r] & \ker T \arrow[r, hook] & V \arrow[r, "T"] & \im T \arrow[r] & 0
+  % \end{tikzcd}
+  % \]
+  % là dãy exact của các biểu diễn (tương đương dãy exact $K[G]$-module).
+  % \item \emph{Lưới con.} Tập tất cả biểu diễn con của $(V,\rho)$ là một \emph{lưới} với hai phép toán $\cap,\ +$,
+  % giống hệt lưới các $K[G]$-module con của $V$.
+\end{enumerate}
+
+\item[\textbf{(3)}] \textbf{Tổng trực tiếp của các biểu diễn con.}
+\begin{enumerate}
+  \item Với $V=W_1\oplus W_2$ khi và chỉ khi
+  \[
+  V=W_1+W_2\quad\text{và}\quad W_1\cap W_2=\{0\}.
+  \]
+  % Khi đó $\rho(g)$ chéo khối theo phân rã $V=W_1\oplus W_2$ và 
+  Ta có đẳng cấu biểu diễn
+  \[
+  (V,\rho)\ \simeq\ (W_1,\rho|_{W_1})\ \oplus\ (W_2,\rho|_{W_2}).
+  \]
+  \item Với họ $\{W_i\}_{i\in I}$ các biểu diễn con,
+  \[
+  \bigoplus_{i\in I} W_i \longrightarrow\ V,\qquad (w_i)_{i \in I}\mapsto \sum_i w_i,
+  \]
+  là \emph{đẳng cấu} khi ảnh bằng $\sum_i W_i$ và các tổng là \emph{trực tiếp}:
+  mọi quan hệ $\sum_i w_i=0$ với $w_i\in W_i$ suy ra $w_i=0$ (tức tổng không giao nhau).
+\end{enumerate}
+\end{enumerate}
+
+% \begin{remark}
+% Tất cả mệnh đề trên là các phát biểu quen thuộc của lý thuyết $K[G]$-module, và nhờ
+% $\Rep_K(G)\simeq\mathbf{Mod}_{K[G]}$ chúng chuyển nguyên vẹn giữa hai ngôn ngữ.
+% \end{remark}
+
+\begin{exercise}[Bài tập 11: Biểu diễn con, phép toán và tổng trực tiếp]
+Sử dụng tương ứng $\Rep_K(G)\simeq \mathbf{Mod}_{K[G]}$, hãy định nghĩa rõ ràng các khái niệm:
+\begin{itemize}
+  \item Biểu diễn con của một biểu diễn.
+  \item Các phép toán trên các biểu diễn con.
+  \item Tổng trực tiếp của các biểu diễn con.
+\end{itemize}
+\end{exercise}
+
+\begin{proof}
+Xét một biểu diễn $(V,\rho)$ của nhóm $G$ trên $K$, tức là $\rho:G\to\GL_K(V)$.
+Thông qua tương ứng $\Rep_K(G)\cong\mathbf{Mod}_{K[G]}$, ta có $V$ là $K[G]$-module với tác động
+$g\cdot v:=\rho(g)v$.
+
+\begin{enumerate}
+  \item[\textbf{(1)}] \textbf{Biểu diễn con.}
+  \begin{enumerate}
+    \item Một không gian con $W\le V$ được gọi là \emph{biểu diễn con} của $(V,\rho)$ nếu nó \emph{bất biến dưới tác động của $G$}:
+    \[
+      \rho(g)W\subseteq W,\qquad \forall g\in G.
+    \]
+    Khi đó, phép hạn chế $\rho|_W:G\to\GL_K(W)$ cho ta biểu diễn con $(W,\rho|_W)$.
+    \item Dưới ngôn ngữ $K[G]$-module, điều kiện trên tương đương:
+    \[
+      K[G]\cdot W\subseteq W,
+    \]
+    % tức là $W$ là một \emph{module con} của $V$.
+    \item Biểu diễn con nhỏ nhất chứa một tập $S\subseteq V$ là
+    \[
+      \langle S\rangle_G = \mathrm{span}_K\{\rho(g)s : g\in G,\, s\in S\} = K[G]\cdot S.
+    \]
+  \end{enumerate}
+
+  \item[\textbf{(2)}] \textbf{Phép toán trên các biểu diễn con.}
+  
+  Cho hai biểu diễn con $W_1,W_2\le V$, ta có:
+  \begin{enumerate}
+    \item \emph{Giao và tổng:}
+    \[
+      W_1\cap W_2\quad\text{và}\quad W_1+W_2=\{w_1+w_2\mid w_i\in W_i\}
+    \]
+    đều là biểu diễn con của $(V,\rho)$, vì $\rho(g)$ tuyến tính và bảo toàn từng $W_i$.
+    \item \emph{Ảnh và hạt nhân:} Nếu $T:(V,\rho)\to(W,\sigma)$ thoả mãn ($T\rho(g)=\sigma(g)T$), thì
+    \[
+      \ker T \text{ và } \im T \text{ là biểu diễn con},\quad 
+      (V/\ker T,\bar\rho)\cong(\im T,\sigma|_{\im T}),
+    \]
+    với $\bar\rho(g)(v+\ker T):=\rho(g)v+\ker T$.
+    % \item \emph{Phần tử bất biến:} Tập $V^G=\{v\in V\mid\rho(g)v=v,\ \forall g\in G\}$ là biểu diễn con.
+    % (thực ra là phần tử cố định của $G$).
+  \end{enumerate}
+
+  \item[\textbf{(3)}] \textbf{Tổng trực tiếp các biểu diễn con.}
+  \begin{enumerate}
+    \item Với $W_1,W_2\le V$, ta nói $V=W_1\oplus W_2$ nếu:
+    \[
+      V=W_1+W_2\quad\text{và}\quad W_1\cap W_2=\{0\}.
+    \]
+    Khi đó, $\rho(g)$ tác động trên $V=W_1\oplus W_2$, và ta có:
+    \[
+      (V,\rho)\cong(W_1,\rho|_{W_1})\oplus(W_2,\rho|_{W_2}).
+    \]
+    \item Tổng quát, với họ $\{W_i\}_{i\in I}$ các biểu diễn con của $V$, tổng trực tiếp là:
+    \[
+      V = \bigoplus_{i\in I} W_i
+      \quad\Longleftrightarrow\quad
+      V=\sum_{i\in I} W_i\ \text{ và }\ 
+      \sum_{i\ne j} (W_i\cap W_j)=\{0\}.
+    \]
+    Khi đó mỗi $v\in V$ biểu diễn duy nhất dưới dạng $v=\sum_i w_i$, $w_i\in W_i$.
+  \end{enumerate}
+\end{enumerate}
+
+% \textbf{Kết luận.}
+% Nhờ tương ứng $\Rep_K(G)\simeq\mathbf{Mod}_{K[G]}$, các khái niệm:
+% \[
+% \text{“biểu diễn con”} \;\leftrightarrow\; \text{“module con”},\quad
+% \text{“tổng trực tiếp biểu diễn”} \;\leftrightarrow\; \text{“tổng trực tiếp module”}
+% \]
+% hoàn toàn tương đương về cấu trúc đại số.
+\end{proof}

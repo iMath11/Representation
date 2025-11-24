@@ -1,0 +1,2351 @@
+\section{Tính hoàn toàn khả phân}
+
+\begin{definition}[Module] Cho $R$ là một $\K-$đại số, một $R-$module là một cặp $(\overline{\rho},V)$ với $V$ là một $\K-$không gian vector và $\overline{\rho}: R\to \End_{\K}V$ là một $K-$đại số đồng cấu. 
+
+\begin{remark}
+    Một $\K-$đại số đồng cấu là một đồng cấu vành đồng thời cũng là một ánh xạ $\K-$tuyến tính.
+
+    Ta luôn giả sử $\overline{\rho}(1) = \Id_V$ và module như thế được gọi là unital module.
+\end{remark}
+
+\end{definition}
+\begin{definition}[Không gian con bất biến]
+    Một không gian con $W$ của $V$ được gọi là một \textit{không gian con bất biến}(hay biểu diễn con) cho biểu diễn $\rho: G \to \GL(V)$ nếu $\rho(g)W \subset W$ với mọi $g \in G$. 
+    
+    Tương tự, một không gian con $W$ của $V$ được gọi là một \textit{không gian con bất biến} (hay module con) cho một $R-$module $\overline{\rho}: R \to \End_{\K}(V)$ nếu $\overline{\rho}(r)W \subset W$ với mọi $r \in R$.
+
+    \[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	W \&\& W \\
+	\\
+	V \&\& V
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\rho(g)|_W}", from=1-1, to=1-3]
+	\arrow[hook, from=1-1, to=3-1]
+	\arrow[hook, from=1-3, to=3-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\rho(g)}"', from=3-1, to=3-3]
+	\arrow[between={0.2}{0.8}, dashed, from=1, to=0]
+\end{tikzcd}\]
+\end{definition}
+\begin{definition}[Biểu diễn đơn, module đơn]
+Một biểu diễn (hoặc module) được gọi là \textit{đơn} nếu nó không có một không gian con bất biến thực sự nào tầm thường.
+\end{definition}
+\begin{definition}[Module khả phân hoàn toàn]
+    Một $R-$module được gọi là \textit{khả phân hoàn toàn} nếu nó là tổng trực tiếp của các module đơn.    
+\end{definition}
+\begin{lemma}
+    Mọi không gian vector con của một không gian vector $V$ đều có phần bù tuyến tính.
+\end{lemma}
+\begin{proof}
+    Theo bổ đề Zorn, mọi không gian vector đều tồn tại cơ sở, gọi $B_W$ là một cơ sở của không gian con $W \subset V$. Theo định lý mở rộng cơ sở, mọi tập độc lập tuyến tính trong $V$ đều có thể mở rộng thành một cơ sở, nên gọi $B_V\supset B_W$ là một cơ sở của $V$. 
+    Đặt $B_U = B_V\setminus B_W$ và $U=\mathcal{L}(U)$ là không gian con sinh bởi $B_U$. Ta sẽ chỉ ra $U$ chính là phần bù tuyến tính của $W$ trong $V$.
+    \begin{itemize}
+        \item \textbf{Chứng minh $V = W + U$}.
+
+        Lấy bất kỳ $v \in V$, vì $B_V = B_W \cup B_U$ nên tồn tại một biểu thị tuyến tính 
+        \[v = \underbrace{\left(\sum{a_iw_i}\right)}_{w \in W} + \underbrace{\left(\sum{b_ju_j}\right)}_{u\in U},\quad w_i \in W,~u_j \in U\]
+
+        \item \textbf{Chứng minh $W \cap U = \{0\}$}.
+
+        Giả sử $v \in W \cap U$, khi đó tồn tại các biểu thị tuyến tính của $v$ qua $B_W$ và $B_U$
+        \[\sum{a_iw_i} = v = \sum{b_jw_j}\]
+        Dẫn đến $\sum{a_iw_i}-\sum{b_jw_j} = 0$ là một ràng buộc tuyến tính của các vector trong $B_V$ nên ràng buộc này là tầm thường. Do đó $v=0$.
+    \end{itemize}
+
+    \begin{remark}
+        Phần bù tuyến tính của một không gian con không duy nhất ngoại trừ hai trường hợp tầm thường là $0,V$.
+    \end{remark}
+\end{proof}
+\begin{problem}[Bài tập 3 — Ví dụ về mô đun không khả phân hoàn toàn]
+Cho ví dụ về một trường $K$ và một nhóm $G$ cùng với một mô đun trên đại số nhóm $K[G]$ 
+mà không khả phân hoàn toàn.
+\end{problem}
+
+\begin{solution}
+Một ví dụ cổ điển và quan trọng nhất xuất hiện khi đặc trưng của trường $K$ \emph{chia} bậc của nhóm $G$.
+
+\medskip
+\textbf{Bước 1. Chọn dữ liệu cơ bản.}
+Lấy nhóm hai phần tử
+\[
+G = \{1, g\}, \qquad g^2 = 1,
+\]
+và trường $K$ có đặc trưng $2$, tức là $\mathrm{char}(K)=2$.
+
+\medskip
+\textbf{Bước 2. Mô tả vành nhóm.}
+Đại số nhóm $K[G]$ có cơ sở $\{1, g\}$ và phép nhân được xác định bởi $g^2=1$.
+Ta có:
+\[
+K[G] \;\cong\; K[x]/(x^2 - 1),
+\]
+với đẳng cấu $x \mapsto g$.
+Nhưng trong đặc trưng $2$, $x^2 - 1 = (x - 1)^2$, do đó
+\[
+K[G] \;\cong\; K[x]/((x-1)^2).
+\]
+Đây là một \emph{vành không bán đơn}, vì phần tử $(x-1)$ là nilpotent bậc $2$.
+
+\medskip
+\textbf{Bước 3. Mô đun trái chính quy.}
+Xét $V = K[G]$ như một $K[G]$-mô đun tả với phép nhân trái (mô đun chính quy trái).
+
+Lấy phần tử $v = g - 1$ (hay tương đương $x - 1$ dưới đẳng cấu ở trên).
+Đặt
+\[
+W := K\cdot v = K(g - 1) \subset V.
+\]
+Khi đó $W$ là một mô đun con bất biến của $V$, vì
+\[
+g\cdot (g - 1) = g^2 - g = 1 - g = -(g - 1) = g - 1,
+\]
+do $\mathrm{char}(K)=2$. Như vậy $g$ tác động lên $W$ bằng đồng nhất.
+
+\medskip
+\textbf{Bước 4. Kiểm tra khả phân hoàn toàn.}
+Ta có dãy ngắn chính xác
+\[
+0 \longrightarrow W \longrightarrow V \longrightarrow V/W \longrightarrow 0.
+\]
+Dễ thấy $\dim_K(V) = 2$ và $\dim_K(W) = 1$, nên $V/W$ cũng có chiều $1$.
+Tuy nhiên, không tồn tại mô đun con $U$ bất biến nào sao cho $V = W \oplus U$.
+
+Giải thích: 
+Nếu $U = Ka$ là mô đun con một chiều của $V$, thì phải có $g\cdot a = \lambda a$ với $\lambda \in K^\times$.
+Tức là $a$ phải là vectơ riêng của toán tử $g$.
+Trong cơ sở $\{1, g-1\}$, tác động của $g$ được cho bởi ma trận
+\[
+[g]_{\{1,\,g-1\}} \;=\;
+\begin{pmatrix}
+1 & 1 \\[4pt]
+0 & 1
+\end{pmatrix},
+\]
+một ma trận Jordan không chéo hoá được. 
+Do đó $g$ không có vectơ riêng nào ngoài các bội của $g-1$, nghĩa là $W$ là không gian bất biến duy nhất.
+Vì thế không có phần bù bất biến nào của $W$ trong $V$.
+
+\medskip
+\textbf{Bước 5. Kết luận.}
+Vậy $V = K[G]$ (với $\mathrm{char}(K)=2$ và $G=\{1,g\}$) là một mô đun không khả phân hoàn toàn.
+Hay nói cách khác, dãy ngắn chính xác
+\[
+0 \longrightarrow W \longrightarrow V \longrightarrow V/W \longrightarrow 0
+\]
+không tách được trong phạm trù các $K[G]$-mô đun.
+
+\end{solution}
+
+\begin{remark}
+Ví dụ này cho thấy rằng định lý Maschke không còn đúng nếu $\mathrm{char}(K)$ chia $|G|$.
+Trong trường hợp $\mathrm{char}(K)$ \emph{không chia} $|G|$, thì mọi $K[G]$-mô đun đều khả phân hoàn toàn (bán đơn),
+tức là $K[G]$ là một đại số bán đơn.
+\end{remark}
+
+\begin{theorem}
+Với một $R$-module $V$, các mệnh đề sau đây là tương đương:
+\begin{enumerate}
+    \item Mọi module con $U \le V$ đều có bù bất biến trong $V$ (tức tồn tại $W \le V$ sao cho $V = U \oplus W$).
+    \item Mọi dãy ngắn chính xác $0 \to U \xrightarrow{i} V \xrightarrow{\pi} V/U \to 0$ đều chẻ ra.
+    \item $V$ là tổng trực tiếp của các module con đơn, tức
+    \[
+        V = \bigoplus_{i \in I} S_i, \quad S_i \text{ đơn.}
+    \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\noindent\textbf{(1) $\Rightarrow$ (2).}
+Giả sử mọi module con có bù bất biến.  
+
+Xét dãy \[0 \to U \xrightarrow{i} V \xrightarrow{\pi} V/U \to 0.\]  
+Vì $U$ có bù bất biến $W$, ta có $V = U \oplus W$ và $\pi|_W : W \to V/U$ là đẳng cấu.  
+
+Đặt $s = (\pi|_W)^{-1}$, khi đó $\pi \circ s = \operatorname{id}_{V/U}$, nên dãy tách.
+
+\medskip
+\noindent\textbf{(2) $\Rightarrow$ (1).}
+Giả sử mọi dãy ngắn chính xác tách.  
+Lấy $U \le V$. Khi đó $0 \to U \xrightarrow{i} V \xrightarrow{\pi} V/U \to 0$ tách, nên tồn tại $s: V/U \to V$ sao cho $\pi \circ s = \operatorname{id}_{V/U}$.  
+Đặt $W = \operatorname{Im}s$, ta có $V = U \oplus W$.
+
+\medskip
+\noindent\textbf{(1) $\Rightarrow$ (3).}
+Giả sử mọi module con có bù bất biến.  
+Đặt $V_0 = \sum_{S \le V,\; S \text{ đơn}} S$. Khi đó $V_0$ bất biến, nên tồn tại $U$ bất biến sao cho $V = V_0 \oplus U$.  
+Nếu $U \ne 0$, lấy $u \in U \setminus \{0\}$, khi đó $R \cdot u$ có module con cực đại $M$, và $R \cdot u/M$ đơn.  
+Suy ra tồn tại module đơn $S_u \subset U$, mâu thuẫn với $U \cap V_0 = 0$.  
+Do đó $U = 0$, nên $V = V_0$.  
+Áp dụng bổ đề Zorn, ta chọn họ $\{S_i\}_{i \in I}$ các module đơn sao cho $V = \bigoplus_{i \in I} S_i$.
+
+\medskip
+\noindent\textbf{(3) $\Rightarrow$ (1).}
+Giả sử $V = \bigoplus_{i \in I} S_i$ với mỗi $S_i$ đơn.  
+Lấy $U \le V$. Khi đó $U = \bigoplus_{i \in J} S_i$ với $J \subseteq I$.  
+Đặt $W = \bigoplus_{i \notin J} S_i$, ta được $V = U \oplus W$.
+
+\medskip
+Kết luận: ba mệnh đề trên tương đương. Khi đó $V$ được gọi là \textit{module khả phân hoàn toàn} (hay \textit{semisimple module}).
+\end{proof}
+
+
+
+\begin{problem}[BT6]
+    Giả sử mọi không gian con bất biến của một $R-$module $V$ đều có một bù bất biến. Gọi $W$ là một không gian con bất biến của $V$. Chứng minh rằng mọi không gian con bất biến của $W$ đều có một bù bất biến trong $W$ và mọi không gian con bất biến của $V/W$ đều có một bù bất biến trong $V/W$.
+\end{problem}
+
+\begin{proof}
+    Giả sử $W_1$ là một không gian con bất biến của $W$, với mọi $r \in R$ thì $\overline{\rho}(r)W_1 \subset W_1$, kết hợp $W_1$ cũng là một không gian con của $V$ nên $W_1$ là bất biến trong $V$. Theo giả thiết $V = W_1 \oplus U$ với $U$ là bù bất biến của $W_1$ trong $V$.
+
+    Ta có
+    \[W = W \cap V = W \cap (W_1 \cup U)= (W \cap W_1) \cup (W\cap U)=W_1 \cup (W \cap U).\]
+
+    Khi đó $W_2:= W\cap U$ là một không gian con bù bất biến của $W_1$ trong $W$ vì
+
+    \begin{itemize}
+        \item $W_2$ hiển nhiên là một không gian con của $W$. Hơn nữa, $W_2$ cũng bất biến vì $\forall w \in W \cap U,~r \in R$ thì $\overline{\rho}(r)w \in W \cap U$ (do $W,U$ bất biến trong $V$).
+
+        \item $W = W_1 + W_2$. Thật vậy, $\forall w \in W \subset V = W_1 \oplus U,~\exists!~w_1 \in W_1,~u \in U:~w = w_1 + u$. 
+        Suy ra $U \ni u = w - w_1 \in W$ nên $u \in W \cap U = W_2$. Hay $W = W_1 + W_2$.
+
+        \item $W_1 \cap W_2 = W_1 \cap (W \cap U) = (W_1 \cap W) \cap U = W_1 \cap U = \{0\}$.
+
+        \item Do đó $W = W_1 \oplus W_2$.
+    \end{itemize}
+
+    Tiếp theo, giả sử $A$ là một không gian con bất biến của $V/W$ và $\pi: V\to V/W$ là phép chiêú chính tắc. Rõ ràng $\pi$ là một đồng cấu $R-$module và tác động của $R$ lên $V/W$ xác định bởi
+    \[\overline{\rho}_{V/W}(r)[v] = [\overline{\rho}_V(r)(v)].\]
+
+    Đặt $U = \pi^{-1}(A)$. Khi đó $U$ mà một không gian con của $V$. Hơn nữa, $U$ là bất biến trong $V$ vì $\forall u \in U,~r\in R$ thì
+    \[[\overline{\rho}_V(r)u] = \overline{\rho}_{V/W}(r)([u])=\overline{\rho}_{V/W}(r)(\underbrace{\pi(u)}_{\in A}) \in A \quad (\text{vì $A$ bất biến})\]
+    nên $\overline{\rho}(r)u \in \pi^{-1}(A) = U$. Khi đó, theo giả thiết $V = U \oplus U_1$, với $U_1$ là bù bất biến của $U$.
+
+    Ta sẽ chỉ ra $\pi(U_1)$ là một bù bất biến của $A$ trong $V/W$. Thật vậy
+    \begin{itemize}
+        \item $\pi(U_1)$ là một không gian con bất biến trong $V/W$ vì $\forall [u_1]=\pi(u_1) \in \pi(U_1),~r\in R$ thì 
+        \[\overline{\rho}_{V/W}(r)[u_1]=[\underbrace{\overline{\rho}_V(r)(u_1)}_{\in U_1 \text{ vì $U_1$ bất biến}}] \in \pi(U_1)\]
+
+        \item $V/W = A + \pi(U_1)$. Thật vậy, với mọi $v \in V = U \oplus U_1,~\exists!~u\in U,~u_1 \in U_1: v = u + u_1$. Suy ra $[v] = [u] + [u_1] \in \pi(U) + \pi(U_1)=A + \pi(U_1)$.
+
+        \item $[v] \in A \cap \pi(U_1)$ thì $v \in \pi^{-1}(A)=U,~[v]=\pi(u_1)=[u_1]~(\text{ với }u_1\in U_1)$. Suy ra 
+        \[u:= v-u_1 \in \ker(\pi)=W = \pi^{-1}(0) \subset \pi^{-1}(A) = U.\]
+        Nên $U_1 \ni u_1 = v-u \in U$. Vậy $v- u \in U \cap U_1 = \{0\}$, tức $u_1=0$, tức $[v]=[0]$.
+
+        \item Do đó $V/W = A \oplus \pi(U_1)$.
+    \end{itemize}
+\end{proof}
+
+ \begin{problem}[BT4]
+    Chứng minh rằng một $R$-module là khả phân hoàn toàn khi và chỉ khi mọi không gian con bất biến đều có một bù bất biến.
+\end{problem}
+\begin{proof}
+    Giả sử $(\overline{\rho},V)$ là một $R$ module và $W \leq V$ là một không gian con bất biến.
+    \begin{enumerate}
+        \item $(\Longrightarrow)$ Giả sử $V$ là khả phân hoàn toàn, tức $V = \bigoplus_{i \in I}S_i$, với $S_i$ là các module đơn. Ta sẽ chỉ ra $W$ tồn tại $U \leq V$ bất biến và $V = W \oplus U$.
+
+        Xét $\mathcal{F} = \{U \leq V\mid U \text{ bất biến},~ W \cap U = \{0\}\}$, ta có $\mathcal{F} \neq \emptyset$ (vì chứa không gian $0$) và có trang bị quan hệ thứ tự là quan hệ bao hàm thức nên theo bổ đề Zorn, $\mathcal{F}$ có ít nhất một phần tử cực đại. Gọi $U_0$ là một phần tử cực đại của $\mathcal{F}$ và đặt $V_0 = U_0 \oplus W$. 
+        
+        Khi đó $V = V_0$. Thật vậy, giả sử phản chứng $V_0 \neq V$, khi đó tồn tại $S_i \nsubseteq  V_0$. 
+        
+        Lại có $S_i \cap V_0 \leq V_0$ và $S_i$ đơn nên $S_i \cap V_0 = \{0\}$ (vì nếu $S_i \cap V_0=S_i$ thì $S_i \subset V_0$).
+
+        % Ta có
+        % \[\{0\}=S_i \cap V_0 = S_i \cap (U_0 \cup W)=(S_i \cap U_0) \cup (S_i \cap W)\]
+        % nên \[S_i \cap U_0 = \{0\} = S_i \cap W.\]
+
+        Đặt $U'=U_0 \oplus S_i \leq V$ thì $U'$ bất biến và $U_0 \subsetneq U'$.
+
+        Tuy nhiên, $U' \in \mathcal{F}$ vì $U' \cap W = \{0\}$. 
+        
+        (Thật vậy, giả sử $x \in U'\cap W=(U_0 \oplus S_i) \cap W$ thì $x=u_0 + s_i$ với $u_0 \in U_0,~s_i \in S_i$. Suy ra $S_i \ni s_i = x-u_0 \in V_0$ (vì $x \in W \subset V_0,~u_0 \in U_0 \in V_0$). Do đó $s_i \in V_0 \cap S_i = \{0\}$, tức $s_i = 0$. Hay là $x=u_0 \in W \cap U_0 = \{0\}$, tức $x=0$).
+
+        Suy ra mâu thuẫn với tính cực đại của $U_0$. Do đó $V = W \oplus U_0$ với $U_0$ bất biến.
+
+
+        \item $(\Longleftarrow)$ Giả sử mọi không gian con bất biến của $V$ đều có bù bất biến. Ta sẽ chỉ ra $V$ là khả phân hoàn toàn.
+        
+        Đặt 
+        \[V_0 = \sum_{S \leq V,~S \text{ đơn}} S\]
+        Ta có $V_0$ bất biến nên theo giả thiết tồn tại $U \leq V$ bất biến sao cho $V = V_0 \oplus U$. 
+
+        Ta sẽ chứng minh $V = V_0$ bằng cách chỉ ra $U=\{0\}$. Thật vậy, giả sử phản chứng tồn tại $u \in U\setminus\{0\}$. Khi đó $R\cdot u \leq U$, mà $U$ cũng bất biến nên $R\cdot u$ cũng bất biến. Gọi $M$ là một module con cực đại của $R\cdot u$, ta viết được $R\cdot u = M \oplus S_u$ với $S_u$ là bù bất biến của $M$ trong $R\cdot u$. Ta có $S_u \cong R\cdot u/M$ là đơn (vì $M$ cực đại trong $R\cdot u$). Vậy $S_u \subset U \subset V$ và đơn, nên $S_u \subset V_0$. Do đó $S_u \subset U \cap V_0 = 0$ tức $S_u = 0$, mâu thuẫn với $S_u$ đơn. Dẫn đến giả thiết phản chứng là sai, và do đó 
+        \[V=V_0 = \sum_{S \leq V,~S \text{ đơn}} S\]
+
+        Tiếp theo ta chỉ ra tổng trên là một tổng trực tiếp.
+
+        Xét tập $\mathcal{G} = \{J \subset I\mid \sum_{j \in J}S_j \text{ là một tổng trực tiếp}\}$. Rõ ràng $\mathcal{G} \neq \emptyset$ (vì $i \in \mathcal{G}$ với mọi $i \in I$) và được trang bị quan hệ thứ tự bao hàm, do đó theo bổ đề Zorn, $\mathcal{G}$ tồn tại cực đại $J_{\max} \subset I$ sao cho \[V_1:=\sum_{j \in J_{\max}}S_j = \bigoplus_{j \in J_{\max}}S_j.\]
+        
+        Nếu $V_1 \subsetneq V$, theo giả thiết thì $V=V_1 \oplus U_1$ với $0 \neq U_1 \leq V$ bất biến. Khi đó, chứng minh tương tự như trên thì $\exists u_1 \in U_1\setminus\{0\}$ mà $R\cdot u_1$ chứa một module con đơn $S_{u_1}$. 
+        
+        Ta có $S_{u_1} \subset U_1$ và $S_{u_1}$ đơn nên $S_{u_1} \subset V_0= V$. Hơn nữa, $S_{u_1} \cap V_1 \leq S_{u_1}$ nên $S_{u_1} \cap V_1 = 0$ (vì nếu $S_{u_1} \cap V_1 = S_{u_1}$ thì $S_{u_1} \subset V_1$, dẫn đến $S_{u_1} \subset U_1 \cap V_1 = 0$).
+
+        Do đó $S_{u_1} + V_1 = S_{u_1} \oplus V_1$ là một tổng trực tiếp các module đơn, mâu thuẫn với tính cực đại của $J_{\max}$.
+
+        Vì vậy $V_1 = V$, tức $V$ là một tổng trực tiếp các module đơn, hay $V$ khả phân hoàn toàn.
+        
+    \end{enumerate}
+\end{proof}
+
+\begin{problem}[BT 5 — Ví dụ về mô đun con không có phần bù bất biến]
+Cho một trường $K$, một nhóm $G$, và một $K[G]$-mô đun $V$,
+hãy cho ví dụ về một mô đun con bất biến $W \subset V$
+sao cho $W$ không có phần bù bất biến trong $V$.
+\end{problem}
+
+\begin{solution}
+Ta sẽ xây dựng ví dụ cụ thể đơn giản nhất cho hiện tượng này.
+
+\medskip
+\textbf{Bước 1.} 
+Chọn nhóm $G$ là nhóm hai phần tử:
+\[
+G = \{1,\, g\}, \qquad g^2 = 1.
+\]
+Xét trường $K$ có đặc trưng $2$, tức là $\mathrm{char}(K)=2$.
+Khi đó vành nhóm $K[G]$ có dạng
+\[
+K[G] = K\{1,g\} \cong K[x]/(x^2-1).
+\]
+Nhưng trong đặc trưng $2$, ta có $x^2-1=(x-1)^2$, nên
+\[
+K[G] \;\cong\; K[x]/((x-1)^2).
+\]
+Đây là một vành không bán đơn (vì phần tử $x-1$ là nilpotent bậc $2$).
+
+\medskip
+\textbf{Bước 2.} 
+Xét $V=K[G]$ như một $K[G]$-mô đun tả (theo phép nhân trái).
+Gọi $W=(x-1)K[G]$ là mô đun con sinh bởi phần tử $x-1$.
+Ta có $W = K(x-1)$, vì $(x-1)^2=0$.
+
+\medskip
+\textbf{Bước 3.} 
+Ta chứng minh rằng $W$ không có phần bù bất biến trong $V$.
+
+Giả sử tồn tại $K[G]$-mô đun con $U$ của $V$ sao cho
+\[
+V = W \oplus U.
+\]
+Do $\dim_K(V)=2$ và $\dim_K(W)=1$, ta có $\dim_K(U)=1$.
+Mọi mô đun con một chiều của $V$ là dạng $U = Ka$ với $a \in V$.
+Ta phải có $g\cdot a = \lambda a$ với một $\lambda\in K^\times$, 
+nghĩa là $a$ là vectơ riêng của phép nhân bởi $g$.
+
+Tuy nhiên, với $\mathrm{char}(K)=2$, ma trận hành động của $g$ trên cơ sở $\{1, x-1\}$ là
+\[
+[g]_{\{1,\,x-1\}} = 
+\begin{pmatrix}
+1 & 1 \\[4pt]
+0 & 1
+\end{pmatrix}.
+\]
+Đây là ma trận Jordan có duy nhất giá trị riêng $1$, nhưng không chéo hóa được.
+Do đó không tồn tại vectơ riêng $a$ độc lập với $x-1$.
+Nói cách khác, không có mô đun con $1$-chiều nào $U$ khác $W$ bất biến theo $G$.
+
+\medskip
+\textbf{Bước 4.} 
+Vì thế, $W=(x-1)K[G]$ là mô đun con bất biến trong $V=K[G]$,
+nhưng không có phần bù bất biến trong $V$.
+Điều này minh họa rằng khi đặc trưng của trường chia cho bậc của nhóm (ở đây $2\mid |G|$),
+thì vành nhóm $K[G]$ không còn bán đơn,
+và các mô đun $K[G]$ không nhất thiết khả phân hoàn toàn.
+
+\end{solution}
+
+\begin{remark}
+Nếu ta thay trường $K$ bởi trường có đặc trưng không chia $|G|$ (ví dụ $\mathbb{C}$, $\mathbb{Q}$, hoặc $\mathbb{R}$),
+thì định lý Maschke bảo đảm rằng mọi $K[G]$-mô đun đều khả phân hoàn toàn,
+và không thể xảy ra ví dụ như trên.
+Vì vậy ví dụ này phản ánh \emph{sự thất bại của Định lý Maschke} trong trường hợp $\mathrm{char}(K)$ chia $|G|$.
+\end{remark}
+
+
+\begin{problem}[BT6 — Phần bù bất biến trong mô đun khả phân hoàn toàn]
+Giả sử mọi không gian con bất biến của một $R$-mô đun $V$ đều có một phần bù bất biến.
+Gọi $W$ là một không gian con bất biến của $V$. 
+Chứng minh rằng:
+\begin{enumerate}
+\item Mọi không gian con bất biến của $W$ đều có một phần bù bất biến trong $W$.
+\item Mọi không gian con bất biến của $V/W$ đều có một phần bù bất biến trong $V/W$.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+\textbf{(a)} 
+Giả sử $U$ là một không gian con bất biến của $W$. 
+Vì $U \subseteq W \subseteq V$ và $U$ là bất biến trong $V$, theo giả thiết mọi không gian con bất biến của $V$ đều có phần bù bất biến trong $V$, nên tồn tại một không gian con $U'$ bất biến của $V$ sao cho
+\[
+V = U \oplus U'.
+\]
+Do $W$ là bất biến trong $V$, lấy giao với $W$ ta được:
+\[
+W = (U \oplus U') \cap W = (U \cap W) \oplus (U' \cap W) = U \oplus (U' \cap W).
+\]
+Hơn nữa, $U' \cap W$ cũng là bất biến trong $W$ (vì $U'$ và $W$ đều bất biến trong $V$). 
+Vậy $U' \cap W$ là phần bù bất biến của $U$ trong $W$, như cần chứng minh.
+
+\medskip
+\textbf{(b)} 
+Gọi $\pi:V\to V/W$ là ánh xạ chuẩn. 
+Giả sử $\overline{U}$ là một không gian con bất biến của $V/W$. 
+Khi đó, lấy tiền ảnh $U=\pi^{-1}(\overline{U})$ ta có $W\subseteq U\subseteq V$ và $U$ là bất biến trong $V$.
+Theo giả thiết, tồn tại $U'$ bất biến trong $V$ sao cho
+\[
+V = U \oplus U'.
+\]
+Xét ảnh qua $\pi$ ta có $\pi(U)=\overline{U}$ và $\pi(U')\cong U'/(U'\cap W)$. 
+Do $U'$ bất biến và $W$ bất biến nên $\pi(U')$ cũng là bất biến trong $V/W$. 
+Ta có
+\[
+V/W = (U\oplus U')/W \cong (U/W) \oplus (U'/(U'\cap W))
+     = \overline{U} \oplus \pi(U').
+\]
+Như vậy $\pi(U')$ là phần bù bất biến của $\overline{U}$ trong $V/W$, chứng minh xong.
+
+\medskip
+Kết luận: cả (a) và (b) đều đúng.
+\end{proof}
+
+\begin{corollary}[Hệ quả 7]
+Mô đun con và mô đun thương của mô đun khả phân hoàn toàn cũng là mô đun khả phân hoàn toàn.
+\end{corollary}
+
+\begin{proof}
+Giả sử $V$ là mô đun khả phân hoàn toàn, tức là mọi không gian con bất biến của $V$ đều có phần bù bất biến.
+Nếu $W$ là mô đun con bất biến, theo phần (a) của Bài tập~6, mọi không gian con bất biến của $W$ đều có phần bù bất biến trong $W$, do đó $W$ là mô đun khả phân hoàn toàn.
+Tương tự, theo phần (b), mọi không gian con bất biến của $V/W$ đều có phần bù bất biến trong $V/W$, nên $V/W$ cũng là mô đun khả phân hoàn toàn.
+\end{proof}
+
+
+\begin{problem}[BT 8]
+    Chứng minh rằng nếu $R$-module chính quy trái là khả phân hoàn toàn thì mọi $R-$module đều khả phân hoàn toàn.
+\end{problem}
+\begin{definition}
+Với mỗi $r \in R$, kí hiệu $L(r):R \to R,~x\mapsto rx$. Tập các $L(r)$ này cho $R$ thành một $R-$module và được gọi là $R$-\textit{chính quy trái}.
+\end{definition}
+\begin{proof}
+    Giả sử $R-$module chính qui trái $L(R)$ là khả phân hoàn toàn, ta cần chỉ ra mọi $R-$module $M$ là khả phân hoàn toàn.
+
+    Vì mọi module đểu là thương của một module tự do, nên giả sử
+    \[R^{(I)} \xrightarrow{\pi} M \to 0\]
+    Vì $L(R)$ là khả phân hoàn toàn nên $R^{(I)}$ cũng là khả phân hoàn toàn vì tổng các module khả phân hoàn toàn cũng khả phân hoàn toàn). Do đó $M = R^{(I)}/\ker(\pi)$ cũng là khả phân hoàn toàn vì ta có bổ đề sau
+    \begin{lemma}
+        Nếu $V$ khả phân hoàn toàn, $U$ là thương của $V$ thì $U$ cũng khả phân hoàn toàn.
+    \end{lemma}
+    \begin{proof}
+        Vì $V$ khả phân hoàn toàn và $U$ là một module thương của $V$. Tức tồn tại không con bất biến $A \leq V$ sao cho $U \cong V/A$. Mà $A$ có bù bất biến $A'$ nên 
+        \[U \cong V/A= (A \oplus A')/A \cong A'\]
+        Do đó $U$ bất biến.
+    \end{proof}
+\end{proof}
+
+\begin{problem}[Bài tập 9 — Tính duy nhất các số bội trong phân tích bán đơn]
+Giả sử $V$ là một $R$-mô đun khả phân hoàn toàn (bán đơn) hữu hạn chiều và có một phân tích
+\begin{equation}\label{eq:decomp}
+V \;\cong\; V_1^{\oplus m_1}\;\oplus\; V_2^{\oplus m_2}\;\oplus\; \cdots \;\oplus\; V_r^{\oplus m_r},
+\end{equation}
+trong đó $V_1,\dots,V_r$ là các $R$-mô đun đơn đôi một không đẳng cấu. Cho $S$ là một $R$-mô đun đơn bất kì. Chứng minh:
+
+\begin{enumerate}
+\item[(a)] Nếu không tồn tại $k$ sao cho $V_k \cong S$ thì $\Hom_R(S,V)=\{0\}$.
+\item[(b)] Nếu tồn tại $k$ sao cho $V_k \cong S$ thì $\Hom_R(S,V)\neq 0$ và hơn nữa
+\[
+\dim_K \Hom_R(S,V)\;=\; m_k\,\dim_K \End_R(S).
+\]
+Tương đương,
+\[
+\Hom_R(S,V)\;\cong\; \End_R(S)^{\oplus m_k}
+\quad \text{với tư cách là không gian vectơ trên }K.
+\]
+\end{enumerate}
+
+Suy ra: trong mọi phân tích bán đơn \eqref{eq:decomp} của $V$, các mô đun đơn $V_k$ xuất hiện (lên tới đẳng cấu) và các số bội $m_k$ là duy nhất (chỉ có thể thay đổi thứ tự các hạng tử).
+\end{problem}
+
+\begin{proof}
+Trước hết, dùng hai sự kiện chuẩn:
+
+\begin{itemize}
+\item[(F1)] (Tính phân tích của hàm tử $\Hom$ theo tổng trực tiếp) Với mọi họ mô đun $(M_i)_{i\in I}$,
+\[
+\Hom_R\!\left(S,\;\bigoplus_{i\in I} M_i\right)\;\cong\;\bigoplus_{i\in I}\Hom_R(S,M_i),
+\]
+đẳng cấu tự nhiên bởi $f\mapsto (\pi_i\circ f)_i$, với $\pi_i$ là phép chiếu toạ độ.
+\item[(F2)] (Bổ đề Schur) Nếu $S,T$ là $R$-mô đun đơn thì
+\[
+\Hom_R(S,T)=
+\begin{cases}
+0, & \text{khi } S \not\cong T,\\[2mm]
+\End_R(S), & \text{khi } S \cong T.
+\end{cases}
+\]
+Ở đây $\End_R(S)$ là một vành chia (nên là không gian vectơ trên $K$ nếu $K$ nằm trong tâm của $\End_R(S)$).
+\end{itemize}
+
+Áp dụng (F1) cho \eqref{eq:decomp} và lặp lại theo bội, ta có
+\begin{align*}
+\Hom_R(S,V)
+&\cong \bigoplus_{i=1}^r \Hom_R\!\left(S,\,V_i^{\oplus m_i}\right)
+ \;\cong\; \bigoplus_{i=1}^r \Hom_R(S,V_i)^{\oplus m_i}.
+\end{align*}
+Nhờ (F2), mọi hạng $\Hom_R(S,V_i)$ đều bằng $0$ nếu $V_i\not\cong S$, còn nếu $V_k\cong S$ thì
+$\Hom_R(S,V_k)\cong \End_R(S)$. Do đó
+\[
+\Hom_R(S,V)\;\cong\; \End_R(S)^{\oplus m_k},
+\]
+trong đó $k$ là chỉ số (duy nhất) sao cho $V_k\cong S$ nếu có, còn nếu không có chỉ số nào như vậy thì toàn bộ tổng trực tiếp ở vế phải là $0$.
+
+Từ đây suy ra ngay:
+
+\begin{itemize}
+\item (a) Nếu không có $k$ với $V_k\cong S$, vế phải bằng $0$, do đó $\Hom_R(S,V)=\{0\}$.
+\item (b) Nếu có $k$ với $V_k\cong S$, thì $\Hom_R(S,V)\cong \End_R(S)^{\oplus m_k}\neq 0$ và
+\[
+\dim_K \Hom_R(S,V)\;=\; m_k\,\dim_K \End_R(S).
+\]
+\end{itemize}
+
+\emph{Hệ quả về tính duy nhất của số bội.}
+Công thức trên cho thấy
+\[
+m_k \;=\; \dim_{\End_R(S)} \Hom_R(S,V),
+\]
+nên $m_k$ chỉ phụ thuộc vào $V$ và lớp đẳng cấu của $S$ (tức $V_k$), không phụ thuộc vào cách chọn phân tích \eqref{eq:decomp}. Vì các lớp đẳng cấu $V_k$ là đại diện cho các mô đun đơn xuất hiện trong $V$, việc có hay không có $V_k\cong S$ cũng được đặc trưng bởi $\Hom_R(S,V)$ có khác $0$ hay không, nên tập các mô đun đơn xuất hiện (lên tới đẳng cấu) trong mọi phân tích của $V$ là như nhau. Đây chính là tính duy nhất (lên tới hoán vị) của phân tích bán đơn và tính duy nhất của các số bội.
+\end{proof}
+
+
+\begin{problem}[BT13 — Mô đun trên tổng trực tiếp các đại số]
+Giả sử $R_1,\dots,R_k$ là các $K$-đại số kết hợp có đơn vị $1_i$ (với $i=1,\dots,k$) và đặt
+\[
+R \;:=\; R_1 \oplus R_2 \oplus \cdots \oplus R_k,
+\]
+trong đó phép nhân theo toạ độ và đơn vị của $R$ là $1=\sum_{i=1}^k 1_i$ (các $1_i$ là các idempotent trực giao trung tâm).
+\begin{enumerate}
+\item[(a)] Nếu với mỗi $i$, $(\widetilde{\rho}_i,M_i)$ là một $R_i$-mô đun có đơn vị (nghĩa là $\widetilde{\rho}_i(1_i)=\mathrm{id}_{M_i}$), hãy chứng minh rằng
+\[
+M \;:=\; M_1 \oplus M_2 \oplus \cdots \oplus M_k
+\]
+trở thành một $R$-mô đun có đơn vị bởi tác động
+\[
+\widetilde{\rho}(r_1+\cdots+r_k)\;:=\; \widetilde{\rho}_1(r_1)\;+\;\widetilde{\rho}_2(r_2)\;+\;\cdots\;+\;\widetilde{\rho}_k(r_k)
+\quad\text{trên }M.
+\]
+\item[(b)] Ngược lại, nếu $(\widetilde{\rho},M)$ là một $R$-mô đun có đơn vị, đặt
+\[
+M_i\;:=\; \widetilde{\rho}(1_i)M \qquad (i=1,\dots,k).
+\]
+Chứng minh rằng mỗi $M_i$ là một $R_i$-mô đun có đơn vị với tác động $r_i\cdot m:=\widetilde{\rho}(r_i)m$, và phép cộng trực tiếp tự nhiên cho ta đẳng thức các mô đun
+\[
+M \;\cong\; M_1 \oplus M_2 \oplus \cdots \oplus M_k .
+\]
+\item[(c)] Suy ra phép gán
+\[
+(M,\widetilde{\rho}) \longmapsto (M_1,\dots,M_k),\qquad
+(M_1,\dots,M_k) \longmapsto (M,\widetilde{\rho})
+\]
+thiết lập một tương đương thể loại
+\[
+\mathrm{Mod}_R \;\simeq\; \prod_{i=1}^k \mathrm{Mod}_{R_i}.
+\]
+Cụ thể, với mọi $R$-mô đun $M,N$, chứng minh đẳng cấu tự nhiên
+\[
+\operatorname{Hom}_R(M,N) \;\cong\; 
+\bigoplus_{i=1}^k \operatorname{Hom}_{R_i}(M_i,N_i),
+\]
+và mô tả hai hàm tử nghịch đảo tới nhau trên cả đối tượng lẫn cấu xạ.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+\textbf{Chuẩn bị.} Trong $R= \bigoplus_{i=1}^k R_i$, các phần tử $1_i$ là các idempotent trực giao trung tâm:
+\[
+1_i^2=1_i,\qquad 1_i1_j=0\ (i\neq j),\qquad 1_i r = r 1_i \ \forall r\in R.
+\]
+Hơn nữa, với mọi $r=(r_1,\dots,r_k)\in R$ ta có $r=\sum_{i=1}^k r_i$ và $r_i=1_i r = r 1_i$.
+
+\smallskip
+\emph{(a) Xây dựng tác động theo toạ độ.}
+Cho $M:=\bigoplus_{i=1}^k M_i$ và định nghĩa $\widetilde{\rho}$ như trong đề bài. Với $r=(r_1,\dots,r_k)$, $s=(s_1,\dots,s_k)\in R$ và $m=(m_1,\dots,m_k)\in M$:
+\[
+\widetilde{\rho}(r)\bigl(\widetilde{\rho}(s)m\bigr)
+= \sum_{i=1}^k \widetilde{\rho}_i(r_i)\!\left(\sum_{j=1}^k \widetilde{\rho}_j(s_j)m_j\right)
+= \sum_{i=1}^k \widetilde{\rho}_i(r_i)\bigl(\widetilde{\rho}_i(s_i)m_i\bigr)
+= \sum_{i=1}^k \widetilde{\rho}_i(r_is_i)m_i
+= \widetilde{\rho}(rs)m,
+\]
+nơi đẳng thức thứ hai dùng trực giao theo toạ độ và đẳng thức thứ ba dùng tính kết hợp mô đun của từng $(M_i,\widetilde{\rho}_i)$.
+Tính tuyến tính theo $K$ và theo từng biến hiển nhiên.
+Lại có
+\[
+\widetilde{\rho}(1)m = \sum_{i=1}^k \widetilde{\rho}_i(1_i)m_i
+= \sum_{i=1}^k m_i = m,
+\]
+vì $\widetilde{\rho}_i(1_i)=\mathrm{id}_{M_i}$. Do đó $(M,\widetilde{\rho})$ là một $R$-mô đun có đơn vị.
+
+\smallskip
+\emph{(b) Phân rã bằng các idempotent trung tâm.}
+Cho $M$ là $R$-mô đun có đơn vị. Đặt $e_i:=\widetilde{\rho}(1_i)\in \End_K(M)$. Khi đó $e_i$ là các idempotent trực giao, $e_i e_j=0$ với $i\neq j$, và $\sum_{i=1}^k e_i=\widetilde{\rho}(1)=\mathrm{id}_M$.
+Định nghĩa $M_i:=e_i M$. Với $r_i\in R_i$ và $m\in M_i$ (nghĩa là $m=e_i m$), đặt $r_i\cdot m := \widetilde{\rho}(r_i)m$.
+Nếu $s_i\in R_i$ thì
+\[
+r_i\cdot (s_i\cdot m)= \widetilde{\rho}(r_i)\widetilde{\rho}(s_i)m
+= \widetilde{\rho}(r_is_i)m
+= (r_is_i)\cdot m,
+\]
+và $1_i\cdot m=\widetilde{\rho}(1_i)m=e_i m=m$. Do đó $M_i$ là $R_i$-mô đun có đơn vị.
+
+Ta chứng minh $M=\bigoplus_{i=1}^k M_i$. Với mọi $m\in M$,
+\[
+m=\widetilde{\rho}(1)m=\sum_{i=1}^k \widetilde{\rho}(1_i)m=\sum_{i=1}^k e_i m \in \sum_i M_i.
+\]
+Nếu $\sum_i m_i=0$ với $m_i\in M_i$, nhân $e_j$ cho hai vế được $m_j=0$ (do $e_j m_i=0$ khi $i\neq j$), nên tổng là trực tiếp.
+
+\smallskip
+\emph{(c) Tương đương thể loại.}
+Định nghĩa hai hàm tử:
+\[
+\mathcal{F}:\mathrm{Mod}_R \to \prod_{i=1}^k \mathrm{Mod}_{R_i},\quad
+\mathcal{F}(M)=\bigl(\widetilde{\rho}(1_1)M,\dots,\widetilde{\rho}(1_k)M\bigr),
+\]
+và với cấu xạ $f:M\to N$ là $R$-tuyến tính,
+\[
+\mathcal{F}(f)=(f|_{M_1},\dots,f|_{M_k}),\quad f(M_i)\subseteq N_i \text{ vì } f\circ \widetilde{\rho}(1_i)=\widetilde{\sigma}(1_i)\circ f.
+\]
+Ngược lại,
+\[
+\mathcal{G}: \prod_{i=1}^k \mathrm{Mod}_{R_i}\to \mathrm{Mod}_R,\quad
+\mathcal{G}(M_1,\dots,M_k)=\left(\bigoplus_{i=1}^k M_i,\ \text{tác động theo toạ độ ở (a)}\right),
+\]
+và với $(f_i):(M_i)\to (N_i)$, đặt $\mathcal{G}(f_i)=\bigoplus_i f_i$.
+
+Theo (a) và (b), $\mathcal{G}\circ \mathcal{F}(M)\cong M$ tự nhiên qua đẳng cấu
+\[
+\eta_M:\ \bigoplus_{i=1}^k \widetilde{\rho}(1_i)M \xrightarrow{\;\;\sum\iota_i\;\;} M,\qquad
+(m_1,\dots,m_k)\mapsto \sum_i m_i,
+\]
+có nghịch đảo $m\mapsto \bigl(\widetilde{\rho}(1_1)m,\dots,\widetilde{\rho}(1_k)m\bigr)$.
+Ngược lại, $\mathcal{F}\circ \mathcal{G}(M_1,\dots,M_k)\cong (M_1,\dots,M_k)$ qua các đồng nhất $M_i \xrightarrow{\ \cong\ } \widetilde{\rho}(1_i)\!\left(\bigoplus_j M_j\right)$.
+Do đó $\mathcal{F}$ và $\mathcal{G}$ là các hàm tử nghịch đảo tới nhau lên tới đẳng cấu tự nhiên, suy ra $\mathrm{Mod}_R\simeq \prod_{i=1}^k \mathrm{Mod}_{R_i}$.
+
+Cuối cùng, với $R$-mô đun $M,N$ và các phân rã $M=\bigoplus_i M_i$, $N=\bigoplus_i N_i$ như trên, mọi $R$-cấu xạ $f:M\to N$ bị chặn bởi $e_i$ nên $f=\bigoplus_i f_i$ với $f_i:=e_i f e_i \in \Hom_{R_i}(M_i,N_i)$; ngược lại $\bigoplus_i f_i$ là $R$-tuyến tính theo định nghĩa tác động theo toạ độ. Điều này cho đẳng cấu tự nhiên
+\[
+\Hom_R(M,N)\;\cong\; \bigoplus_{i=1}^k \Hom_{R_i}(M_i,N_i).
+\]
+\end{proof}
+
+
+\begin{problem}[BT15 — Tâm của tổng trực tiếp các đại số]
+Cho $\{A_i\}_{i\in I}$ là các $K$-đại số kết hợp có đơn vị. Kí hiệu $Z(B)$ là tâm của một $K$-đại số $B$.
+Hãy chứng minh rằng
+\[
+Z\!\left(\bigoplus_{i\in I} A_i\right)\;=\;\bigoplus_{i\in I} Z(A_i),
+\]
+trong đó $\bigoplus_{i\in I} A_i$ là tổng trực tiếp (mọi phần tử có chỉ số khác $0$ chỉ tại hữu hạn $i$ và phép nhân theo toạ độ).
+Từ đó suy ra, với $r\in\mathbb{Z}_{>0}$ và các số nguyên $m_i\ge 1$,
+\[
+\dim_K Z\!\left(\bigoplus_{i=1}^{r}\Mat_{m_i}(K)\right)=
+\bigl|\{\, i\in\{1,\dots,r\}\mid m_i\ge 1\,\}\bigr|=r .
+\]
+\end{problem}
+
+\begin{proof}
+Đặt $A:=\bigoplus_{i\in I} A_i$. Ta nhắc rằng $A$ gồm các bộ $a=(a_i)_{i\in I}$ với $a_i\in A_i$ và $a_i=0$ cho mọi $i$ trừ hữu hạn nhiều chỉ số; phép cộng, nhân và vô hướng đều theo toạ độ:
+\[
+(a_i)_{i\in I}+(b_i)_{i\in I}=(a_i+b_i)_{i\in I},\qquad
+\lambda\,(a_i)_{i\in I}=(\lambda a_i)_{i\in I},\qquad
+(a_i)_{i\in I}\cdot(b_i)_{i\in I}=(a_i b_i)_{i\in I}.
+\]
+
+\textbf{Bao hàm $\subseteq$.}
+Giả sử $a=(a_i)_{i\in I}\in Z(A)$. Lấy một chỉ số cố định $j\in I$ và phần tử $b\in A_j$ tuỳ ý.
+Xem $b$ như phần tử của $A$ bằng cách đặt $b$ ở toạ độ $j$ và $0$ ở các toạ độ khác, kí hiệu $\tilde b$.
+Vì $a\in Z(A)$ nên $a\tilde b=\tilde b a$. Soi vào toạ độ $j$ của đẳng thức này ta được
+\[
+a_j b=b a_j \quad \text{trong } A_j.
+\]
+Vì $b\in A_j$ tuỳ ý nên suy ra $a_j\in Z(A_j)$.
+Do $a$ chỉ có hữu hạn toạ độ khác $0$, ta kết luận $a\in\bigoplus_{i\in I} Z(A_i)$.
+Vậy $Z(A)\subseteq \bigoplus_{i\in I} Z(A_i)$.
+
+\textbf{Bao hàm $\supseteq$.}
+Ngược lại, lấy $a=(a_i)_{i\in I}\in \bigoplus_{i\in I} Z(A_i)$, nghĩa là $a_i\in Z(A_i)$ và chỉ có hữu hạn $i$ sao cho $a_i\neq 0$.
+Với mọi $x=(x_i)_{i\in I}\in A$, ta có
+\[
+a x=(a_i x_i)_{i\in I}=(x_i a_i)_{i\in I}=x a,
+\]
+vì $a_i$ nằm trong tâm $Z(A_i)$ với mọi $i\in I$.
+Do đó $a\in Z(A)$, suy ra $\bigoplus_{i\in I} Z(A_i)\subseteq Z(A)$.
+
+Kết hợp hai bao hàm ta có đẳng thức $Z\!\left(\bigoplus_{i\in I} A_i\right)=\bigoplus_{i\in I} Z(A_i)$.
+
+\textbf{Hệ quả cho tổng trực tiếp của các đại số ma trận.}
+Với mọi $m\ge 1$, tâm của $\Mat_{m}(K)$ là không gian một chiều $K\!\cdot I_m$ (các bội vô hướng của ma trận đơn vị).
+Do đó
+\[
+Z\!\left(\bigoplus_{i=1}^{r}\Mat_{m_i}(K)\right)
+=\bigoplus_{i=1}^{r} Z\!\left(\Mat_{m_i}(K)\right)
+=\bigoplus_{i=1}^{r} K\!\cdot I_{m_i}\cong K^{\oplus r},
+\]
+và vì thế $\dim_K Z\!\left(\bigoplus_{i=1}^{r}\Mat_{m_i}(K)\right)=r$, tức là bằng số lượng chỉ số $i$ có $m_i\ge 1$.
+\end{proof}
+
+
+\begin{problem}[BT17]
+    Giả sử $R$ là một $\K-$đại số với $\K$ là một trường đóng đại số. Chứng minh rằng một $R-$module khả phân hoàn toàn $V$ là đơn khi và chỉ khi 
+    \[\dim_{\K}\End_RV=1.\]
+\end{problem}
+
+\begin{proof}
+Vì $V$ khả phân hoàn toàn, tồn tại phân rã
+\[
+V \;\cong\; V_1^{\oplus m_1} \;\oplus\; V_2^{\oplus m_2}
+\;\oplus\; \cdots \;\oplus\; V_r^{\oplus m_r},
+\]
+trong đó các $V_i$ là các $R$-module đơn đôi một không đẳng cấu và
+$m_i \ge 0$.
+
+Theo Định lý~1.3.6, ta có đẳng cấu đại số
+\[
+\End_R(V) \;\cong\;
+\bigoplus_{i=1}^{r} M_{m_i}(K),
+\]
+do $\End_R(V_i)\!\cong\!K$ khi $K$ là trường đóng đại số (Bổ đề Schur).
+Từ đó
+\[
+\dim_K \End_R(V)
+  = \sum_{i=1}^{r} m_i^2.
+\]
+
+\noindent
+($\Rightarrow$) Nếu $V$ đơn thì $r=1$ và $m_1=1$, nên
+$\dim_K\End_R(V)=1$.
+
+\noindent
+($\Leftarrow$) Ngược lại, giả sử $\dim_K\End_R(V)=1$.
+Khi đó $\sum_{i=1}^{r} m_i^2=1$, suy ra chỉ có một chỉ số $i$ với
+$m_i=1$ và các $m_j=0$ với $j\ne i$.
+Vì vậy $V\cong V_i$ là đơn.
+
+Kết luận:
+\[
+V \text{ đơn } \Longleftrightarrow \dim_K \End_R(V)=1.\qedhere
+\]
+\end{proof}
+
+\begin{problem}[Bài~18]
+Giả sử $K$ là trường đóng đại số, $V$ là $R$-module đơn và $W$ là $R$-module khả phân hoàn toàn.
+Chứng minh rằng $\dim_K \Hom_R(V,W)$ bằng đúng số bội của $V$ trong $W$. 
+\end{problem}
+
+\begin{proof}
+Vì $W$ khả phân hoàn toàn hữu hạn chiều, tồn tại phân rã
+\[
+W \;\cong\; \bigoplus_{i=1}^r V_i^{\oplus m_i},
+\]
+trong đó $V_1,\dots,V_r$ là các $R$-module đơn đôi một không đẳng cấu và $m_i\ge 0$ là các số bội
+
+Do đó
+\[
+\Hom_R(V,W)
+\;\cong\;
+\Hom_R\!\Bigl(V,\ \bigoplus_{i=1}^r V_i^{\oplus m_i}\Bigr)
+\;\cong\;
+\bigoplus_{i=1}^r \Hom_R\!\bigl(V, V_i^{\oplus m_i}\bigr)
+\;\cong\;
+\bigoplus_{i=1}^r \Hom_R(V,V_i)^{\oplus m_i}.
+\]
+
+Vì $V$ là đơn và $K$ là trường đóng đại số, Bổ đề Schur cho biết
+\[
+\Hom_R(V,V_i) \;\cong\;
+\begin{cases}
+K & \text{nếu } V \cong V_i,\\
+0 & \text{nếu } V \not\cong V_i.
+\end{cases}
+\]
+Gọi $j$ là chỉ số (nếu có) sao cho $V\cong V_j$. Khi đó
+\[
+\Hom_R(V,W) \;\cong\; K^{\oplus m_j},
+\qquad\text{nên}\qquad
+\dim_K \Hom_R(V,W) \;=\; m_j,
+\]
+chính là số bội của $V$ trong $W$. (Nếu $V$ không xuất hiện trong $W$ thì $m_j=0$ và vế trái bằng $0$.)
+
+Do đó, $\dim_K \Hom_R(V,W)$ đúng bằng số bội của $V$ trong $W$ như yêu cầu.%
+
+\end{proof}
+
+\begin{problem}[Bài~19]
+Giả sử $K$ là trường đóng đại số. Một $R$-module khả phân hoàn toàn $V$
+có một \emph{phân tích không bội} (tức là $V \cong \bigoplus_{i=1}^r V_i$ với các $V_i$ đơn đôi một không đẳng cấu)
+khi và chỉ khi đại số tự đồng cấu $\End_R(V)$ là giao hoán.%
+\end{problem}
+
+\begin{proof}
+Vì $V$ khả phân hoàn toàn hữu hạn chiều, tồn tại phân rã
+\[
+V \;\cong\; \bigoplus_{i=1}^{r} V_i^{\oplus m_i},
+\]
+trong đó các $V_i$ đơn đôi một không đẳng cấu và $m_i\ge 0$.%
+
+Trong trường hợp $K$ đóng đại số, Bổ đề Schur cho $\End_R(V_i)\cong K$, và không có đồng cấu không tầm thường giữa $V_i$ và $V_j$ khi $i\neq j$.
+Từ mô tả ma trận khối chuẩn của các đồng cấu giữa các tổng trực tiếp các khối đơn, ta có
+\[
+\End_R(V)\;\cong\;\bigoplus_{i=1}^{r} M_{m_i}(K).%
+\footnote{Mô tả $\Hom$/$\End$ bằng ma trận với phần tử là bội vô hướng của $\mathrm{id}_{V_i}$:
+\textup{}}
+\]
+
+\smallskip
+\noindent\emph{($\Rightarrow$)} Nếu $V$ có phân tích không bội, tức $m_i=1$ với mọi $i$, thì
+\[
+\End_R(V)\;\cong\;\bigoplus_{i=1}^r M_{1}(K)\;\cong\;K^{\oplus r},
+\]
+rõ ràng giao hoán.
+
+\smallskip
+\noindent\emph{($\Leftarrow$)} Ngược lại, giả sử $\End_R(V)$ giao hoán. Từ đẳng cấu trên,
+$\End_R(V)$ là tổng trực tiếp của các đại số ma trận $M_{m_i}(K)$. Nhưng $M_{m}(K)$ giao hoán
+khi và chỉ khi $m=1$. Do đó mọi $m_i$ đều bằng $1$, nên $V \cong \bigoplus_{i=1}^r V_i$
+là phân tích không bội.
+
+\smallskip
+Kết luận: $\End_R(V)$ giao hoán $\Longleftrightarrow$ mọi $m_i=1 \Longleftrightarrow V$ có phân tích không bội.
+\end{proof}
+
+\begin{problem}[Bài~20]
+Giả sử $K$ là trường đóng đại số.
+Nếu $V$ và $W$ là các $R$-module hữu hạn chiều khả phân hoàn toàn sao cho
+\[
+\dim_K \End_R(V) \;=\; \dim_K \Hom_R(V,W) \;=\; \dim_K \End_R(W),
+\]
+thì $V \cong W$.%
+
+\end{problem}
+
+\begin{proof}
+Vì $V,W$ khả phân hoàn toàn hữu hạn chiều, tồn tại phân rã (như (1.6))
+\[
+V \;\cong\; \bigoplus_{i=1}^r V_i^{\oplus m_i},
+\qquad
+W \;\cong\; \bigoplus_{i=1}^r V_i^{\oplus n_i},
+\]
+trong đó $V_1,\dots,V_r$ là các mô-đun đơn đôi một không đẳng cấu, và (nếu cần)
+ta cho phép một vài $m_i$ hoặc $n_i$ bằng $0$ để hai phân rã dùng cùng hệ $V_i$.%
+
+
+Khi $K$ đóng đại số, Bổ đề Schur cho $\End_R(V_i)\cong K$ và không có đồng cấu
+giữa $V_i$ và $V_j$ với $i\ne j$. Khi đó
+\[
+\End_R(V)\;\cong\; \bigoplus_{i=1}^r M_{m_i}(K),
+\qquad
+\End_R(W)\;\cong\; \bigoplus_{i=1}^r M_{n_i}(K),
+\]
+nên
+\[
+\dim_K \End_R(V) \;=\; \sum_{i=1}^r m_i^2,
+\qquad
+\dim_K \End_R(W) \;=\; \sum_{i=1}^r n_i^2. 
+\]
+
+
+Mặt khác,
+\[
+\Hom_R(V,W)
+\;\cong\;
+\bigoplus_{i=1}^r \Hom_R\!\bigl(V_i^{\oplus m_i},\, V_i^{\oplus n_i}\bigr)
+\;\cong\;
+\bigoplus_{i=1}^r M_{n_i\times m_i}(K),
+\]
+suy ra
+\[
+\dim_K \Hom_R(V,W) \;=\; \sum_{i=1}^r m_i n_i.
+\]
+
+
+Theo giả thiết,
+\[
+\sum_{i=1}^r m_i^2 \;=\; \sum_{i=1}^r m_i n_i \;=\; \sum_{i=1}^r n_i^2.
+\]
+Khi đó
+\[
+\sum_{i=1}^r (m_i - n_i)^2
+\;=\;
+\sum m_i^2 - 2\sum m_i n_i + \sum n_i^2
+\;=\; 0,
+\]
+nên $m_i = n_i$ với mọi $i$.
+
+Vì các số bội trùng nhau, từ tiêu chuẩn đẳng cấu cho mô-đun semisimple
+suy ra $V \cong W$.%
+\footnote{Xem thêm tiêu chuẩn $V\cong W \iff (m_i)=(n_i)$:
+\textup{}}
+\end{proof}
+
+\begin{problem}[Bài~21]
+Hai $R$-module $V$ và $W$, có các phân rã
+\[
+V \;\cong\; \bigoplus_{i=1}^r V_i^{\oplus m_i},
+\qquad
+W \;\cong\; \bigoplus_{i=1}^r V_i^{\oplus n_i},
+\]
+trong đó $V_1,\dots,V_r$ là các mô-đun đơn đôi một không đẳng cấu (ký hiệu như trong (1.6)),
+là đẳng cấu khi và chỉ khi $m_i=n_i$ với mọi $i=1,\dots,r$.%
+
+\end{problem}
+
+\begin{proof}
+\emph{($\Rightarrow$)} Giả sử $V \cong W$. Với mỗi $i$, áp dụng Bài~11 cho mô-đun đơn $V_i$ và mô-đun khả phân hoàn toàn $V$ (tương ứng $W$) ta có
+\[
+\dim_K \Hom_R(V_i,V) \;=\; m_i, 
+\qquad
+\dim_K \Hom_R(V_i,W) \;=\; n_i,
+\]
+trong đó số chiều bằng đúng số bội của $V_i$ trong mô-đun kia.%
+\footnote{Bài~11: \(\dim_K\Hom_R(V,W)\) bằng số bội của \(V\) trong \(W\). \textup{}}
+Từ $V \cong W$ suy ra
+\(\dim_K \Hom_R(V_i,V)=\dim_K \Hom_R(V_i,W)\), nên \(m_i=n_i\) với mọi \(i\).
+
+\smallskip
+\emph{($\Leftarrow$)} Ngược lại, nếu \(m_i=n_i\) với mọi \(i\), thì
+\[
+V \;\cong\; \bigoplus_{i=1}^r V_i^{\oplus m_i}
+\;\cong\; \bigoplus_{i=1}^r V_i^{\oplus n_i}
+\;\cong\; W,
+\]
+trong đó đẳng cấu ở giữa thu được bằng cách ghép các đồng cấu đồng nhất trên từng khối \(V_i\) lặp lại \(m_i=n_i\) lần. (Về mặt tuyến tính, ta chọn một đẳng cấu \(K^{m_i}\!\to K^{n_i}\) cho mỗi \(i\) rồi kéo theo đẳng cấu \(V_i^{\oplus m_i}\!\to V_i^{\oplus n_i}\); ghép các khối lại cho ta một đẳng cấu \(V\to W\).)
+
+Kết luận: \(V \cong W \iff (m_i)_{i=1}^r=(n_i)_{i=1}^r\).
+\end{proof}
+
+\begin{problem}[Bài~22]
+Giả sử $K$ là trường đóng đại số. Nếu $V_1,\dots,V_r$ là các $R$-module đơn đôi một không đẳng cấu và
+\[
+V \;=\; V_1 \oplus \cdots \oplus V_r,
+\]
+thì mọi không gian con bất biến (tức $R$-module con) của $V$ đều có dạng $V_{i_1}\oplus\cdots\oplus V_{i_k}$ với một tập con $\{i_1,\dots,i_k\}\subset\{1,\dots,r\}$. Ngược lại, nếu $n\ge 2$ thì $V^{\oplus n}$ có vô số không gian con bất biến khi $K$ là vô hạn.%
+\footnote{Phát biểu bài tập: \textup{}}
+\end{problem}
+
+\begin{proof}
+\textbf{Phần 1: Nếu $V=\bigoplus_{i=1}^r V_i$ (không bội) thì mọi $R$-module con là tổng các $V_i$.}
+
+Ta chứng minh bằng quy nạp theo $r$. Trường hợp $r=1$ là hiển nhiên vì $V_1$ đơn: mô-đun con chỉ có $0$ hoặc $V_1$.
+
+Giả sử mệnh đề đúng với $r-1$ khối và xét $V = (V_1\oplus\cdots\oplus V_{r-1}) \oplus V_r$. Gọi $W\le V$ là mô-đun con bất kỳ. Xét phép chiếu $R$-tuyến tính
+\[
+\pi_r : V \longrightarrow V_r.
+\]
+Khi đó $\pi_r(W)\le V_r$ nên hoặc $\pi_r(W)=0$ hoặc $\pi_r(W)=V_r$ vì $V_r$ đơn.
+
+\emph{Trường hợp 1:} $\pi_r(W)=0$. Khi đó mọi phần tử $w\in W$ có tọa độ theo $V_r$ bằng $0$, do vậy $W\subset V_1\oplus\cdots\oplus V_{r-1}$. Áp dụng giả thiết quy nạp cho $W$ như mô-đun con của $\bigoplus_{i=1}^{r-1}V_i$, suy ra $W$ là tổng trực tiếp của một số $V_i$ với $i<r$.
+
+\emph{Trường hợp 2:} $\pi_r(W)=V_r$. Khi đó có dãy ngắn chính xác
+\[
+0 \to \ker(\pi_r|_W) \longrightarrow W \xrightarrow{\ \pi_r|_W\ } V_r \to 0.
+\]
+Do $V$ (và do đó mọi mô-đun con của $V$) là khả phân hoàn toàn, dãy trên tách, nên
+\[
+W \;\cong\; \ker(\pi_r|_W) \oplus V_r.
+\]
+Mà $\ker(\pi_r|_W)\subset \ker \pi_r = V_1\oplus\cdots\oplus V_{r-1}$, nên áp dụng quy nạp cho $\ker(\pi_r|_W)$ ta được nó là tổng trực tiếp của một số $V_i$ với $i<r$. Suy ra $W$ là tổng trực tiếp của $V_r$ và một số $V_i$ với $i<r$, như phải chứng minh.
+
+Kết hợp hai trường hợp, mọi $W\le V$ có dạng $V_{i_1}\oplus\cdots\oplus V_{i_k}$.
+
+\medskip
+\textbf{Phần 2: Nếu $n\ge 2$ và $K$ vô hạn thì $V^{\oplus n}$ có vô số mô-đun con.}
+
+Chỉ cần xét $n=2$ (trường hợp $n>2$ suy ra ngay vì $V^{\oplus 2}$ là mô-đun con trực tiếp của $V^{\oplus n}$).
+Chọn một chỉ số $i$ bất kỳ, xét mô-đun con $V_i\oplus V_i \subset V^{\oplus 2}$. Vì $V_i$ đơn và $K$ đóng đại số, theo Bổ đề Schur ta có $\End_R(V_i)\cong K$. Khi đó các mô-đun con của $V_i\oplus V_i$ tương ứng với các đường thẳng con của $K^2$ qua $0$ (cụ thể là các \emph{đồ thị} của các tự đồng cấu $K$-vô hướng trên $V_i$).
+
+Với mỗi $\lambda\in K$, đặt
+\[
+S_\lambda \;=\; \{(v,\ \lambda v):\ v\in V_i\} \;\subset\; V_i\oplus V_i.
+\]
+Dễ thấy $S_\lambda$ là mô-đun con (ổn định bởi tác động của $R$), và nếu $\lambda\neq\mu$ thì $S_\lambda\neq S_\mu$ (vì $(v,\lambda v)=(w,\mu w)\neq 0$ kéo theo $\lambda=\mu$). Khi $K$ vô hạn, họ $\{S_\lambda\}_{\lambda\in K}$ là vô hạn, suy ra $V^{\oplus 2}$ (và do đó $V^{\oplus n}$ với $n\ge 2$) có vô số mô-đun con.
+
+\medskip
+Kết luận hai phần như bài yêu cầu.
+\end{proof}
+
+\begin{problem}[Bài~1.2.9]
+Nếu $K$ là trường đóng đại số và $G$ là nhóm abelian, thì mọi biểu diễn đơn hữu hạn chiều
+$\rho:G\to\GL(V)$ (tức $V$ là $R$-module đơn với $R=K[G]$) đều có số chiều bằng $1$.
+\end{problem}
+
+\begin{proof}[Chứng minh dùng gợi ý (tam giác hoá đồng thời)]
+Vì $G$ abelian nên các ma trận $\rho(g)$ \emph{đôi một giao hoà}:
+$\rho(g)\rho(h)=\rho(h)\rho(g)$ với mọi $g,h\in G$.
+Bộ các toán tử giao hoà trên một trường đóng đại số có thể
+\emph{tam giác hoá đồng thời}: tồn tại một cơ sở của $V$ mà theo đó
+mọi $\rho(g)$ đều ở dạng tam giác trên.
+
+Suy ra tồn tại một \emph{vectơ riêng chung} $0\neq v\in V$ sao cho
+$\rho(g)v=\lambda(g)\,v$ với mọi $g\in G$ và một số vô hướng $\lambda(g)\in K$.
+Khi đó không gian con $K v$ là bất biến dưới mọi $\rho(g)$, tức là một
+$G$-mô-đun con khác $\{0\}$ của $V$. Vì $V$ là \emph{đơn}, nên $V=K v$.
+Do đó $\dim_K V=1$.
+\end{proof}
+
+\begin{proof}[Chứng minh khác (bằng không gian riêng bất biến)]
+Chọn $g_0\in G$. Vì $K$ đóng đại số, $\rho(g_0)$ có trị riêng $\lambda\in K$
+với không gian riêng $E_\lambda(\rho(g_0))\neq\{0\}$. Với mọi $h\in G$,
+do $\rho(h)$ giao hoà với $\rho(g_0)$ nên
+\[
+\rho(g_0)\bigl(\rho(h)w\bigr)
+=\rho(h)\bigl(\rho(g_0)w\bigr)
+=\rho(h)(\lambda w)
+=\lambda\,\rho(h)w,
+\quad \forall\,w\in E_\lambda(\rho(g_0)).
+\]
+Do đó $E_\lambda(\rho(g_0))$ là mô-đun con bất biến của $V$.
+Vì $V$ đơn nên $V=E_\lambda(\rho(g_0))$, nghĩa là $\rho(g_0)$ tác động
+bằng \emph{vô hướng} trên toàn $V$. Lặp lại lập luận cho mọi $g\in G$,
+ta thấy mọi $\rho(g)$ đều là vô hướng trên $V$; hệ quả là \emph{mọi}
+không gian con khác $\{0\}$ của $V$ đều bất biến. Tính đơn của $V$
+bởi vậy buộc $\dim_K V=1$.
+\end{proof}
+
+
+\begin{problem}[Bài~4]
+Giả sử $A$ là một ma trận với các phần tử trong một trường đóng đại số $K$.
+Giả sử $A^{\,n}=I$ với một số nguyên dương $n$ không chia hết cho đặc số của $K$.
+Sử dụng định lý Maschke và Bài tập~1.2.9 để chứng minh rằng $A$ chéo hoá được.
+\end{problem}
+
+\begin{proof}
+Xét không gian vectơ $V=K^m$ (với $m=\dim_K V$) và nhóm cyclic $G=\langle g\rangle\cong \mathbb{Z}/n\mathbb{Z}$.
+Điều kiện $A^{\,n}=I$ cho phép định nghĩa một biểu diễn
+\[
+\rho: G \longrightarrow \GL(V),\qquad \rho(g)=A.
+\]
+Do $\operatorname{char}K \nmid n$, theo \emph{định lý Maschke} mọi biểu diễn hữu hạn chiều của $G$
+là khả quy hoàn toàn (tức phân rã thành tổng trực tiếp các mô-đun con đơn).%
+\footnote{Định lý Maschke trong tài liệu đính kèm. \textup{:contentReference[oaicite:0]{index=0}}}
+Mặt khác $G$ là abelian, nên theo Bài tập~1.2.9, mọi biểu diễn đơn của $G$ trên trường đóng đại số $K$
+đều có \emph{số chiều bằng $1$}.
+Suy ra $V$ phân rã thành tổng trực tiếp các mô-đun con bất biến $1$-chiều dưới tác động của $G$:
+\[
+V \;\cong\; \bigoplus_{i=1}^r K v_i,\qquad \rho(g)v_i=\lambda_i v_i \ \ (0\ne v_i\in V,\ \lambda_i\in K).
+\]
+Vì $\rho(g)=A$, ta có $A v_i=\lambda_i v_i$ với mỗi $i$, tức $v_1,\dots,v_r$ là hệ các vectơ riêng của $A$.
+Chọn cơ sở gồm các $v_i$, ma trận của $A$ theo cơ sở này là chéo (đường chéo là các $\lambda_i$).
+Do đó $A$ chéo hoá được.
+\end{proof}
+
+
+\section{Định lý Maschke}
+
+\begin{problem}[Bài tập 1 — Trường hợp thất bại của Định lý Maschke]
+Chứng minh rằng nếu đặc trưng của trường $K$ là một ước của cấp của nhóm $G$, 
+thì tồn tại một $K[G]$-mô đun không khả phân hoàn toàn.
+\end{problem}
+
+\begin{proof}
+Đây chính là hướng “ngược lại” của Định lý Maschke:  
+nếu $\operatorname{char}(K)$ chia $|G|$, thì không phải mọi $K[G]$-mô đun đều khả phân hoàn toàn.
+
+\medskip
+\textbf{Bước 1.}  
+Gọi $n = |G|$, và giả sử $\operatorname{char}(K)$ chia $n$, nghĩa là tồn tại $p = \operatorname{char}(K)$ sao cho $p\mid n$.
+
+\medskip
+\textbf{Bước 2.}  
+Xét mô đun tả chính quy $V = K[G]$, tức là $V$ có cơ sở $\{e_g\}_{g\in G}$ và tác động của nhóm được cho bởi
+\[
+h\cdot e_g = e_{hg}, \qquad h,g \in G.
+\]
+Ta định nghĩa một mô đun con $W \subset V$ như sau:
+\[
+W := \Bigl\{\, \sum_{g\in G} a_g e_g \in K[G] \;\Big|\; \sum_{g\in G} a_g = 0 \,\Bigr\}.
+\]
+Đây là không gian các phần tử có tổng hệ số bằng $0$. 
+Rõ ràng $W$ là một mô đun con bất biến, vì tác động của $G$ chỉ hoán vị các cơ sở $e_g$,
+nên tổng các hệ số vẫn bằng $0$ sau khi nhân với bất kỳ $h\in G$.
+
+\medskip
+\textbf{Bước 3.}  
+Ta có dãy ngắn chính xác:
+\[
+0 \longrightarrow W \longrightarrow V \xrightarrow{\;\;\varepsilon\;\;} K \longrightarrow 0,
+\]
+trong đó $\varepsilon$ là đồng cấu mô đun $K[G]\to K$ gửi $\sum_{g\in G} a_g e_g \mapsto \sum_{g\in G} a_g$.
+Không gian $W = \ker(\varepsilon)$ là mô đun con bất biến như đã thấy.
+Hơn nữa, $K$ được coi là mô đun tầm thường (vì $g\cdot 1 = 1$ với mọi $g$).
+
+\medskip
+\textbf{Bước 4.}  
+Giả sử dãy này tách, tức là tồn tại mô đun con bất biến $U\subseteq V$ sao cho
+\[
+V = W \oplus U,
+\]
+với $U \cong K$ (mô đun tầm thường).
+Khi đó phải có phần tử $v = \sum_{g\in G} a_g e_g \in V$ sao cho $U = Kv$ và $g\cdot v = v$ với mọi $g\in G$,
+và $\varepsilon(v)=1$ (vì $V=W\oplus U$).
+
+Điều kiện $g\cdot v = v$ cho mọi $g$ nghĩa là tất cả các hệ số $a_g$ bằng nhau:
+$a_g = a_h =: c$ với mọi $g,h$.  
+Khi đó $v = c\sum_{g\in G} e_g$.
+Ta có $\varepsilon(v) = c|G| = c n$.
+
+Muốn $\varepsilon(v)=1$, cần $c = 1/n$ trong $K$.
+Nhưng nếu $\operatorname{char}(K)$ chia $n$, thì $n=0$ trong $K$,
+và phần tử $1/n$ không tồn tại.  
+Do đó không tồn tại phần tử $v$ như vậy.
+
+\medskip
+\textbf{Bước 5.}  
+Kết luận: dãy ngắn chính xác ở Bước 3 không tách, 
+tức là $V=K[G]$ không khả phân hoàn toàn.
+Vì thế, tồn tại $K[G]$-mô đun không khả phân hoàn toàn khi $\operatorname{char}(K)\mid |G|$.
+
+\end{proof}
+
+\begin{remark}
+Ví dụ này chính là ví dụ kinh điển minh hoạ cho \emph{sự thất bại của Định lý Maschke}.  
+Nó cho thấy điều kiện $\operatorname{char}(K)\nmid |G|$ là cần thiết để mọi $K[G]$-mô đun đều khả phân hoàn toàn.
+Trong trường hợp $\operatorname{char}(K)\mid |G|$, 
+phần tử trung bình $\displaystyle \frac{1}{|G|}\sum_{g\in G}g$ không tồn tại trong $K[G]$,
+và do đó không thể dựng được phép chiếu $G$-tuyến tính để tách dãy ngắn như trong chứng minh của định lý.
+\end{remark}
+\begin{theorem}[Định lý Maschke]\label{thm:Maschke}
+Giả sử $\operatorname{char}(K)$ \emph{không} chia $|G|$. 
+Cho $(\rho,V)$ là một $K$-biểu diễn của nhóm $G$ (tức $V$ là $K[G]$-mô đun). 
+Khi đó với mọi không gian con bất biến $W\subseteq V$ đều tồn tại một phần bù \emph{bất biến} $U\subseteq V$ sao cho
+\[
+V \;=\; W \oplus U,\qquad g\cdot U \subseteq U\ \text{ với mọi } g\in G.
+\]
+Hệ quả: mọi $K[G]$-mô đun hữu hạn chiều là khả phân hoàn toàn.
+\end{theorem}
+
+\begin{proof}
+\textbf{Bước 1: Phần bù tuyến tính $\Longleftrightarrow$ phép chiếu.}
+Gọi $i:W\hookrightarrow V$ là phép nhúng. 
+Chọn \emph{bất kỳ} phần bù tuyến tính $U$ của $W$ trong $V$ (không cần bất biến): $V=W\oplus U$. 
+Tồn tại duy nhất một phép chiếu tuyến tính (theo $K$)
+\[
+P:V\longrightarrow W,\qquad 
+P|_W=\operatorname{id}_W,\quad P|_U=0.
+\]
+Khi đó $P$ thỏa $P^2=P$ và $\operatorname{Im}P=W$, $\ker P=U$.
+
+\medskip
+\textbf{Bước 2: Trung bình hoá để thu được phép chiếu $G$-tuyến tính.}
+Vì $\operatorname{char}(K)\nmid |G|$, tồn tại phần tử $\dfrac{1}{|G|}\in K$. Đặt
+\[
+\Pi \;:=\; \frac{1}{|G|}\sum_{g\in G} \rho(g)\, P \,\rho(g)^{-1}\ \in \End_K(V).
+\]
+Ta kiểm tra ba tính chất cơ bản.
+
+\emph{(i) $\Pi$ là $G$-tuyến tính.} Với $h\in G$,
+\[
+\rho(h)\,\Pi\,\rho(h)^{-1}
+= \frac{1}{|G|}\sum_{g\in G}\rho(hg)\,P\,\rho(hg)^{-1}
+= \frac{1}{|G|}\sum_{g'\in G}\rho(g')\,P\,\rho(g')^{-1}
+= \Pi,
+\]
+nên $\rho(h)\Pi=\Pi\rho(h)$, tức $\Pi$ là phép nội xạ $G$-tuyến tính (đồng cấu $K[G]$-mô đun).
+
+\emph{(ii) Ảnh của $\Pi$ bằng $W$.}
+Với $w\in W$, vì $W$ bất biến nên $\rho(g)^{-1}w\in W$ và $P(\rho(g)^{-1}w)=\rho(g)^{-1}w$. Do đó
+\[
+\Pi(w)=\frac{1}{|G|}\sum_{g\in G}\rho(g)\rho(g)^{-1}w=w.
+\]
+Suy ra $W\subseteq \operatorname{Im}\Pi$. Mặt khác, với $v\in V$ và mọi $g$, 
+$P\rho(g)^{-1}v\in W$ nên $\rho(g)P\rho(g)^{-1}v\in W$; vì $W$ là không gian con, trung bình của chúng vẫn nằm trong $W$. Do đó $\operatorname{Im}\Pi\subseteq W$. Suy ra $\operatorname{Im}\Pi=W$.
+
+\emph{(iii) $\Pi$ là phép chiếu: $\Pi^2=\Pi$.}
+Từ (i) suy ra $\Pi$ giao hoán với mọi $\rho(g)$ và do đó giao hoán với từng hạng $\rho(g)P\rho(g)^{-1}$ trong tổng. Vì $P^2=P$, tính giao hoán cho phép tính:
+\[
+\Pi^2
+= \frac{1}{|G|^2}\sum_{g,h}\rho(g)P\rho(g)^{-1}\rho(h)P\rho(h)^{-1}
+= \frac{1}{|G|^2}\sum_{g,h}\rho(gh)\,P^2\,\rho(gh)^{-1}
+= \frac{1}{|G|}\sum_{t\in G}\rho(t)P\rho(t)^{-1}
+= \Pi.
+\]
+Vì vậy $\Pi$ là phép chiếu $G$-tuyến tính lên $W$.
+
+\medskip
+\textbf{Bước 3: Lấy phần bù bất biến.}
+Đặt $U':=\ker \Pi$. Từ $\Pi$ là $G$-tuyến tính suy ra $U'$ bất biến.
+Hơn nữa, vì $\Pi$ là phép chiếu với $\operatorname{Im}\Pi=W$, ta có phân rã trực tiếp
+\[
+V \;=\; \operatorname{Im}\Pi \;\oplus\; \ker\Pi \;=\; W \oplus U',
+\]
+trong đó $U'$ là phần bù bất biến mong muốn.
+
+\medskip
+Kết luận: với mọi $W$ bất biến, tồn tại phần bù bất biến $U'$. 
+Do đó mọi dãy ngắn chính xác của $K[G]$-mô đun hữu hạn chiều đều tách, 
+và $V$ là tổng trực tiếp của các mô đun con đơn. Nghĩa là $V$ khả phân hoàn toàn.
+\end{proof}
+
+\begin{remark}[Dạng phép chiếu tách dãy]
+Với dãy ngắn chính xác $0\to W \xrightarrow{i} V \xrightarrow{\pi} Q \to 0$ trong $\mathrm{Mod}_{K[G]}$, 
+chọn bất kỳ bồi hoàn tuyến tính $s:Q\to V$ (không cần bất biến), rồi trung bình hoá
+\[
+S(q)\;:=\;\frac{1}{|G|}\sum_{g\in G} \rho(g)\,s\!\bigl(\pi(\rho(g)^{-1}q)\bigr).
+\]
+Khi đó $S$ là bồi hoàn $G$-tuyến tính của $\pi$, và $V \cong W \oplus Q$ như $K[G]$-mô đun. 
+Đây là phiên bản “trung bình hoá” tương đương với phép chiếu ở trên.
+\end{remark}
+\begin{lemma}[Bổ đề 3 — Phép chiếu song song theo phần bù tuyến tính]\label{lem:projection}
+Cho $V$ là một $K$-không gian vectơ, và $W, U$ là hai không gian con của $V$ thỏa mãn
+\[
+V = W \oplus U.
+\]
+Khi đó, với mỗi $v \in V$, tồn tại duy nhất phần tử $P(v) \in W$ sao cho
+\[
+v - P(v) \in U.
+\]
+Hơn nữa, quy tắc ánh xạ $v \mapsto P(v)$ là một tự đồng cấu tuyến tính của $V$, 
+được gọi là \emph{phép chiếu song song lên $W$ theo $U$}.
+\end{lemma}
+
+\begin{proof}
+\textbf{(1) Tồn tại và duy nhất phần tử $P(v)$.}
+
+Do $V = W \oplus U$, mọi $v \in V$ có thể được viết duy nhất dưới dạng
+\[
+v = w + u, \quad \text{với } w \in W,\, u \in U.
+\]
+Khi đó, ta định nghĩa $P(v) := w$. 
+Từ biểu diễn duy nhất này, $w$ là duy nhất, nên $P(v)$ được xác định duy nhất.
+
+Rõ ràng $v - P(v) = v - w = u \in U$, 
+và nếu tồn tại $w' \in W$ khác $w$ mà cũng thỏa $v - w' \in U$ thì
+\[
+(w - w') = (v - w') - (v - w) \in U,
+\]
+nhưng $w - w' \in W$, nên $w - w' \in W \cap U = \{0\}$, 
+tức là $w' = w$. Do đó $P(v)$ duy nhất.
+
+\medskip
+\textbf{(2) Tuyến tính của $P$.}
+
+Với mọi $v_1,v_2\in V$ và $\lambda\in K$, ta có
+\[
+P(v_1+v_2)=w_1+w_2=P(v_1)+P(v_2),\quad
+P(\lambda v_1)=\lambda w_1 = \lambda P(v_1),
+\]
+vì biểu diễn $v=w+u$ là tuyến tính theo từng toạ độ khi chiếu lên $W$ và $U$. 
+Do đó $P$ là ánh xạ tuyến tính.
+
+\medskip
+\textbf{(3) Tính chất đặc trưng của phép chiếu.}
+
+Vì $V=W\oplus U$, nên $\operatorname{Im}P=W$ và $\ker P=U$.
+Hơn nữa,
+\[
+P^2(v)=P(P(v))=P(w)=w=P(v),
+\]
+nên $P^2=P$. 
+Đây là đặc trưng của mọi phép chiếu song song tuyến tính.
+
+\medskip
+\textbf{(4) Tổng kết.}
+Ta đã xây dựng được một phép chiếu tuyến tính $P:V\to W$ thỏa:
+\[
+P^2=P,\qquad \operatorname{Im}P=W,\qquad \ker P=U,
+\]
+và với mọi $v\in V$, $v-P(v)\in U$.
+Do đó $P$ là phép chiếu song song lên $W$ theo $U$ như cần chứng minh.
+\end{proof}
+
+\begin{remark}
+Khi $V=W\oplus U$, ngoài phép chiếu $P$ lên $W$ theo $U$, ta còn có phép chiếu bù $Q:=I-P$ lên $U$ theo $W$.  
+Hai phép chiếu này thỏa $P+Q=I$, $PQ=QP=0$, 
+và $\operatorname{Im}P=W$, $\operatorname{Im}Q=U$.
+Các phép chiếu song song này chính là công cụ trung tâm trong chứng minh định lý Maschke:
+ta “trung bình hóa” phép chiếu $P$ để biến nó thành phép chiếu $G$-tuyến tính.
+\end{remark}
+\begin{proposition}[Mệnh đề 4 — Tự đồng cấu lũy đẳng và phép chiếu song song]\label{prop:idempotent}
+Một phép chiếu song song là một tự đồng cấu \emph{lũy đẳng} của không gian vectơ.  
+Ngược lại, mọi tự đồng cấu lũy đẳng đều là một phép chiếu song song lên ảnh của nó theo nhân của nó.
+\end{proposition}
+
+\begin{proof}
+\textbf{Chiều thuận:}  
+Giả sử $P:V\to V$ là phép chiếu song song lên $W$ theo $U$, tức là $V=W\oplus U$, 
+$\operatorname{Im}P=W$ và $\ker P=U$.
+Theo Bổ đề~\ref{lem:projection}, với mọi $v\in V$, ta có $v = P(v) + (v - P(v))$ và $v - P(v)\in U$.  
+Khi đó:
+\[
+P^2(v) = P(P(v)) = P(v),
+\]
+vì $P(v)\in W$ và $P|_W = \mathrm{id}_W$.  
+Do đó $P^2 = P$, nghĩa là $P$ là một \emph{tự đồng cấu lũy đẳng} (idempotent endomorphism) của $V$.
+
+\medskip
+\textbf{Chiều đảo:}  
+Ngược lại, giả sử $T:V\to V$ là một tự đồng cấu lũy đẳng, nghĩa là $T^2 = T$.  
+Khi đó, đặt
+\[
+W := \operatorname{Im}T, \qquad U := \ker T.
+\]
+Ta chứng minh rằng $V = W \oplus U$ và $T$ là phép chiếu song song lên $W$ theo $U$.
+
+\emph{(i) Giao bằng không:}  
+Nếu $v\in W\cap U$, thì tồn tại $x$ sao cho $v=T(x)$ và đồng thời $T(v)=0$.  
+Áp dụng $T$ vào $v=T(x)$ ta có $T(v)=T^2(x)=T(x)=v$, do đó $v=0$.  
+Suy ra $W\cap U=\{0\}$.
+
+\emph{(ii) Tổng là toàn bộ $V$:}  
+Với mọi $v\in V$, ta viết
+\[
+v = T(v) + (v - T(v)).
+\]
+Ở đây $T(v)\in W$ và $T(v - T(v)) = T(v) - T^2(v)=0$, nên $(v - T(v))\in U$.  
+Do đó $V=W+U$. Kết hợp với (i), ta được $V=W\oplus U$.
+
+\emph{(iii) Tính chất phép chiếu:}  
+Từ định nghĩa $T(v)=T^2(v)$, với mọi $v\in V$, ta có $T^2=T$,
+$\operatorname{Im}T=W$, $\ker T=U$.  
+Vì vậy $T$ chính là phép chiếu song song lên $W$ theo $U$.
+
+\medskip
+\textbf{Kết luận:}
+Mọi phép chiếu song song đều là tự đồng cấu lũy đẳng, và mọi tự đồng cấu lũy đẳng đều xuất phát từ một phép chiếu song song.  
+Hai khái niệm này là tương đương trong phạm trù không gian vectơ tuyến tính hữu hạn chiều (và nói chung, trong mọi mô đun).
+\end{proof}
+
+\begin{remark}
+Tập hợp các tự đồng cấu lũy đẳng $\{\,T\in \End_K(V)\mid T^2=T\,\}$ tương ứng một-một với các phân rã trực tiếp $V = W\oplus U$.  
+Trong ứng dụng, đặc biệt trong chứng minh Định lý Maschke, ta lợi dụng điều này để “trung bình hóa” một phép chiếu $P$ (vốn là lũy đẳng) thành phép chiếu $G$-tuyến tính.
+\end{remark}
+
+\begin{lemma}[Bổ đề 5 — Phần bù bất biến và phép chiếu $G$-tuyến tính]\label{lem:invariant_projection}
+Cho $V$ là một biểu diễn $K$-tuyến tính của nhóm $G$, và $W$ là một không gian con bất biến của $V$.  
+Gọi $U$ là một phần bù tuyến tính của $W$ trong $V$ và $P$ là phép chiếu song song của $V$ lên $W$ theo $U$.  
+Khi đó:
+\[
+U \text{ là một không gian con bất biến của } V 
+\quad \Longleftrightarrow \quad
+P \text{ là một } G\text{-tự đồng cấu của } V.
+\]
+\end{lemma}
+
+\begin{proof}
+Ta cần chứng minh hai chiều tương đương.
+
+\medskip
+\textbf{(1) Chiều thuận: Nếu $U$ là bất biến, thì $P$ là $G$-tuyến tính.}
+
+Giả sử $U$ là một không gian con bất biến, tức là
+\[
+\rho(g)(U)\subseteq U, \qquad \forall g\in G.
+\]
+Vì $W$ cũng là bất biến (theo giả thiết), ta có với mọi $g\in G$:
+\[
+\rho(g)(W)\subseteq W, \qquad \rho(g)(U)\subseteq U.
+\]
+Khi đó, biểu diễn $V=W\oplus U$ được bảo toàn bởi tác động của nhóm.
+
+Với mỗi $v\in V$, ta có thể viết duy nhất $v=w+u$ với $w\in W$, $u\in U$,
+và $P(v)=w$. Khi đó:
+\[
+\rho(g)\,P(v) = \rho(g)w,\qquad
+P\,\rho(g)(v) = P(\rho(g)w + \rho(g)u) = \rho(g)w,
+\]
+vì $\rho(g)w\in W$ và $\rho(g)u\in U$.
+Do đó $\rho(g)\,P(v)=P\,\rho(g)(v)$ với mọi $v\in V$, nên $\rho(g)P = P\rho(g)$, tức là $P$ là $G$-tuyến tính.
+
+\medskip
+\textbf{(2) Chiều đảo: Nếu $P$ là $G$-tuyến tính, thì $U$ là bất biến.}
+
+Giả sử $P$ là một $G$-tự đồng cấu của $V$, nghĩa là
+\[
+P\,\rho(g) = \rho(g)\,P, \qquad \forall g\in G.
+\]
+Ta sẽ chứng minh rằng $U=\ker P$ là bất biến.
+
+Lấy $u\in U$, tức là $P(u)=0$.  
+Với mọi $g\in G$, ta có
+\[
+P(\rho(g)u) = \rho(g)P(u) = \rho(g)\cdot 0 = 0.
+\]
+Suy ra $\rho(g)u \in \ker P = U$.  
+Như vậy $U$ là không gian con bất biến.
+
+\medskip
+\textbf{(3) Kết luận.}
+Hai chiều trên chứng minh rằng
+\[
+U \text{ bất biến } \Longleftrightarrow P \text{ là } G\text{-tuyến tính}.
+\]
+Điều này hoàn tất chứng minh bổ đề.
+\end{proof}
+
+\begin{remark}
+Bổ đề này đóng vai trò quan trọng trong chứng minh Định lý Maschke:  
+khi muốn tìm một phần bù \emph{bất biến} $U$ cho $W$, ta chỉ cần điều chỉnh phép chiếu $P$ (ban đầu không $G$-tuyến tính) để trở thành $G$-tuyến tính, ví dụ bằng cách “trung bình hoá”:
+\[
+\Pi \;=\; \frac{1}{|G|}\sum_{g\in G} \rho(g)\,P\,\rho(g)^{-1}.
+\]
+Khi $\operatorname{char}(K)\nmid |G|$, phép chiếu $\Pi$ thu được là $G$-tuyến tính, và do đó $\ker\Pi$ là phần bù bất biến của $W$ trong $V$.
+\end{remark}
+\begin{problem}[Bài tập 6 — Chứng minh định lý Maschke]\label{prob:Maschke}
+Gọi $U$ là một phần bù tuyến tính của $W$ trong $V$ và $P$ là phép chiếu song song của $V$ lên $W$ dọc theo $U$.  
+Định nghĩa tự đồng cấu $\overline{P}$ của $V$ bởi công thức trung bình cộng:
+\[
+\overline{P}
+\;=\;
+\frac{1}{|G|}
+\sum_{g\in G} \rho(g)\, P\, \rho(g)^{-1}.
+\]
+Giả thiết rằng $|G|$ không chia hết cho đặc số của trường $K$, để $\frac{1}{|G|}$ có nghĩa trong $K$.  
+Chứng minh các mệnh đề sau:
+
+\begin{enumerate}
+\item $\overline{P}$ là một $G$-tự đồng cấu của $V$.
+\item $\overline{P}$ là một tự đồng cấu lũy đẳng (idempotent) với không gian ảnh chính là $W$.
+\item Từ đó suy ra $\ker(\overline{P})$ là một phần bù bất biến của $W$ trong $V$.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+\textbf{(a) Chứng minh rằng $\overline{P}$ là $G$-tuyến tính.}
+
+Lấy $h\in G$. Ta tính:
+\[
+\rho(h)\,\overline{P}\,\rho(h)^{-1}
+= \frac{1}{|G|}\sum_{g\in G} \rho(h)\rho(g)P\rho(g)^{-1}\rho(h)^{-1}
+= \frac{1}{|G|}\sum_{g\in G} \rho(hg)P\rho(hg)^{-1}.
+\]
+Đặt $t = hg$. Khi $g$ chạy qua toàn bộ $G$, $t$ cũng chạy qua $G$.  
+Do đó
+\[
+\rho(h)\,\overline{P}\,\rho(h)^{-1}
+= \frac{1}{|G|}\sum_{t\in G} \rho(t)P\rho(t)^{-1}
+= \overline{P}.
+\]
+Suy ra $\rho(h)\,\overline{P} = \overline{P}\,\rho(h)$ với mọi $h\in G$, tức $\overline{P}$ là một $G$-tự đồng cấu của $V$.
+
+\medskip
+\textbf{(b) Chứng minh rằng $\overline{P}$ là lũy đẳng và có ảnh bằng $W$.}
+
+Vì $\overline{P}$ là trung bình của các tự đồng cấu $gPg^{-1}$, mà mỗi $gPg^{-1}$ đều là phép chiếu song song lên không gian $\rho(g)(W)$, ta chứng minh hai phần:
+
+\smallskip
+\emph{(i) Ảnh của $\overline{P}$ bằng $W$.}  
+Với $w\in W$, vì $W$ là bất biến nên $\rho(g)^{-1}w\in W$ và do $P|_W = \mathrm{id}_W$, ta có:
+\[
+\overline{P}(w)
+= \frac{1}{|G|}\sum_{g\in G} \rho(g) P \rho(g)^{-1}(w)
+= \frac{1}{|G|}\sum_{g\in G} \rho(g)\rho(g)^{-1}w
+= \frac{1}{|G|}\sum_{g\in G} w = w.
+\]
+Do đó $W\subseteq \operatorname{Im}\overline{P}$.  
+Ngược lại, mỗi hạng $\rho(g)P\rho(g)^{-1}(v)$ thuộc $\rho(g)(W)=W$ vì $W$ bất biến.  
+Vì tổng của các phần tử trong $W$ vẫn thuộc $W$, ta có $\operatorname{Im}\overline{P}\subseteq W$.  
+Suy ra $\operatorname{Im}\overline{P}=W$.
+
+\smallskip
+\emph{(ii) $\overline{P}$ là lũy đẳng.}  
+Vì $\overline{P}$ giao hoán với mọi $\rho(g)$ (đã chứng minh ở phần (a)), 
+nên $\overline{P}$ cũng giao hoán với từng hạng trong tổng định nghĩa của nó:
+\[
+\overline{P}\,\rho(g)P\rho(g)^{-1}
+= \rho(g)\,\overline{P}P\rho(g)^{-1}
+= \rho(g)P\rho(g)^{-1}\overline{P},
+\]
+vì $P^2=P$. Khi đó:
+\begin{align*}
+\overline{P}^2 
+&= \frac{1}{|G|^2}\sum_{g,h\in G}\rho(g)P\rho(g)^{-1}\rho(h)P\rho(h)^{-1} \\
+&= \frac{1}{|G|^2}\sum_{g,h\in G}\rho(gh)P^2\rho(gh)^{-1} \\
+&= \frac{1}{|G|^2}\sum_{g,h\in G}\rho(gh)P\rho(gh)^{-1} \\
+&= \frac{1}{|G|}\sum_{t\in G}\rho(t)P\rho(t)^{-1} 
+= \overline{P}.
+\end{align*}
+Do đó $\overline{P}^2=\overline{P}$, tức $\overline{P}$ là một tự đồng cấu lũy đẳng.
+
+\medskip
+\textbf{(c) Suy ra sự tồn tại của phần bù bất biến.}
+
+Vì $\overline{P}$ là phép chiếu lũy đẳng với $\operatorname{Im}\overline{P}=W$, ta có:
+\[
+V = \operatorname{Im}\overline{P} \oplus \ker\overline{P}
+= W \oplus \ker\overline{P}.
+\]
+Hơn nữa, $\overline{P}$ là $G$-tuyến tính, nên nếu $v\in\ker\overline{P}$ và $g\in G$, ta có:
+\[
+\overline{P}(\rho(g)v) = \rho(g)\,\overline{P}(v) = 0,
+\]
+tức là $\rho(g)v\in\ker\overline{P}$.  
+Do đó $\ker\overline{P}$ là một không gian con bất biến.
+
+Kết luận: $\ker(\overline{P})$ là một phần bù bất biến của $W$ trong $V$.
+\end{proof}
+
+\begin{remark}
+Kết quả này chính là \emph{Định lý Maschke}.  
+Điều kiện $\operatorname{char}(K)\nmid |G|$ là thiết yếu: nếu đặc trưng của $K$ chia $|G|$, thì trung bình $\frac{1}{|G|}\sum_{g\in G}\rho(g)P\rho(g)^{-1}$ không được định nghĩa, và ví dụ trong Bài tập~\ref{prob:Maschke} cho thấy mô đun có thể không khả phân hoàn toàn.
+\end{remark}
+
+%========================================
+% ĐỊNH LÝ 7: Tính khả phân hoàn toàn của các biểu diễn
+%========================================
+\begin{theorem}[Tính khả phân hoàn toàn của các biểu diễn (Định lý Maschke, dạng tương đương)]\label{thm:complete_reducibility}
+Giả sử đặc số của trường $K$ \emph{không} phải là một ước của cấp của nhóm $G$.  
+Khi đó, mọi biểu diễn $K$-tuyến tính của nhóm $G$ đều khả phân hoàn toàn;  
+tức là, với mọi biểu diễn $(\rho,V)$ của $G$, và mọi không gian con bất biến $W\subseteq V$, tồn tại một phần bù bất biến $U\subseteq V$ sao cho
+\[
+V = W \oplus U.
+\]
+\end{theorem}
+
+\begin{proof}
+Đây là hệ quả trực tiếp của \textbf{Định lý Maschke} đã chứng minh trong Bài tập~\ref{prob:Maschke}.  
+Thật vậy, điều kiện $\operatorname{char}(K)\nmid |G|$ cho phép định nghĩa phép chiếu trung bình
+\[
+\overline{P} = \frac{1}{|G|}\sum_{g\in G}\rho(g)P\rho(g)^{-1}
+\]
+với mọi phép chiếu tuyến tính $P$ lên $W$ theo một phần bù tuyến tính bất kỳ $U$.  
+Như đã chứng minh, $\overline{P}$ là phép chiếu $G$-tuyến tính có ảnh $W$, và $\ker\overline{P}$ là phần bù bất biến $U'$.  
+Do đó mọi biểu diễn đều phân rã thành tổng trực tiếp của các mô đun con bất biến — tức là biểu diễn khả phân hoàn toàn.
+
+Nói cách khác, $K[G]$ là một \emph{đại số bán đơn} (semisimple algebra) khi $\operatorname{char}(K)\nmid |G|$, và do đó mọi mô đun hữu hạn chiều trên $K[G]$ đều bán đơn.
+\end{proof}
+
+\begin{remark}
+Định lý này chính là dạng tổng quát hóa đại số của định lý Maschke cổ điển:  
+“Trong đặc trưng tốt, mọi biểu diễn của nhóm hữu hạn đều phân rã thành tổng trực tiếp các biểu diễn đơn.”  
+Điều này tương đương với việc vành nhóm $K[G]$ là đại số bán đơn (Maschke 1899), 
+và cơ sở cho toàn bộ lý thuyết biểu diễn tuyến tính cổ điển.
+\end{remark}
+
+
+%========================================
+% BÀI TẬP 8: Áp dụng định lý Maschke – Ma trận chéo hoá được
+%========================================
+\begin{problem}[Bài tập 8 — Áp dụng định lý Maschke: Ma trận chéo hoá được]\label{prob:Maschke_diagonal}
+Giả sử $A$ là một ma trận có các phần tử trong một trường đóng đại số $K$.  
+Giả sử tồn tại số nguyên $n>0$ sao cho $A^n = I$ (ma trận đơn vị), và $n$ không chia hết cho đặc số của $K$.  
+Sử dụng định lý Maschke, hãy chứng minh rằng $A$ là ma trận chéo hoá được.
+\end{problem}
+
+\begin{proof}
+\textbf{Bước 1.}  
+Điều kiện $A^n=I$ có nghĩa là các giá trị riêng của $A$ đều là \emph{nghiệm của phương trình $x^n=1$}.  
+Vì $K$ là trường đóng đại số và $\operatorname{char}(K)\nmid n$, 
+đa thức $x^n - 1$ tách thành tích của \emph{các nhân tử tuyến tính phân biệt}:
+\[
+x^n - 1 = \prod_{\zeta^n=1}(x-\zeta),
+\]
+với $\zeta$ là các căn bậc $n$ của đơn vị, và tất cả các nghiệm $\zeta$ đều khác nhau (do $n$ khả nghịch trong $K$).
+
+\textbf{Bước 2.}  
+Xét nhóm cyclic $G=\langle g\rangle$ có bậc $n$.  
+Đặt biểu diễn $\rho:G\to \GL(V)$ bằng $\rho(g)=A$ trên không gian vectơ $V=K^m$.  
+Khi đó $V$ trở thành một $K[G]$-mô đun hữu hạn chiều.
+
+Theo định lý Maschke, vì $\operatorname{char}(K)\nmid |G|=n$, 
+biểu diễn này là khả phân hoàn toàn, tức là $V$ phân rã thành tổng trực tiếp của các mô đun con đơn:
+\[
+V = V_1 \oplus V_2 \oplus \cdots \oplus V_r,
+\]
+mỗi $V_i$ là một mô đun con đơn của $K[G]$.
+
+\textbf{Bước 3.}  
+Các mô đun con đơn của $K[G]$ với $G$ cyclic được mô tả rất rõ ràng:  
+mỗi mô đun đơn một chiều được xác định bởi một đặc trưng (character) $\chi:G\to K^\times$,
+với $\chi(g)=\zeta$ là một căn bậc $n$ của đơn vị.  
+Trên $V_i$, tác động của $A=\rho(g)$ chỉ là phép nhân vô hướng bởi $\zeta_i$.  
+Như vậy, $A$ là khả chéo hóa: có một cơ sở mà trong đó ma trận $A$ là đường chéo với các giá trị riêng $\zeta_i$ (là các căn bậc $n$ của $1$).
+
+\textbf{Bước 4.}  
+Kết luận rằng $A$ chéo hóa được, với các giá trị riêng là các căn bậc $n$ của đơn vị trong $K$.
+
+\end{proof}
+
+\begin{remark}
+Kết quả này là một hệ quả quen thuộc của Định lý Maschke:  
+mọi biểu diễn hữu hạn chiều của một nhóm cyclic trong đặc trưng không chia bậc của nhóm đều là tổng trực tiếp của các biểu diễn một chiều,  
+và do đó mọi phần tử trong nhóm biểu diễn tương ứng đều khả chéo hoá.
+\end{remark}
+
+%========================================
+% ĐỊNH NGHĨA 9 — Đại số nửa đơn
+%========================================
+\begin{definition}[Đại số nửa đơn]\label{def:semisimple-algebra}
+Cho $R$ là một $K$-đại số hữu hạn chiều.  
+Ta nói rằng $R$ là một \emph{đại số nửa đơn} (semisimple algebra) nếu mọi $R$-mô đun hữu hạn chiều $M$ đều \emph{khả phân hoàn toàn},  
+tức là $M$ có thể viết được dưới dạng tổng trực tiếp của các mô đun con:
+\[
+M = M_1 \oplus M_2 \oplus \cdots \oplus M_r,
+\]
+trong đó mỗi $M_i$ là mô đun con của $M$ (không nhất thiết đơn).  
+
+Tương đương, $R$ là nửa đơn khi và chỉ khi mọi dãy ngắn chính xác của $R$-mô đun hữu hạn chiều đều tách:
+\[
+0 \to M' \longrightarrow M \longrightarrow M'' \to 0
+\quad\Rightarrow\quad
+M \cong M' \oplus M''.
+\]
+\end{definition}
+
+\begin{remark}
+Khái niệm \emph{đại số nửa đơn} trừu tượng hóa tính chất “khả phân hoàn toàn” từ lý thuyết biểu diễn nhóm.  
+Trong bối cảnh này, $R=K[G]$ là đại số nhóm, và mô đun $R$-mô đun chính là các biểu diễn $K$-tuyến tính của nhóm $G$.  
+Do đó, việc $R$ là nửa đơn tương đương với việc mọi biểu diễn của $G$ là khả phân hoàn toàn.
+\end{remark}
+
+
+%========================================
+% HỆ QUẢ 10 — Kết nối giữa đại số nửa đơn và định lý Maschke
+%========================================
+\begin{corollary}[Hệ quả 10 — Đại số nhóm là nửa đơn]\label{cor:semisimple-group-algebra}
+Với một nhóm hữu hạn $G$ và một trường $K$,  
+$K$-đại số nhóm $K[G]$ là \emph{đại số nửa đơn} khi và chỉ khi cấp của nhóm $G$ \emph{không chia hết cho đặc số của $K$},  
+tức là $\operatorname{char}(K)\nmid |G|$.
+\end{corollary}
+
+\begin{proof}
+\textbf{Chiều thuận.}  
+Nếu $\operatorname{char}(K)\nmid |G|$, Định lý Maschke cho ta rằng mọi biểu diễn $K$-tuyến tính hữu hạn chiều của $G$ đều khả phân hoàn toàn,  
+nghĩa là mọi $K[G]$-mô đun hữu hạn chiều đều tách thành tổng trực tiếp các mô đun con.  
+Do đó $K[G]$ là đại số nửa đơn theo Định nghĩa~\ref{def:semisimple-algebra}.
+
+\medskip
+\textbf{Chiều đảo.}  
+Ngược lại, giả sử $\operatorname{char}(K)\mid |G|$.  
+Theo Bài tập~\ref{prob:Maschke}, tồn tại mô đun $K[G]$ có một mô đun con bất biến $W$ không có phần bù bất biến.  
+Nói cách khác, tồn tại dãy ngắn chính xác không tách
+\[
+0 \to W \to K[G] \to K[G]/W \to 0,
+\]
+cho thấy $K[G]$ không nửa đơn.  
+
+\medskip
+\textbf{Kết luận.}  
+Như vậy, $K[G]$ là đại số nửa đơn $\iff \operatorname{char}(K)\nmid |G|$, 
+điều này chính là phát biểu đại số tổng quát của Định lý Maschke.
+\end{proof}
+
+\begin{remark}
+\leavevmode
+\begin{enumerate}
+\item Trong trường hợp đặc biệt $K=\mathbb{C}$, ta luôn có $\operatorname{char}(K)=0$,  
+nên mọi đại số nhóm hữu hạn $\mathbb{C}[G]$ đều nửa đơn, và mọi biểu diễn phức của nhóm hữu hạn đều khả phân hoàn toàn.
+\item Định lý cơ bản của \textsc{Wedderburn–Artin} khẳng định rằng mọi đại số nửa đơn hữu hạn chiều trên $K$ có dạng
+\[
+R \cong \bigoplus_{i=1}^r \operatorname{Mat}_{n_i}(D_i),
+\]
+với $D_i$ là các vành chia hữu hạn chiều trên $K$.  
+Trong trường hợp $R=K[G]$ với $\operatorname{char}(K)\nmid |G|$, 
+các $D_i$ thực ra là các trường mở rộng của $K$.
+\end{enumerate}
+\end{remark}
+
+\section{Tích tensor}
+%========================================
+% BÀI TẬP 1 — Tích tensor của hai K-không gian vectơ
+%========================================
+\begin{problem}[Tích tensor của hai $K$-không gian vectơ]
+Nhắc lại và chứng minh đầy đủ các mệnh đề cơ bản về tích tensor $V\otimes_K W$ của hai $K$-không gian vectơ $V,W$:
+\begin{enumerate}
+\item \textbf{Định nghĩa phổ dụng (tính chất phổ dụng) của tích tensor.}
+\item \textbf{Sự tồn tại và tính duy nhất (lên tới đẳng cấu duy nhất).}
+\item \textbf{Tích tensor của hai ánh xạ tuyến tính; hàm tử và tính tự nhiên.}
+\item \textbf{Các đẳng cấu chuẩn tắc: giao hoán, kết hợp, đơn vị.}
+\item \textbf{Tương thích với tổng trực tiếp hữu hạn.}
+\item \textbf{Cơ sở và số chiều: $\dim_K(V\otimes_K W)=\dim_K V\cdot \dim_K W$.}
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+\textbf{(1) Định nghĩa phổ dụng.}
+Một \emph{tích tensor} của $V$ và $W$ là một cặp $(T,\tau)$ gồm một $K$-không gian vectơ $T$
+và một ánh xạ song tuyến tính
+\[
+\tau:V\times W\longrightarrow T
+\]
+sao cho với mọi $K$-không gian vectơ $U$ và mọi ánh xạ song tuyến tính
+$b:V\times W\to U$, tồn tại duy nhất một ánh xạ tuyến tính
+\[
+\widetilde b:T\longrightarrow U
+\quad\text{thỏa}\quad
+\widetilde b\circ \tau=b.
+\]
+Tính chất này gọi là \emph{tính chất phổ dụng}. Khi tồn tại, $T$ được kí hiệu $V\otimes_K W$ 
+và $\tau(v,w)$ được kí hiệu $v\otimes w$.
+
+\medskip
+\textbf{(2) Tồn tại và duy nhất.}
+\emph{Tồn tại:} Lấy $F$ là không gian vectơ tự do sinh bởi tập $V\times W$ với kí hiệu phần tử sinh $[v,w]$.
+Xét $R\subset F$ là không gian con sinh bởi các quan hệ song tuyến tính:
+\begin{align*}
+[v_1+v_2,w]-[v_1,w]-[v_2,w],\quad
+[v,\;w_1+w_2]-[v,w_1]-[v,w_2],\quad
+[\lambda v,w]-\lambda[v,w],\quad
+[v,\lambda w]-\lambda[v,w],
+\end{align*}
+với mọi $v,v_1,v_2\in V$, $w,w_1,w_2\in W$, $\lambda\in K$.
+Đặt $T:=F/R$ và định nghĩa $\tau(v,w):=[v,w]\!\!\mod R$.
+Rõ ràng $\tau$ là song tuyến tính. Nếu $b:V\times W\to U$ là song tuyến tính, 
+thì ánh xạ từ tập sinh $V\times W$ gửi $[v,w]\mapsto b(v,w)$ kéo dài duy nhất thành một ánh xạ tuyến tính $F\to U$;
+vì $b$ tôn trọng các quan hệ nên $R$ đi vào hạt nhân, do đó cảm sinh một ánh xạ tuyến tính duy nhất 
+$\widetilde b:T=F/R\to U$ với $\widetilde b\circ \tau=b$.
+
+\emph{Duy nhất lên tới đẳng cấu:} Nếu $(T,\tau)$ và $(T',\tau')$ đều thỏa tính chất phổ dụng, 
+từ $b=\tau'$ suy ra tồn tại duy nhất $\phi:T\to T'$ với $\phi\circ \tau=\tau'$; 
+tương tự tồn tại $\psi:T'\to T$ với $\psi\circ \tau'=\tau$. 
+Khi đó $\psi\circ\phi$ (tương ứng $\phi\circ\psi$) là tự đồng cấu của $T$ (tương ứng của $T'$) 
+giữ cố định $\tau$ (tương ứng $\tau'$), nên là đồng nhất. Suy ra $\phi,\psi$ là đẳng cấu ngược nhau.
+
+\medskip
+\textbf{(3) Tích tensor của ánh xạ tuyến tính; tính hàm tử.}
+Cho các ánh xạ tuyến tính $f:V\to V'$ và $g:W\to W'$.
+Ánh xạ
+\[
+V\times W \longrightarrow V'\otimes W',\qquad (v,w)\longmapsto f(v)\otimes g(w)
+\]
+là song tuyến tính; bởi tính chất phổ dụng, tồn tại duy nhất ánh xạ tuyến tính
+\[
+f\otimes g:\; V\otimes W \longrightarrow V'\otimes W',\qquad
+(f\otimes g)(v\otimes w)=f(v)\otimes g(w).
+\]
+Dễ kiểm tra $({\rm id}_V\otimes {\rm id}_W)={\rm id}_{V\otimes W}$ và
+\[
+(f_2\circ f_1)\otimes (g_2\circ g_1)=(f_2\otimes g_2)\circ (f_1\otimes g_1).
+\]
+Vì vậy, phép gán $(V,W)\mapsto V\otimes W$, $(f,g)\mapsto f\otimes g$ là hàm tử đối xứng trong phạm trù các $K$-không gian vectơ.
+
+\medskip
+\textbf{(4) Các đẳng cấu chuẩn tắc (tự nhiên).}
+\begin{itemize}
+\item \emph{Giao hoán:} Định nghĩa
+$\tau_{V,W}:V\otimes W\to W\otimes V$ bởi $\tau_{V,W}(v\otimes w)=w\otimes v$.
+Ánh xạ này là đẳng cấu tự nhiên (nghịch đảo chính nó).
+
+\item \emph{Kết hợp:} Định nghĩa
+\[
+\alpha_{U,V,W}:(U\otimes V)\otimes W\longrightarrow U\otimes (V\otimes W),\qquad
+\alpha\big((u\otimes v)\otimes w\big)=u\otimes (v\otimes w).
+\]
+Tính chất phổ dụng đảm bảo $\alpha$ là đẳng cấu tự nhiên; nghịch đảo được cho bởi
+$u\otimes(v\otimes w)\mapsto (u\otimes v)\otimes w$.
+
+\item \emph{Đơn vị:} Với $K$ coi như $K$-không gian vectơ một chiều, đặt
+\[
+\lambda_V:K\otimes V\to V,\quad \lambda_V(a\otimes v)=av,
+\qquad
+\rho_V:V\otimes K\to V,\quad \rho_V(v\otimes a)=av.
+\]
+Cả hai là đẳng cấu tự nhiên, nghịch đảo lần lượt gửi $v\mapsto 1\otimes v$ và $v\mapsto v\otimes 1$.
+\end{itemize}
+Các đẳng cấu trên thoả các tiên đề chặt chẽ (coherence) quen thuộc: 
+tam giác và ngũ giác của Mac Lane.
+
+\medskip
+\textbf{(5) Tương thích với tổng trực tiếp hữu hạn.}
+Cho $V=\bigoplus_{i=1}^r V_i$. Xét song tuyến tính
+\[
+\bigoplus_{i=1}^r V_i \times W \longrightarrow \bigoplus_{i=1}^r (V_i\otimes W),\qquad
+\Big(\sum_i v_i,\; w\Big)\longmapsto \sum_i (v_i\otimes w).
+\]
+Theo tính chất phổ dụng, cảm sinh một tuyến tính
+\[
+\Phi:\; \Big(\bigoplus_{i=1}^r V_i\Big)\otimes W \longrightarrow \bigoplus_{i=1}^r (V_i\otimes W),
+\qquad
+\Phi\big((v_1,\dots,v_r)\otimes w\big)=\bigoplus_i (v_i\otimes w).
+\]
+Ngược lại, định nghĩa $\Psi$ trên từng toạ độ bởi
+$\Psi(v_i\otimes w)=(0,\dots,0,v_i,\dots,0)\otimes w$,
+rồi tuyến tính hoá để được
+\[
+\Psi:\; \bigoplus_{i=1}^r (V_i\otimes W)\longrightarrow \Big(\bigoplus_{i=1}^r V_i\Big)\otimes W.
+\]
+Dễ thấy $\Phi\circ\Psi=\mathrm{id}$ và $\Psi\circ\Phi=\mathrm{id}$, do đó
+\[
+\Big(\bigoplus_{i=1}^r V_i\Big)\otimes W \;\cong\; \bigoplus_{i=1}^r (V_i\otimes W).
+\]
+Tương tự, $V\otimes\big(\bigoplus_{j=1}^s W_j\big)\cong \bigoplus_{j=1}^s (V\otimes W_j)$.
+Các đẳng cấu này là \emph{tự nhiên} theo mọi biến.
+
+\medskip
+\textbf{(6) Cơ sở và số chiều.}
+Giả sử $\{v_1,\dots,v_m\}$ là cơ sở của $V$ và $\{w_1,\dots,w_n\}$ là cơ sở của $W$.
+\begin{itemize}
+\item \emph{Sinh ra:} Với $v=\sum_i a_i v_i$, $w=\sum_j b_j w_j$, ta có
+\[
+v\otimes w=\sum_{i,j} a_i b_j\, (v_i\otimes w_j),
+\]
+nên các phần tử $v_i\otimes w_j$ sinh $V\otimes W$.
+\item \emph{Độc lập tuyến tính:} Xét tuyến tính $b:V\times W\to K^{mn}$ gửi
+$b(v_i,w_j)=e_{(i,j)}$ (các vectơ cơ sở) và song tuyến tính hoá.
+Tính chất phổ dụng cho ánh xạ tuyến tính $\widetilde b:V\otimes W\to K^{mn}$ với
+$\widetilde b(v_i\otimes w_j)=e_{(i,j)}$. 
+Nếu $\sum_{i,j} c_{ij}(v_i\otimes w_j)=0$ thì áp dụng $\widetilde b$ được
+$\sum_{i,j} c_{ij}e_{(i,j)}=0$, suy ra $c_{ij}=0$. Do đó $\{v_i\otimes w_j\}$ độc lập.
+\end{itemize}
+Vậy $\{v_i\otimes w_j\}_{1\le i\le m,\,1\le j\le n}$ là cơ sở của $V\otimes W$, và
+\[
+\dim_K(V\otimes W)=mn=(\dim_K V)(\dim_K W).
+\qedhere\]
+\end{proof}
+
+%========================================
+% Hệ quả: Mô tả ánh xạ song tuyến tính qua tensor
+%========================================
+\begin{proposition}[Đồng cấu hoá song tuyến tính]\label{prop:bilinear-linear}
+Với mọi $K$-không gian vectơ $U$ có đẳng cấu tự nhiên
+\[
+\Hom_K(V\otimes W,\;U)\;\cong\;\Bil_K(V\times W,\;U),
+\]
+gửi $\Phi:V\otimes W\to U$ tới ánh xạ song tuyến tính $(v,w)\mapsto \Phi(v\otimes w)$,
+và nghịch đảo gửi $b$ tới $\widetilde b$ như trong tính chất phổ dụng.
+Các đẳng cấu này tự nhiên theo ba biến $V,W,U$.
+\end{proposition}
+
+%========================================
+% Một số đẳng cấu chuẩn khác (tuỳ chọn)
+%========================================
+\begin{remark}
+Các đẳng cấu tự nhiên sau thường được dùng:
+\[
+V^\ast\otimes W \;\cong\; \Hom_K(V,W),\qquad
+\Hom_K(V\otimes W,\,U)\;\cong\;\Hom_K\big(V,\Hom_K(W,U)\big),
+\]
+được cảm sinh từ \eqref{prop:bilinear-linear}. 
+Trong cơ sở hữu hạn, đẳng cấu đầu là $f\otimes w \mapsto (v\mapsto f(v)w)$.
+\end{remark}
+
+\begin{problem}[Bài tập 2]
+Giả sử $X,Y$ là hai tập hữu hạn. Với mọi tập $S$, kí hiệu $K[S]$ là $K$-không gian vectơ của các hàm $S\to K$
+(tức không gian vectơ tự do trên $S$). Hãy xây dựng một đẳng cấu
+\[
+\Phi:\;K[X]\otimes_K K[Y]\;\xrightarrow{\ \sim\ }\;K[X\times Y].
+\]
+\end{problem}
+
+\begin{proof}
+\textbf{Bước 1: Cơ sở chuẩn và kí hiệu.}
+Với $x\in X$ đặt $\delta_x\in K[X]$ là hàm đặc trưng của $\{x\}$:
+$\delta_x(x)=1$ và $\delta_x(x')=0$ nếu $x'\neq x$. Tương tự, với $y\in Y$, đặt
+$\delta_y\in K[Y]$.
+Tập $\{\delta_x\}_{x\in X}$ là một cơ sở của $K[X]$, và $\{\delta_y\}_{y\in Y}$ là cơ sở của $K[Y]$.
+Trên tích $X\times Y$, đặt $\delta_{(x,y)}$ là hàm đặc trưng của $\{(x,y)\}$; 
+$\{\delta_{(x,y)}\}_{(x,y)\in X\times Y}$ là cơ sở của $K[X\times Y]$.
+
+\medskip
+\textbf{Bước 2: Định nghĩa ánh xạ ứng viên.}
+Xét ánh xạ song tuyến tính
+\[
+b:X\times Y\longrightarrow K[X\times Y],\qquad
+b(x,y):=\delta_{(x,y)}.
+\]
+Bằng tuyến tính hoá theo tính chất phổ dụng của tích tensor, tồn tại duy nhất
+\[
+\Phi:K[X]\otimes K[Y]\longrightarrow K[X\times Y]
+\quad\text{thỏa}\quad
+\Phi(\delta_x\otimes \delta_y)=\delta_{(x,y)}.
+\]
+Với phần tử tổng quát $f=\sum_{x}a_x\delta_x\in K[X]$ và $g=\sum_{y}b_y\delta_y\in K[Y]$,
+ta có công thức hiển nhiên
+\[
+\Phi(f\otimes g)\;=\;\sum_{x\in X}\sum_{y\in Y} a_x\,b_y\,\delta_{(x,y)}.
+\]
+
+\medskip
+\textbf{Bước 3: Surjectivity.}
+Các phần tử $\delta_{(x,y)}$ sinh $K[X\times Y]$; mỗi $\delta_{(x,y)}$ là ảnh của
+$\delta_x\otimes \delta_y$ qua $\Phi$. Vì vậy $\Phi$ là toàn cấu.
+
+\medskip
+\textbf{Bước 4: Injectivity (đếm chiều).}
+Do $X,Y$ hữu hạn, 
+\[
+\dim_K\bigl(K[X]\otimes K[Y]\bigr)
+= \bigl(\dim_K K[X]\bigr)\cdot\bigl(\dim_K K[Y]\bigr)
+= |X|\cdot |Y|
+= \dim_K K[X\times Y].
+\]
+Ánh xạ tuyến tính toàn cấu giữa hai không gian cùng chiều là đẳng cấu, nên $\Phi$ khả nghịch.
+
+\medskip
+\textbf{Bước 5: Mô tả nghịch đảo (tường minh).}
+Định nghĩa $\Psi:K[X\times Y]\to K[X]\otimes K[Y]$ trên cơ sở bởi
+\[
+\Psi(\delta_{(x,y)}) := \delta_x\otimes \delta_y
+\qquad\text{và mở rộng tuyến tính.}
+\]
+Khi đó $\Psi\circ \Phi$ và $\Phi\circ \Psi$ đều là đồng nhất trên các cơ sở tương ứng,
+nên $\Psi=\Phi^{-1}$.
+
+\medskip
+\textbf{Kết luận.}
+$\Phi$ là đẳng cấu tự nhiên $K[X]\otimes K[Y]\xrightarrow{\sim}K[X\times Y]$ gửi
+$\delta_x\otimes\delta_y\mapsto \delta_{(x,y)}$.
+\end{proof}
+
+\begin{remark}[Tính tự nhiên]
+Đẳng cấu trên là tự nhiên theo cả hai biến: với mọi ánh xạ $u:X\to X'$ và $v:Y\to Y'$,
+sơ đồ
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	{\K[X]\otimes \K[Y]} \&\& {\K[X\times Y]} \\
+	\\
+	{\K[X']\otimes \K[Y']} \&\& {\K[X\times Y]}
+	\arrow["{\phi_{X,Y}}", from=1-1, to=1-3]
+	\arrow["{\K[u]\otimes \K[v]}"', from=1-1, to=3-1]
+	\arrow["{\K[u\times v]}", from=1-3, to=3-3]
+	\arrow["{\phi_{X',Y'}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+giao hoán. (Ở đây $K[u]$ là ánh xạ kéo theo trên không gian hàm.)
+\end{remark}
+
+%==============================
+% BÀI TẬP 3
+%==============================
+\begin{problem}
+Chứng minh rằng tương ứng
+\[
+(S,T) \;\longmapsto\; S\otimes T
+\]
+cảm sinh một đẳng cấu tự nhiên
+\[
+\Hom(V_1,V_2)\otimes \Hom(W_1,W_2)
+\;\xrightarrow{\ \sim\ }\;
+\Hom(V_1\otimes W_1,\; V_2\otimes W_2).
+\]
+\end{problem}
+
+\begin{proof}
+Ta định nghĩa ánh xạ
+\[
+\Phi : \Hom(V_1,V_2)\otimes \Hom(W_1,W_2)
+\;\longrightarrow\;
+\Hom(V_1\otimes W_1,\; V_2\otimes W_2)
+\]
+bởi quy tắc
+\[
+\Phi(S\otimes T)(v\otimes w) \;:=\; S(v)\otimes T(w),
+\quad \forall\, S\in\Hom(V_1,V_2),\;
+T\in\Hom(W_1,W_2),\;
+v\in V_1,\;
+w\in W_1.
+\]
+
+\smallskip
+\textbf{(1) Well-definedness.}
+Trước hết, quy tắc trên là tuyến tính theo từng biến $S,T$,
+nên bởi tính chất phổ dụng của tích tensor,
+nó cảm sinh duy nhất một ánh xạ tuyến tính $\Phi$.
+
+\smallskip
+\textbf{(2) Tính tuyến tính.}
+Với mọi $\lambda,\mu\in K$ và $S_1,S_2\in\Hom(V_1,V_2)$, $T_1,T_2\in\Hom(W_1,W_2)$,
+ta có
+\[
+\Phi\big((\lambda S_1+\mu S_2)\otimes T\big)
+= \lambda\,\Phi(S_1\otimes T) + \mu\,\Phi(S_2\otimes T),
+\]
+và tương tự với biến $T$.
+Do đó $\Phi$ là ánh xạ tuyến tính.
+
+\smallskip
+\textbf{(3) Tính song ánh.}
+Giờ ta chứng minh $\Phi$ là một đẳng cấu.
+Chọn các cơ sở $(e_i)$ của $V_1$, $(f_j)$ của $W_1$,
+và các cơ sở tương ứng $(e_i')$, $(f_j')$ của $V_2$, $W_2$.
+Khi đó, mỗi phần tử $S\in\Hom(V_1,V_2)$ được biểu diễn bằng một ma trận $(s_{i'i})$,
+và tương tự $T$ bằng $(t_{j'j})$.
+
+Khi đó ánh xạ $S\otimes T$ tương ứng với ma trận tensor $(s_{i'i}t_{j'j})$,
+nghĩa là $S\otimes T$ tác động lên phần tử cơ sở $e_i\otimes f_j$ theo công thức:
+\[
+(S\otimes T)(e_i\otimes f_j) = \sum_{i',j'} s_{i'i}t_{j'j}\, e_{i'}'\otimes f_{j'}'.
+\]
+Từ đó, không gian $\Hom(V_1\otimes W_1, V_2\otimes W_2)$
+có cơ sở tự nhiên tương ứng với mọi cặp chỉ số $(i,i',j,j')$,
+và ta thấy rõ rằng ánh xạ $\Phi$ gửi cơ sở của vế trái
+sang cơ sở tương ứng của vế phải — do đó $\Phi$ là đẳng cấu tuyến tính.
+
+\smallskip
+\textbf{(4) Tính tự nhiên.}
+Đẳng cấu $\Phi$ tương thích với mọi ánh xạ tuyến tính $U_1\to V_1$, $V_2\to U_2$, v.v.
+Nói cách khác, $\Phi$ là một đẳng cấu \emph{tự nhiên} theo bốn biến $V_1,V_2,W_1,W_2$,
+nghĩa là biểu đồ sau giao hoán:
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	{\Hom(V_1,V_2)\otimes \Hom(W_1,W_2)} \&\& {\Hom(V_1\otimes W_1,V_2\otimes W_2)} \\
+	\\
+	{\Hom(V_1',V_2')\otimes \Hom(W_1',W_2')} \&\& {\Hom(V_1'\otimes V_2',W_1'\otimes W_2')}
+	\arrow["{\phi_{V,W}}", from=1-1, to=1-3]
+	\arrow["{\Hom(f_1,f_2)\otimes \Hom(g_1,g_2)}"', from=1-1, to=3-1]
+	\arrow["{\Hom(f_1\otimes g_1,f_2\otimes g_2)}", from=1-3, to=3-3]
+	\arrow["{\phi_{V',W'}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+\smallskip
+\textbf{(5) Kết luận.}
+Do $\Phi$ là song ánh tuyến tính, ta có được đẳng cấu:
+\[
+\boxed{
+\Hom(V_1,V_2)\otimes \Hom(W_1,W_2)
+\;\cong\;
+\Hom(V_1\otimes W_1,\; V_2\otimes W_2).
+}
+\]
+Đây là đẳng cấu \emph{chuẩn tắc} trong phạm trù các không gian vectơ,
+và thường được gọi là \emph{đẳng cấu tensor của các ánh xạ tuyến tính.}
+\end{proof}
+
+%========================================
+% BÀI TẬP 4: Tính nhân của vết theo tích tensor
+%========================================
+\begin{problem}
+Chứng minh rằng đối với các tự đồng cấu tuyến tính
+\(S:V\to V\) và \(T:W\to W\),
+ta có công thức
+\[
+\operatorname{tr}(S\otimes T)
+= \big(\operatorname{tr} S\big)\,\big(\operatorname{tr} T\big),
+\]
+trong đó \(\operatorname{tr}\) ký hiệu vết (trace) của một tự đồng cấu tuyến tính.
+\end{problem}
+
+\begin{proof}
+Giả sử \(\dim_K V = m\) và \(\dim_K W = n\).
+Chọn các cơ sở \((v_1,\dots,v_m)\) của \(V\) và \((w_1,\dots,w_n)\) của \(W\).
+Trong các cơ sở này, ta có:
+
+\[
+S(v_i) = \sum_{p=1}^m s_{pi}\,v_p,
+\qquad
+T(w_j) = \sum_{q=1}^n t_{qj}\,w_q.
+\]
+
+Khi đó, với cơ sở tensor \((v_i\otimes w_j)_{1\le i\le m,\,1\le j\le n}\)
+của \(V\otimes W\),
+phép biến đổi \(S\otimes T\) tác động như sau:
+\[
+(S\otimes T)(v_i\otimes w_j)
+= S(v_i)\otimes T(w_j)
+= \sum_{p,q} s_{pi}\,t_{qj}\, (v_p\otimes w_q).
+\]
+
+Do đó, ma trận của \(S\otimes T\) đối với cơ sở này có dạng
+\[
+M_{S\otimes T} = (s_{pi}\,t_{qj})_{(p,q),(i,j)},
+\]
+nghĩa là chỉ số hàng là cặp \((p,q)\), chỉ số cột là cặp \((i,j)\).
+
+\smallskip
+Vết của \(S\otimes T\) là tổng của các phần tử trên đường chéo chính, tức là:
+\[
+\operatorname{tr}(S\otimes T)
+= \sum_{i,j} s_{ii}\,t_{jj}
+= \left(\sum_i s_{ii}\right)\!\!\left(\sum_j t_{jj}\right)
+= (\operatorname{tr}S)\,(\operatorname{tr}T).
+\]
+
+\smallskip
+Vì vết của một ánh xạ tuyến tính là độc lập với việc chọn cơ sở,
+nên đẳng thức này đúng với mọi lựa chọn cơ sở của \(V\) và \(W\).
+
+\smallskip
+\textbf{Kết luận.} Do đó, ta có:
+\[
+\boxed{
+\operatorname{tr}(S\otimes T)
+= (\operatorname{tr}S)(\operatorname{tr}T).
+}
+\]
+\end{proof}
+
+%========================================
+% ĐỊNH NGHĨA — Tích tensor của hai biểu diễn
+%========================================
+\begin{definition}[Tích tensor ngoài và trong của biểu diễn]\label{def:outer-inner-tensor-rep}
+Cho $(\rho,V)$ là một biểu diễn $K$-tuyến tính của nhóm $G$ và $(\sigma,W)$ là một biểu diễn của nhóm $H$.
+\begin{enumerate}
+\item \emph{Tích tensor ngoài} của $(\rho,V)$ và $(\sigma,W)$ là biểu diễn của $G\times H$ trên
+$V\otimes_K W$ cho bởi
+\[
+(\rho \boxtimes \sigma)(g,h)\,(v\otimes w)
+\;:=\; \rho(g)v \;\otimes\; \sigma(h)w
+\qquad (g\in G,\;h\in H,\;v\in V,\;w\in W).
+\]
+Kí hiệu: $(\rho\boxtimes \sigma,\; V\otimes W)$.
+
+\item Khi $G=H$ và ta muốn một biểu diễn của \emph{cùng} nhóm $G$ trên $V\otimes W$, ta thu hẹp
+tích tensor ngoài dọc theo đường chéo $\Delta:G\to G\times G$, $\Delta(g)=(g,g)$.
+Biểu diễn thu được gọi là \emph{tích tensor trong} (cũng kí hiệu $\rho\otimes\sigma$):
+\[
+(\rho\otimes \sigma)(g)\,(v\otimes w)
+\;:=\; \rho(g)v \;\otimes\; \sigma(g)w
+\qquad (g\in G).
+\]
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Các phép dựng trên là \emph{tự nhiên} theo phép đổi cơ sở và thỏa các đẳng cấu chuẩn tắc
+(giao hoán, kết hợp, đơn vị) của tích tensor các không gian vectơ; vì vậy phạm trù các biểu diễn của $G$
+là một phạm trù tensor (monoidal) với tích tensor trong.
+\end{remark}
+
+
+%========================================
+% BÀI TẬP 6 — Đồng nhất $V^\vee\otimes W \cong \Hom_K(V,W)$
+%========================================
+\begin{problem}[Đẳng cấu $V^\vee\otimes W \simeq \Hom_K(V,W)$]\label{prob:dual-tensor-hom}
+Cho $V$ là một $K$-không gian vectơ hữu hạn chiều và $V^\vee:=\Hom_K(V,K)$ là không gian đối ngẫu.
+Với mọi $W$, xét ánh xạ song tuyến tính
+\[
+\beta: V^\vee \times W \longrightarrow \Hom_K(V,W),
+\qquad
+(\xi,y) \longmapsto \big(x \mapsto \xi(x)\,y\big).
+\]
+Chứng minh rằng $\beta$ cảm sinh một đẳng cấu tự nhiên
+\[
+\Phi_{V,W}\;:\; V^\vee \otimes_K W \;\xrightarrow{\ \sim\ }\; \Hom_K(V,W).
+\]
+\end{problem}
+
+\begin{proof}
+\textbf{(1) Tồn tại duy nhất của $\Phi_{V,W}$.}
+Ánh xạ $\beta$ là song tuyến tính theo định nghĩa; bởi tính chất phổ dụng của tích tensor,
+tồn tại duy nhất một ánh xạ tuyến tính
+\[
+\Phi_{V,W}:V^\vee\otimes W\to \Hom_K(V,W)
+\quad\text{sao cho}\quad
+\Phi_{V,W}(\xi\otimes y)(x)=\xi(x)\,y.
+\]
+
+\medskip
+\textbf{(2) $\Phi_{V,W}$ là đẳng cấu.}
+Chọn cơ sở $(e_1,\dots,e_n)$ của $V$ và đối cơ sở $(e^1,\dots,e^n)$ của $V^\vee$.
+Với mọi $y\in W$ ta có
+\[
+\Phi_{V,W}(e^i\otimes y)(e_j)= e^i(e_j)\,y=\delta_{ij}\,y,
+\]
+suy ra các phần tử $E_{ij}(y):=\Phi_{V,W}(e^i\otimes y)$ tạo nên một hệ sinh của $\Hom(V,W)$.
+Từ đó thấy $\Phi_{V,W}$ là toàn cấu. Hơn nữa,
+\[
+\dim (V^\vee\otimes W)= (\dim V)(\dim W)=\dim \Hom(V,W),
+\]
+nên toàn cấu giữa hai không gian cùng chiều là đẳng cấu. (Hoặc có thể viết nghịch đảo tường minh: 
+$v\mapsto \sum_i e^i(v)\,y_i$ với $y_i=\Psi(T)$ xác định bởi $T(e_i)=y_i$.)
+
+\medskip
+\textbf{(3) Tính tự nhiên.}
+Với $f:V'\to V$ và $g:W\to W'$,
+sơ đồ
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	{V^\vee\otimes W} \&\& {\Hom(V,W)} \\
+	\\
+	{(V')^\vee\otimes W' } \&\& {\Hom(V',W')}
+	\arrow["{\phi_{V,W}}", from=1-1, to=1-3]
+	\arrow["{f^\vee\otimes g}"', from=1-1, to=3-1]
+	\arrow["{\Hom(f,g)}", from=1-3, to=3-3]
+	\arrow["{\phi_{V',W'}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+giao hoán (kiểm tra trên phần tử thuần $\xi\otimes y$), nên $\Phi_{V,W}$ là đẳng cấu tự nhiên theo $V,W$.
+\end{proof}
+
+\begin{remark}[Tính tương thích với cấu trúc biểu diễn]\label{rmk:equivariance}
+Giả sử $(\rho,V)$ là biểu diễn của $G$ và $(\sigma,W)$ là biểu diễn của $H$.
+\begin{enumerate}
+\item \textbf{Ngoài:} $V^\vee$ mang biểu diễn đối ngẫu $\rho^\vee(g)\xi:=\xi\circ \rho(g)^{-1}$.
+Trên $V^\vee\otimes W$ ta có biểu diễn ngoài $(\rho^\vee\boxtimes \sigma)$ của $G\times H$.
+Trên $\Hom(V,W)$, cho tác động chuẩn
+\[
+((g,h)\cdot T)\ :=\ \sigma(h)\circ T \circ \rho(g)^{-1}.
+\]
+Khi đó \emph{$\Phi_{V,W}$ là một đẳng cấu $G\times H$-biểu diễn}:
+\[
+\Phi_{V,W}\big((\rho^\vee(g)\xi)\otimes (\sigma(h)y)\big)
+\;=\;
+((g,h)\cdot \Phi_{V,W}(\xi\otimes y)).
+\]
+
+\item \textbf{Trong:} Nếu $G=H$ và xét tác động chéo $(g\cdot T)=\sigma(g)T\rho(g)^{-1}$ trên $\Hom(V,W)$,
+còn trên $V^\vee\otimes W$ dùng biểu diễn trong $(\rho^\vee\otimes \sigma)$,
+thì $\Phi_{V,W}$ vẫn là một đẳng cấu $G$-biểu diễn.
+\end{enumerate}
+Ý nghĩa: \(\Phi_{V,W}\) không chỉ là đẳng cấu của các không gian vectơ, mà còn là \emph{morphisme đan dệt} (intertwiner) tự nhiên giữa các biểu diễn được dựng từ $V$ và $W$.
+\end{remark}
+
+%========================================
+% HỆ QUẢ — Công thức đánh giá và đồng cấu học
+%========================================
+\begin{corollary}[Đánh giá và đồng đánh giá]
+Với cơ sở ký hiệu chuẩn, ánh xạ đánh giá 
+$\mathrm{ev}_V: V^\vee\otimes V\to K$, $(\xi\otimes v)\mapsto \xi(v)$,
+và đồng đánh giá
+$\mathrm{coev}_V: K\to V\otimes V^\vee$, $1\mapsto \sum_i e_i\otimes e^i$,
+thỏa các tam giác hợp nhất (zig–zag) của phạm trù tensor cứng (rigid).
+Qua \(\Phi_{V,V}\), $\mathrm{ev}_V$ chính là vết $\mathrm{tr}:\End(V)\to K$ trên các hạng tử hạng một.
+\end{corollary}
+
+%===========================================================
+% BÀI TẬP 7 — Tích tensor và Hom của các biểu diễn
+%===========================================================
+\begin{problem}\label{prob:tensor-hom-GxH}
+Cho $(\rho,V)$ và $(\sigma,W)$ lần lượt là các biểu diễn của các nhóm $G$ và $H$.  
+Khi đó, $(\rho'\otimes\sigma,\, V^\vee\otimes W)$ là một biểu diễn của $G\times H$, trong đó
+\[
+(\rho'\otimes\sigma)(g,h)(\xi\otimes w)
+\;=\;
+(\rho'(g)\xi)\otimes(\sigma(h)w)
+\;=\;
+(\xi\circ\rho(g)^{-1})\otimes\sigma(h)w.
+\]
+
+Mặt khác, không gian $\Hom(V,W)$ (đẳng cấu chính tắc với $V^\vee\otimes W$)
+cũng là một biểu diễn của $G\times H$, với tác động định nghĩa bởi
+\[
+\tau:G\times H\longrightarrow \GL(\Hom(V,W)),\qquad
+\tau(g,h)(T)=\sigma(h)\circ T\circ\rho(g)^{-1}.
+\]
+
+\textbf{Yêu cầu.} Chứng minh rằng đẳng cấu tuyến tính
+\[
+\Phi_{V,W}:V^\vee\otimes W \longrightarrow \Hom(V,W),\qquad
+\Phi_{V,W}(\xi\otimes w)(v)=\xi(v)\,w,
+\]
+là một \emph{đẳng cấu của các biểu diễn $G\times H$}.  
+Từ đó suy ra rằng $V^\vee\otimes W$ và $\Hom(V,W)$ là hai biểu diễn đẳng cấu của $G\times H$.
+\end{problem}
+
+%===========================================================
+% CHỨNG MINH CHI TIẾT
+%===========================================================
+\begin{proof}
+Ta cần chứng minh rằng $\Phi_{V,W}$ là một đồng cấu biểu diễn, tức là
+\[
+\Phi_{V,W}\big((\rho'\otimes\sigma)(g,h)(\xi\otimes w)\big)
+\;=\;
+\tau(g,h)\big(\Phi_{V,W}(\xi\otimes w)\big)
+\qquad\text{với mọi }(g,h)\in G\times H.
+\]
+
+\medskip
+\noindent\textbf{Vế trái.}
+\begin{align*}
+\Phi_{V,W}\big((\rho'\otimes\sigma)(g,h)(\xi\otimes w)\big)
+&= \Phi_{V,W}\big((\rho'(g)\xi)\otimes(\sigma(h)w)\big) \\
+&= \Phi_{V,W}\big((\xi\circ\rho(g)^{-1})\otimes(\sigma(h)w)\big) \\
+&: v \longmapsto (\xi\circ\rho(g)^{-1})(v)\cdot\sigma(h)w \\
+&= \xi(\rho(g)^{-1}v)\,\sigma(h)w.
+\end{align*}
+
+\noindent\textbf{Vế phải.}
+\begin{align*}
+\tau(g,h)\big(\Phi_{V,W}(\xi\otimes w)\big)
+&= \sigma(h)\circ\Phi_{V,W}(\xi\otimes w)\circ\rho(g)^{-1}, \\
+\text{do đó}\quad
+(\tau(g,h)\Phi_{V,W}(\xi\otimes w))(v)
+&= \sigma(h)\big(\Phi_{V,W}(\xi\otimes w)(\rho(g)^{-1}v)\big) \\
+&= \sigma(h)\big(\xi(\rho(g)^{-1}v)\,w\big)
+= \xi(\rho(g)^{-1}v)\,\sigma(h)w.
+\end{align*}
+
+Hai biểu thức trùng nhau, nên đẳng thức cần chứng minh đúng.
+
+\medskip
+\noindent\textbf{Kết luận.}
+Vì $\Phi_{V,W}$ là một đẳng cấu tuyến tính và đồng thời bảo toàn tác động của $G\times H$, nên
+\[
+\Phi_{V,W}: (V^\vee\otimes W,\rho'\otimes\sigma)
+\;\xrightarrow{\ \sim\ }\;
+(\Hom(V,W),\tau)
+\]
+là một đẳng cấu của các biểu diễn $G\times H$.
+\end{proof}
+
+%===========================================================
+% NHẬN XÉT — Ý nghĩa phạm trù
+%===========================================================
+\begin{remark}[Ý nghĩa phạm trù]
+Kết quả trên cho thấy phép tương ứng
+\[
+(V,W)\longmapsto \Hom(V,W)
+\]
+là \emph{tự nhiên} đối với các biểu diễn của $G$ và $H$.  
+Hơn nữa, ánh xạ $\Phi_{V,W}$ là một \textit{biến đổi tự nhiên} giữa các functor
+\[
+(-)^\vee\otimes (-)\quad\text{và}\quad \Hom(-,-),
+\]
+trong phạm trù các biểu diễn của nhóm.  
+Đây là ví dụ điển hình cho tính tương thích tensor–Hom trong đại số tuyến tính.
+\end{remark}
+
+%========================================================
+% BÀI TẬP 8 — Tích tensor ngoài của các biểu diễn đơn
+% Giả sử K đóng đại số và char(K) ∤ |G|, |H|
+%========================================================
+\begin{problem}\label{prob:outer-simple}
+Giả sử $K$ là trường đóng đại số và đặc số của $K$ không chia hết $|G|$ cũng như $|H|$.
+\begin{enumerate}
+\item Chứng minh rằng nếu $(\rho,V)$ và $(\sigma,W)$ là các biểu diễn \emph{đơn} của $G$ và $H$, thì
+tích tensor ngoài $(\rho\boxtimes\sigma,\;V\otimes W)$ là một biểu diễn \emph{đơn} của $G\times H$.
+\item Hơn nữa, nếu $(\tau,U)$ và $(\theta,X)$ là các biểu diễn đơn của $G$ và $H$ sao cho
+$\rho\boxtimes\sigma \cong \tau\boxtimes\theta$, thì $\rho\cong\tau$ và $\sigma\cong\theta$.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+Trong toàn bộ lời giải, vì $\operatorname{char}(K)\nmid |G|,|H|$, theo Maschke
+mọi biểu diễn hữu hạn chiều của $G$, $H$ và $G\times H$ đều khả phân hoàn toàn.  
+Ta sẽ dùng \textbf{Bổ đề Schur}: nếu $K$ đóng đại số thì
+\[
+\End_G(V)\cong K \quad\text{khi $V$ đơn}, \qquad
+\Hom_G(V,U)=\begin{cases}
+0,& V\not\cong U,\\
+K,& V\cong U.
+\end{cases}
+\]
+
+Ngoài ra, ta dùng đẳng cấu tự nhiên (đã chứng minh trong Bài tập~3 và các mệnh đề về tính tương thích với tác động nhóm):
+\begin{equation}\label{eq:Hom-factor}
+\Hom_{G\times H}(V\otimes W,\;U\otimes X)
+\;\cong\;
+\Hom_G(V,U)\;\otimes\;\Hom_H(W,X).
+\end{equation}
+
+\medskip
+\noindent\textbf{(a) $\rho\boxtimes\sigma$ là đơn.}
+Xét vành nội đồng cấu của biểu diễn ngoài:
+\[
+\End_{G\times H}(V\otimes W)
+\;\overset{\eqref{eq:Hom-factor}}{\cong}\;
+\End_G(V)\otimes \End_H(W)
+\;\cong\; K\otimes K \;\cong\; K,
+\]
+vì $V,W$ đơn (Bổ đề Schur).  
+
+Giả sử $0\neq Y\subsetneq V\otimes W$ là một mô-đun con $G\times H$-bất biến.
+Vì Maschke, tồn tại phép chiếu $G\times H$-tuyến tính $P:V\otimes W\to V\otimes W$
+lên $Y$ (theo một phần bù bất biến). Do đó $P\in \End_{G\times H}(V\otimes W)$ và $P^2=P$.
+Nhưng trong một \emph{trường} (ở đây là $K$), phần tử lũy đẳng chỉ có thể là $0$ hoặc $1$,
+suy ra $P=0$ (tức $Y=0$) hoặc $P=1$ (tức $Y=V\otimes W$).  
+Vậy không tồn tại mô-đun con bất biến phi tầm thường; $(\rho\boxtimes\sigma,V\otimes W)$ là \emph{đơn}.
+
+\medskip
+\noindent\textbf{(b) Tính duy nhất của phân rã.}
+Giả sử $\rho\boxtimes\sigma \cong \tau\boxtimes\theta$, tức tồn tại một đẳng cấu
+$\Phi\in \Hom_{G\times H}(V\otimes W,\;U\otimes X)$ khác $0$.
+Theo \eqref{eq:Hom-factor},
+\[
+0\neq \Hom_{G\times H}(V\otimes W,\;U\otimes X)
+\;\cong\;
+\Hom_G(V,U)\otimes \Hom_H(W,X).
+\]
+Vì $V,U$ là $G$-biểu diễn đơn và $W,X$ là $H$-biểu diễn đơn, áp dụng Bổ đề Schur cho ta
+$\Hom_G(V,U)\in\{0,K\}$ và $\Hom_H(W,X)\in\{0,K\}$.
+Tích tensor của hai không gian vectơ là $0$ khi và chỉ khi một trong hai thừa số là $0$; do đó để vế phải khác $0$,
+ta phải có \(\Hom_G(V,U)\cong K\) và \(\Hom_H(W,X)\cong K\).
+Vì thế \(V\cong U\) và \(W\cong X\), tức \(\rho\cong\tau\) và \(\sigma\cong\theta\).
+
+\medskip
+Kết luận, (a) và (b) đều được chứng minh.
+\end{proof}
+
+\begin{remark}
+(a) ở trên cho thấy các biểu diễn đơn của $G\times H$ chính là các tích tensor ngoài
+của một biểu diễn đơn của $G$ với một biểu diễn đơn của $H$;  
+(b) phát biểu tính duy nhất của cặp thừa số (lên đến đẳng cấu).  
+Trên $K$ đóng đại số, điều này tương đương với mô tả \emph{mọi} biểu diễn đơn của $G\times H$.
+\end{remark}
